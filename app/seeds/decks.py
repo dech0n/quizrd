@@ -1,20 +1,22 @@
-from app.models import db, Deck, User
+from app.models import db, Deck
 
-demo = User.query.get(1)
-marnie = User.query.get(2)
-bobbie = User.query.get(3)
+# demo = User.query.get(1)
+# marnie = User.query.get(2)
+# bobbie = User.query.get(3)
 
 
 def seed_decks():
     french_colors = Deck(
-        owner=demo,
+        # owner=demo,
+        owner_id=1,
         title='French Colors',
         description='Learn colors in French',
         image=None
     )
 
     french_animals = Deck(
-        owner=marnie,
+        # owner=marnie,
+        owner_id=2,
         title='French Animals',
         description="""Learn animals in French.\n
                     (m) = masculine noun, (f) = feminine noun""",
@@ -22,7 +24,8 @@ def seed_decks():
     )
 
     french_numbers = Deck(
-        owner=bobbie,
+        # owner=bobbie,
+        owner_id=3,
         title='French Numbers',
         description='Learn to count in French',
         image=None
