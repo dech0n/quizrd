@@ -24,10 +24,10 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
-        user_decks = [deck.to_dict() for deck in self.decks]
+        user_deck_list = [deck.to_dict() for deck in self.decks]
         return {
             'id': self.id,
             'username': self.username,
             'email': self.email,
-            'decks': user_decks
+            'decks': user_deck_list
         }
