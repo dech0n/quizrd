@@ -16,7 +16,7 @@ def seed_decks():
     french_animals = Deck(
         owner=marnie,
         title='French Animals',
-        description="""Learn animals in French.
+        description="""Learn animals in French.\n
                     (m) = masculine noun, (f) = feminine noun""",
         image=None
     )
@@ -37,9 +37,6 @@ def seed_decks():
 
 # Uses a raw SQL query to TRUNCATE the decks table.
 # SQLAlchemy doesn't have a built in function to do this
-# TRUNCATE Removes all the data from the table, and RESET IDENTITY
-# resets the auto incrementing primary key, CASCADE deletes any
-# dependent entities
 def undo_decks():
     db.session.execute('TRUNCATE decks RESTART IDENTITY CASCADE;')
     db.session.commit()
