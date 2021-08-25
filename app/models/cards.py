@@ -6,7 +6,7 @@ class Card(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     # if error on delete, remove nullable
-    deck_id = db.Column(db.Integer, foreign_keys=['decks.id'], nullable=False)
+    deck_id = db.Column(db.Integer, db.ForeignKey('decks.id'), nullable=False)
     front_text = db.Column(db.String(300), nullable=False)
     back_text = db.Column(db.String(300), nullable=False)
     front_image = db.Column(db.String(255))
