@@ -40,5 +40,6 @@ class Deck(db.Model):
             'cards': deck_cards,
             'categories': deck_category_list,
             'learners': deck_learner_list
-            # was causing a stack overflow because User called Deck.to_dict() and this calls User.to_dict() for each learner... endless loop
+            # was causing a stack overflow because User called Deck.to_dict()
+            # and this calls User.to_dict() for each learner... endless loop
         }
