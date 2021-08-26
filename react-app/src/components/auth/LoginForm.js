@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../../store/session';
 import './auth.css'
 
+// TODO: Make this into a modal -- less styling!
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -32,17 +33,15 @@ const LoginForm = () => {
   }
 
   return (
-    <div className='form-container'>
       <form className='auth-form' onSubmit={onLogin}>
-        <div>
+        <div className='all-auth-errors-container'>
           {errors.map((error, ind) => (
-            <div key={ind}>{error}</div>
+            <div
+            className='auth-error-container'
+            key={ind}>{error}</div>
           ))}
         </div>
         <div className='email-container auth-field-container'>
-          <label
-            className='email-label auth-label'
-            htmlFor='email'>Email</label>
           <input
             className='email-input auth-input'
             name='email'
@@ -51,10 +50,11 @@ const LoginForm = () => {
             value={email}
             onChange={updateEmail}
           />
+          <label
+            className='email-label auth-label'
+            htmlFor='email'>Email</label>
         </div>
         <div className='password-container auth-field-container'>
-          <label
-            className='password-label auth-label' htmlFor='password'>Password</label>
           <input
             className='password-input auth-input'
             name='password'
@@ -63,12 +63,16 @@ const LoginForm = () => {
             value={password}
             onChange={updatePassword}
           />
+          {/* <label
+            className='password-label auth-label' htmlFor='password'>Password</label> */}
           <button
             className='submit-btn auth-btn'
+            id='login'
             type='submit'>Login</button>
         </div>
+        <Link to='/sign-up'
+        className='auth-link'>Don't have an account?<br />Sign up here!</Link>
       </form>
-    </div>
   );
 };
 
