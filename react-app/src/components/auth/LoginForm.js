@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
+import DemoLoginButton from './DemoLoginButton';
 import { login } from '../../store/session';
+import './auth.css'
 
+// TODO: Make this into a modal -- less styling!
 const LoginForm = () => {
   const [errors, setErrors] = useState([]);
   const [email, setEmail] = useState('');
@@ -31,33 +34,48 @@ const LoginForm = () => {
   }
 
   return (
-    <form onSubmit={onLogin}>
-      <div>
+    <form className='auth-form' onSubmit={onLogin}>
+      <div className='all-auth-errors-container'>
         {errors.map((error, ind) => (
-          <div key={ind}>{error}</div>
+          <div
+            className='auth-error-container'
+            key={ind}>{error}</div>
         ))}
       </div>
-      <div>
-        <label htmlFor='email'>Email</label>
+      <div className='email-container auth-field-container'>
         <input
+          className='email-input auth-input'
           name='email'
           type='text'
-          placeholder='Email'
+          // placeholder='Email'
           value={email}
           onChange={updateEmail}
         />
+        <label
+          className='email-label auth-label'
+          htmlFor='email'>Email</label>
       </div>
-      <div>
-        <label htmlFor='password'>Password</label>
+      <div className='password-container auth-field-container'>
         <input
+          className='password-input auth-input'
           name='password'
           type='password'
-          placeholder='Password'
+          // placeholder='Password'
           value={password}
           onChange={updatePassword}
         />
-        <button type='submit'>Login</button>
+        <label
+          className='password-label auth-label' htmlFor='password'>Password</label>
+        <button
+          className='submit-btn auth-btn'
+          id='login-btn'
+          type='submit'>Login</button>
+          <DemoLoginButton />
       </div>
+      {/* <div> */}
+        <Link to='/sign-up'
+          className='auth-link'>Don't have an account?<br />Sign up here!</Link>
+      {/* </div> */}
     </form>
   );
 };
