@@ -31,3 +31,10 @@ class User(db.Model, UserMixin):
             'email': self.email,
             'decks': user_deck_list
         }
+
+    def to_learner_dict(self):
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email
+        }

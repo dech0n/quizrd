@@ -59,7 +59,11 @@ def get_or_delete_deck(id):
 
     return deck.to_dict()
 
+
 @deck_routes.route('/users/<int:user_id>')
 # @login_required
-def get_user_decks(user_id):
-    decks = Deck.query.filter_by()
+def get_user_decks(_user_id):
+    decks = current_user.decks
+
+    # make sure to flatten this in the thunk
+    return {'decks': [deck.to_dict() for deck in decks]}

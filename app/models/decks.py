@@ -25,11 +25,12 @@ class Deck(db.Model):
                                backref=db.backref('deck', lazy=True)
                                )
 
-
     def to_dict(self):
         deck_cards = [card.to_dict() for card in self.cards]
-        deck_category_list = [category.to_dict() for category in self.categories]
-        deck_learner_list = [learner.to_dict() for learner in self.learners]
+        deck_category_list = [category.to_dict()
+                              for category in self.categories]
+        deck_learner_list = [learner.to_learner_dict()
+                             for learner in self.learners]
         return {
             'id': self.id,
             'owner_id': self.owner_id,
@@ -39,4 +40,5 @@ class Deck(db.Model):
             'cards': deck_cards,
             'categories': deck_category_list,
             'learners': deck_learner_list
+            # was causing a stack overflow because User called Deck.to_dict() and this calls User.to_dict() for each learner... endless loop
         }
