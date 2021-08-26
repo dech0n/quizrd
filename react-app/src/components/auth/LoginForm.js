@@ -72,10 +72,10 @@ const LoginForm = () => {
           type='submit'>Login</button>
           <DemoLoginButton />
       </div>
-      <div>
+      {/* <div> */}
         <Link to='/sign-up'
           className='auth-link'>Don't have an account?<br />Sign up here!</Link>
-      </div>
+      {/* </div> */}
     </form>
   );
 };

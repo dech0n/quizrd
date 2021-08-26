@@ -53,3 +53,7 @@ TODO: Make demo user into me!
 #logout-btn {
     cursor: pointer;
 }
+
+#demo-login-btn {
+    margin: 5px 0 10px 0;
+}
