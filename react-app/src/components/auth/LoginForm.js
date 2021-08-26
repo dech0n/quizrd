@@ -46,7 +46,7 @@ const LoginForm = () => {
             className='email-input auth-input'
             name='email'
             type='text'
-            placeholder='Email'
+            // placeholder='Email'
             value={email}
             onChange={updateEmail}
           />
@@ -59,15 +59,15 @@ const LoginForm = () => {
             className='password-input auth-input'
             name='password'
             type='password'
-            placeholder='Password'
+            // placeholder='Password'
             value={password}
             onChange={updatePassword}
           />
-          {/* <label
-            className='password-label auth-label' htmlFor='password'>Password</label> */}
+          <label
+            className='password-label auth-label' htmlFor='password'>Password</label>
           <button
             className='submit-btn auth-btn'
-            id='login'
+            id='login-btn'
             type='submit'>Login</button>
         </div>
         <Link to='/sign-up'
