@@ -1,5 +1,5 @@
 from flask import Blueprint, jsonify, session, request
-from app.models import db, User, Deck, Category
+from app.models import db, Deck, Category, User
 from flask_login import current_user, login_required
 
 
