@@ -7,7 +7,7 @@ import './auth.css'
 const DemoLoginButton = () => {
   const dispatch = useDispatch()
   const [errors, setErrors] = useState([]);
-  const onLogin = async (e) => {
+  const onDemoLogin = async (e) => {
     e.preventDefault();
     const data = await dispatch(login('demo@aa.io', 'password'));
     if (data) {
@@ -20,7 +20,7 @@ const DemoLoginButton = () => {
       <button
         id='demo-login-btn'
         className='auth-btn'
-        onClick={onLogin}>DEMO USER</button>
+        onClick={onDemoLogin}>DEMO USER</button>
       <div className='all-auth-errors-container'>
         {errors.map((error, ind) => (
           <div
