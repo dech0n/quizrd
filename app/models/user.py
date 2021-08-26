@@ -10,6 +10,7 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    decks = db.relationship('Deck', backref='owner')
 
     @property
     def password(self):
@@ -23,6 +24,15 @@ class User(db.Model, UserMixin):
         return check_password_hash(self.password, password)
 
     def to_dict(self):
+        user_deck_list = [deck.to_dict() for deck in self.decks]
+        return {
+            'id': self.id,
+            'username': self.username,
+            'email': self.email,
+            'decks': user_deck_list
+        }
+
+    def to_learner_dict(self):
         return {
             'id': self.id,
             'username': self.username,
