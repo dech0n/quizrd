@@ -35,6 +35,6 @@ class User(db.Model, UserMixin):
     def to_learner_dict(self):
         return {
             'id': self.id,
-            'username': self.username,
-            'email': self.email
+            'username': self.username
+            # 'email': self.email
         }
