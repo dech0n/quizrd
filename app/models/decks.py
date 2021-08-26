@@ -17,26 +17,29 @@ class Deck(db.Model):
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ <-- docs
     categories = db.relationship('Category',
                                  secondary=deck_categories,
-                                 lazy='subquery',
-                                 backref=db.backref('deck', lazy=True)
+                                 #  lazy='subquery',
+                                 backref=db.backref('deck', lazy='dynamic')
                                  )
     learners = db.relationship('User',
                                secondary=deck_learners,
                                backref=db.backref('deck', lazy=True)
                                )
 
-
-def to_dict(self):
-    deck_cards = [card.to_dict() for card in self.cards]
-    deck_category_list = [category.to_dict() for category in self.categories]
-    deck_learner_list = [learner.to_dict() for learner in self.learners]
-    return {
-        'id': self.id,
-        'owner_id': self.owner_id,
-        'title': self.title,
-        'description': self.description,
-        'image': self.image,
-        'cards': deck_cards,
-        'categories': deck_category_list,
-        'learners': deck_learner_list
-    }
+    def to_dict(self):
+        deck_cards = [card.to_dict() for card in self.cards]
+        deck_category_list = [category.to_dict()
+                              for category in self.categories]
+        deck_learner_list = [learner.to_learner_dict()
+                             for learner in self.learners]
+        return {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'title': self.title,
+            'description': self.description,
+            'image': self.image,
+            'cards': deck_cards,
+            'categories': deck_category_list,
+            'learners': deck_learner_list
+            # was causing a stack overflow because User called Deck.to_dict()
+            # and this calls User.to_dict() for each learner... endless loop
+        }

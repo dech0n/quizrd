@@ -1,0 +1,59 @@
+/*
+TODO: Make input fields larger
+TODO: Give input text a fun color ?
+TODO: Make user input text larger
+TODO: Style errors
+TODO: Make demo login button slightly brighter
+TODO: Make demo user into me!
+*/
+
+.auth-form {
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: auto;
+}
+
+.auth-field-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.auth-input {
+    border: none;
+    border-bottom: 1px solid black;
+}
+
+.auth-input:focus {
+    outline: none;
+}
+
+.auth-label {
+    /* visibility: hidden; */
+    padding: 0px 0 10px 0;
+}
+
+.auth-link {
+    text-decoration: none;
+    text-align: center;
+}
+
+#signup-btn {
+    margin: 15px 0 20px 0;
+}
+
+#login-btn {
+    margin: 10px 0 0 0;
+}
+
+#logout-btn {
+    cursor: pointer;
+}
+
+#demo-login-btn {
+    margin: 5px 0 10px 0;
+}
