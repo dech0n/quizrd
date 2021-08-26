@@ -1,21 +1,25 @@
 import React from 'react'
 
 function DeckManagerTable({ decks }) {
-    return (
+    return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
                 const { categories } = deck
                 return (
-                    <li
-                        key={`${deck.id}-${deck.title}`}
+                    <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
-                        <ul className='deck-manager-row-contents'>
-                            <li className='deck-info'>
-                                <h4>{deck.title}</h4>
-                                <p>{deck.description}</p>
-                                <p>
+                        <ul key={`${deck.id}-deck-contents`}
+                            className='deck-manager-row-contents'>
+                            <li key={`${deck.id}-deck-info`}
+                                className='deck-info'>
+                                <h4
+                                 key={`${deck.id}-deck-title`}>{deck.title}</h4>
+                                <p key={`${deck.id}-deck-desc`}
+                                   className='deck-description'>{deck.description}</p>
+                                <p key={`${deck.id}-deck-cats`}>
                                     Categories: {categories.map(category => (
-                                        <span>{category.name}, </span>
+                                        <span key={`${category.id}-catgry-name`}
+                                              className='category-name'>• {category.name} </span>
                                     ))}
                                 </p>
                             </li>
@@ -24,6 +28,8 @@ function DeckManagerTable({ decks }) {
                 )
             })}
         </ul>
+    ) : (
+        <h2>loading...</h2>
     )
 }
 
