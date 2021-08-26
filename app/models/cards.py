@@ -13,12 +13,12 @@ class Card(db.Model):
     back_image = db.Column(db.String(255))
 
 
-def to_dict(self):
-    return {
-        'id': self.id,
-        'deck_id': self.deck_id,
-        'front_text': self.front_text,
-        'back_text': self.back_text,
-        'front_image': self.front_image,
-        'back_image': self.back_image
-    }
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'deck_id': self.deck_id,
+            'front_text': self.front_text,
+            'back_text': self.back_text,
+            'front_image': self.front_image,
+            'back_image': self.back_image
+        }

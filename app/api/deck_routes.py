@@ -7,7 +7,7 @@ deck_routes = Blueprint('decks', __name__)
 
 # TODO: add PUT method & logic
 @deck_routes.route('/', methods=['POST'])
-@login_required
+# @login_required
 def new_deck():
     data = request.get_json()
     # POST data should look like this:
@@ -58,3 +58,8 @@ def get_or_delete_deck(id):
         db.session.commit()
 
     return deck.to_dict()
+
+@deck_routes.route('/users/<int:user_id>')
+# @login_required
+def get_user_decks(user_id):
+    decks = Deck.query.filter_by()

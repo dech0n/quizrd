@@ -26,17 +26,17 @@ class Deck(db.Model):
                                )
 
 
-def to_dict(self):
-    deck_cards = [card.to_dict() for card in self.cards]
-    deck_category_list = [category.to_dict() for category in self.categories]
-    deck_learner_list = [learner.to_dict() for learner in self.learners]
-    return {
-        'id': self.id,
-        'owner_id': self.owner_id,
-        'title': self.title,
-        'description': self.description,
-        'image': self.image,
-        'cards': deck_cards,
-        'categories': deck_category_list,
-        'learners': deck_learner_list
-    }
+    def to_dict(self):
+        deck_cards = [card.to_dict() for card in self.cards]
+        deck_category_list = [category.to_dict() for category in self.categories]
+        deck_learner_list = [learner.to_dict() for learner in self.learners]
+        return {
+            'id': self.id,
+            'owner_id': self.owner_id,
+            'title': self.title,
+            'description': self.description,
+            'image': self.image,
+            'cards': deck_cards,
+            'categories': deck_category_list,
+            'learners': deck_learner_list
+        }
