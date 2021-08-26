@@ -3,6 +3,8 @@ TODO: Make input fields larger
 TODO: Give input text a fun color ?
 TODO: Make user input text larger
 TODO: Style errors
+TODO: Make demo login button slightly brighter
+TODO: Make demo user into me!
 */
 
 .auth-form {
@@ -40,10 +42,14 @@ TODO: Style errors
     text-align: center;
 }
 
+#signup-btn {
+    margin: 15px 0 20px 0;
+}
+
 #login-btn {
     margin: 10px 0 0 0;
 }
 
-#signup-btn {
-    margin: 15px 0 20px 0;
+#logout-btn {
+    cursor: pointer;
 }
