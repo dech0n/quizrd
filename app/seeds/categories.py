@@ -1,32 +1,24 @@
 from app.models import categories, db, Category
 
+foreign_language = Category(name='Foreign Language')
+french = Category(name='French')
+basic = Category(name='Basic')
+advanced = Category(name='Advanced')
+nature = Category(name='Nature')
+colors = Category(name='Colors')
+math = Category(name='Math')
+
 
 def seed_categories():
+
     category_seeds = [
-        Category(
-            name='Foreign Language'
-        ),
-        Category(
-            name='Math'
-        ),
-        Category(
-            name='Science'
-        ),
-        Category(
-            name='Basic'
-        ),
-        Category(
-            name='Advanced'
-        ),
-        Category(
-            name='French'
-        ),
-        Category(
-            name='Spanish'
-        ),
-        Category(
-            name='German'
-        ),
+        foreign_language,
+        french,
+        basic,
+        advanced,
+        nature,
+        colors,
+        math
     ]
 
     db.session.add_all(category_seeds)

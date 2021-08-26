@@ -17,8 +17,8 @@ class Deck(db.Model):
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ <-- docs
     categories = db.relationship('Category',
                                  secondary=deck_categories,
-                                 lazy='subquery',
-                                 backref=db.backref('deck', lazy=True)
+                                 #  lazy='subquery',
+                                 backref=db.backref('deck', lazy='dynamic')
                                  )
     learners = db.relationship('User',
                                secondary=deck_learners,

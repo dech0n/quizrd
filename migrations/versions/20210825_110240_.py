@@ -43,18 +43,18 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('deck_categories',
-    sa.Column('category_id', sa.Integer(), nullable=False),
     sa.Column('deck_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
+    sa.Column('category_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
-    sa.PrimaryKeyConstraint('category_id', 'deck_id')
+    sa.ForeignKeyConstraint(['category_id'], ['categories.id'], )
+    # sa.PrimaryKeyConstraint('category_id', 'deck_id')
     )
     op.create_table('deck_learners',
-    sa.Column('learner_id', sa.Integer(), nullable=False),
     sa.Column('deck_id', sa.Integer(), nullable=False),
+    sa.Column('learner_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
     sa.ForeignKeyConstraint(['learner_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('learner_id', 'deck_id')
+    # sa.PrimaryKeyConstraint('learner_id', 'deck_id')
     )
     # ### end Alembic commands ###
 
