@@ -6,7 +6,17 @@ from flask_login import current_user, login_required
 deck_routes = Blueprint('decks', __name__)
 
 # TODO: add PUT method & logic
-@deck_routes.route('/', methods=['POST'])
+
+
+@deck_routes.route('/')
+def get_all_decks():
+    decks = Deck.query.all()
+    return {
+        'decks': [deck.to_dict() for deck in decks]
+    }
+
+
+@deck_routes.route('/new', methods=['POST'])
 # @login_required
 def new_deck():
     data = request.get_json()
@@ -62,8 +72,11 @@ def get_or_delete_deck(id):
 
 @deck_routes.route('/users/<int:user_id>')
 # @login_required
-def get_user_decks(_user_id):
-    decks = current_user.decks
+def get_user_decks(user_id):
+    if user_id is None:
+        decks = current_user.decks
+    else:
+        decks = Deck.query.filter_by(owner_id=user_id).all()
 
     # make sure to flatten this in the thunk
     return {'decks': [deck.to_dict() for deck in decks]}
