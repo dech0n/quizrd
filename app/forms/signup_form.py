@@ -20,6 +20,7 @@ def username_exists(form, field):
         raise ValidationError('Username is already in use.')
 
 
+# TODO: Add optional field for profile pic
 class SignUpForm(FlaskForm):
     username = StringField(
         'username', validators=[DataRequired(), username_exists])

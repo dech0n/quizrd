@@ -5,6 +5,7 @@ import { signUp } from '../../store/session';
 import './auth.css'
 
 // TODO: Make this into a modal -- less styling!
+// TODO: Add field & logic for profile pic
 const SignUpForm = () => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState('');
