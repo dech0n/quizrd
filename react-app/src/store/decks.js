@@ -5,16 +5,16 @@ const REMOVE = 'decks/REMOVE'
 
 // ACTION CREATORS
 const load = (decks) => ({
-    action: LOAD,
+    type: LOAD,
     decks
 })
 
 const add = (decks) => ({
-    action: ADD,
+    type: ADD,
     decks
 })
 const remove = (decks) => ({
-    action: REMOVE,
+    type: REMOVE,
     decks
 })
 
@@ -64,30 +64,35 @@ export const deleteDeck = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/decks/${deckId}`, {
         method: 'DELETE'
     })
+    console.log('*** THUNK DELETE RES ***', res)
 
     if (res.ok) {
         const deck = await res.json()
+        console.log('*** THUNK DELETE DECK ***', deck)
         dispatch(remove(deck))
     }
 }
 
 // REDUCER
 const initialState = {}
-export default function decksReducer(state = initialState, {type, decks}) {
+export default function decksReducer(state = initialState, { type, decks }) {
+    // change payload name to clarify when there is only a single deck changing in state
+    const deck = decks
+
     switch (type) {
         case LOAD:
             const allDecks = {}
-            decks.forEach(deck => {
-                allDecks[deck.id] = deck
-            })
-
+            if (decks) {
+                decks.forEach(deck => {
+                    allDecks[deck.id] = deck
+                })
+            }
             return {
                 ...state,
                 ...allDecks
             }
 
         case ADD:
-            const deck = decks // to clarify this is a single deck
             // if this is a new deck
             if (!state[deck.id]) {
                 const newState = {
@@ -108,7 +113,7 @@ export default function decksReducer(state = initialState, {type, decks}) {
             }
 
         case REMOVE:
-            const newState = {...state}
+            const newState = { ...state }
             delete newState[deck.id]
             return {
                 ...newState

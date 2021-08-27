@@ -26,7 +26,11 @@ def new_deck():
     #     'title': 'some title',
     #     'description': 'some description',
     #     'image': 'some image file name',
-    #     'categories': ['categ_data1', 'categ_data2', '...']
+    #     'categories': [
+    #         {'name': 'Categ Name1'},
+    #         {'name': 'Categ Name2'},
+    #         {'name': '...'}
+    #         ]
     # }
 
     if request.method == 'POST':
@@ -55,6 +59,7 @@ def new_deck():
         db.session.add(deck)
         db.session.add_all(categories_for_db)
         db.session.commit()
+        # print('*** NEW DECK ***', deck.to_dict)
         return deck.to_dict()  # contains the new categories
 
 
@@ -67,7 +72,7 @@ def get_or_delete_deck(id):
     elif request.method == 'DELETE':
         db.session.delete(deck)
         db.session.commit()
-
+    print('*** DELETE DECK ***', deck.to_dict())
     return deck.to_dict()
 
 

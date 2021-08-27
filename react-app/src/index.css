@@ -7,12 +7,12 @@ TODO: Create dark mode theme arcoss website, use "Com Truise In Decay, Too" colo
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-ul {
-    list-style: none;
+a {
+    text-decoration: none;
 }
 
-form {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+ul {
+    list-style: none;
 }
 
 button {
