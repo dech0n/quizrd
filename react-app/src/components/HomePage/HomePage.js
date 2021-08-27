@@ -52,10 +52,11 @@ function HomePage() {
                         {/* profile pic, "Hello <username>!" Add # decks & # decks-learninig under username ?  */}
                         <img src={user.image} alt='profile pic' />
                         <p>Welcome back, {user.username}!</p>
+                        <p>Decks Created ({Object.values(decks).length})</p>
                     </div>
                     <div className='new-deck-btn-container'>
-                        <button onClick={() => handleSubmit(deckData)}>+ New Deck</button>
-                        {/* <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button> */}
+                        {/* <button>+ New Deck</button> */}
+                        <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button>
                     </div>
                 </div>
                 <div className='deck-manager-container'>

@@ -88,3 +88,5 @@ def get_user_decks(user_id):
 
     # make sure to flatten this in the thunk
     return {'decks': [deck.to_dict() for deck in decks]}
+
+# @deck_routes.route
