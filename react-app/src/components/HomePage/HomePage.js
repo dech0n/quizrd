@@ -7,8 +7,9 @@ import DeckManagerTable from './DeckManagerTable'
 // TODO: add "edit photo" button for profile pic
 // TODO: make sure there's a default image for profile pics (and proper updates for User model)
 function HomePage() {
-    const user = useSelector(state => state.session.user)
+    // const user = useSelector(state => state.session.user)
     // const decks = useSelector(state => state.session.user.decks)
+    const [user, setUser] = useState(useSelector(state => state.session.user))
     const [decks, setDecks] = useState(useSelector(state => state.decks))
     const dispatch = useDispatch()
 
@@ -26,9 +27,9 @@ function HomePage() {
     //! FIX MEMORY LEAK
     useEffect(() => {
         // dispatch(getUserDecks(user.id))
-        // setDecks(dispatch(getUserDecks(user.id)))
-        setDecks(decksState => decksState)
-
+        setDecks(dispatch(getUserDecks(user.id)))
+        // setDecks(decksState => decksState)
+        // setUser(userState => userState)
         // return () => {}
     }, [dispatch, user.id]) // adding `decks` to deps creates memory leak
 

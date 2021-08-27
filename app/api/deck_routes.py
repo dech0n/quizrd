@@ -70,9 +70,9 @@ def get_or_delete_deck(id):
     if request.method == 'GET':
         pass  # already got deck from db
     elif request.method == 'DELETE':
+        print('*** DELETE DECK ***', deck.to_dict())
         db.session.delete(deck)
         db.session.commit()
-    print('*** DELETE DECK ***', deck.to_dict())
     return deck.to_dict()
 
 
@@ -83,6 +83,8 @@ def get_user_decks(user_id):
         decks = current_user.decks
     else:
         decks = Deck.query.filter_by(owner_id=user_id).all()
+
+    print('*** USER DECKS ***', decks)
 
     # make sure to flatten this in the thunk
     return {'decks': [deck.to_dict() for deck in decks]}

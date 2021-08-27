@@ -35,7 +35,7 @@ export const getAllDecks = () => async (dispatch) => {
 
 // get all decks owned by one user
 export const getUserDecks = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/decks/${userId}`)
+    const res = await fetch(`/api/decks/users/${userId}`)
 
     if (res.ok) {
         const { decks } = await res.json()
