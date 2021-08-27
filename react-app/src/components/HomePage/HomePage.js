@@ -4,8 +4,12 @@ import { useSelector } from 'react-redux'
 import FormManagerTable from './DeckManagerTable'
 
 // TODO: add "edit photo" button for profile pic
+// TODO: make sure there's a default image for profile pics (and proper updates for User model)
 function HomePage() {
     const user = useSelector(state => state.session.user)
+
+    // TODO: Add useEffect hook for the user -- hopefully will rerender when a deck is created
+
     return user ? (
         <>
             <h1>My Home Page</h1>
