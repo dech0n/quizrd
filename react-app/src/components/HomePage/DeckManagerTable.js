@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 
 function DeckManagerTable({ decks, handleDelete }) {
     // TODO: create click handlers for edit & delete buttons
+    console.log('*** TABLE DECKS ***', decks)
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {

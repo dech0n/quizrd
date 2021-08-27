@@ -7,11 +7,9 @@ import DeckManagerTable from './DeckManagerTable'
 // TODO: add "edit photo" button for profile pic
 // TODO: make sure there's a default image for profile pics (and proper updates for User model)
 function HomePage() {
-    // const user = useSelector(state => state.session.user)
-    // const decks = useSelector(state => state.session.user.decks)
-    const [user, setUser] = useState(useSelector(state => state.session.user))
-    const [decks, setDecks] = useState(useSelector(state => state.decks))
     const dispatch = useDispatch()
+    const user = useSelector(state => state.session.user)
+    const decks = useSelector(state => state.decks)
 
     // TODO: click handler for New Deck button
     const handleClick = (deckId) => {
@@ -22,20 +20,10 @@ function HomePage() {
     const handleDelete = (deckId) => {
         dispatch(deleteDeck(deckId))
     }
-    // TODO: useEffect for rerender after New Deck created
-
-    //! FIX MEMORY LEAK
-    useEffect(() => {
-        // dispatch(getUserDecks(user.id))
-        setDecks(dispatch(getUserDecks(user.id)))
-        // setDecks(decksState => decksState)
-        // setUser(userState => userState)
-        // return () => {}
-    }, [dispatch, user.id]) // adding `decks` to deps creates memory leak
 
     useEffect(() => {
-        // document.title = 'Test'
-    })
+        dispatch(getUserDecks(user.id))
+    }, [dispatch, user.id])
 
     //! for testing deck creation
     const handleSubmit = (deckData) => {
@@ -55,7 +43,7 @@ function HomePage() {
 
     console.log('*** COMPONENT DECKS ***', decks)
 
-    return user && decks != {} ? (
+    return user && decks ? (
         <>
             <h1>My Home Page</h1>
             <div className='deck-manager-page-container'>
@@ -67,10 +55,11 @@ function HomePage() {
                     </div>
                     <div className='new-deck-btn-container'>
                         <button onClick={() => handleSubmit(deckData)}>+ New Deck</button>
+                        {/* <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button> */}
                     </div>
                 </div>
                 <div className='deck-manager-container'>
-                    <DeckManagerTable decks={user.decks} handleDelete={handleDelete}/>
+                    <DeckManagerTable decks={Object.values(decks)} handleDelete={handleDelete}/>
                 </div>
             </div>
         </>
