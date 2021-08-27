@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function DeckManagerTable({ decks }) {
+function DeckManagerTable({ decks, handleDelete }) {
     // TODO: create click handlers for edit & delete buttons
+    console.log('*** TABLE DECKS ***', decks)
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
@@ -33,7 +34,8 @@ function DeckManagerTable({ decks }) {
                             <li key={`${deck.id}-deck-actions`}
                                 className='deck-action-buttons'>
                                 <button className='deck-edit-btn'>Edit</button>
-                                <button className='deck-delete-btn'>Delete</button>
+                                <button className='deck-delete-btn'
+                                        onClick={() => handleDelete(deck.id)}>Delete</button>
                             </li>
                         </ul>
                     </li>
