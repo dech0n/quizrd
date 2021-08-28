@@ -26,6 +26,8 @@ function DeckForm() {
         if (newDeck.errors) {
             setErrors(newDeck.errors)
         }
+
+        // TODO: redirect to card creation page
     }
 
     // TODO: create update handlers for input (updateTitle, etc)
@@ -66,7 +68,8 @@ function DeckForm() {
                 >Title</label>
             </div>
             <div className='deck-field-container deck-description-container'>
-                <input
+                {/* Style textarea with border-left & border-bottom only */}
+                <textarea
                     className='deck-form-input deck-description-input'
                     type='text'
                     name='description'
