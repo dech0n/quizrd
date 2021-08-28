@@ -31,21 +31,21 @@ function HomePage() {
     return user && decks ? (
         <>
             <h1>My Home Page</h1>
-            <div className='deck-manager-header'>
-                <div className='user-info-container'>
-                    <img src={user.image} alt='profile pic' />
-                    <p>Welcome back, {user.username}!</p>
-                    <p>Decks Created ({Object.values(decks).length})</p>
-                </div>
-                <div className='new-deck-btn-container'>
-                    <DeckFormModal />
-                </div>
-            </div>
             <div className='homepage-container'>
-                <div className='deck-manager-page-container'>
+                <div className='homepage-header'>
+                    <div className='user-info-container'>
+                        <img className='profile-pic' src={user.image} alt='profile pic' />
+                        <p>Welcome back, {user.username}!</p>
+                        <p>Decks Created ({Object.values(decks).length})</p>
+                    </div>
+                    <div className='new-deck-btn-container'>
+                        <DeckFormModal />
+                    </div>
                 </div>
-                <div className='deck-manager-table-container'>
-                    <DeckManagerTable decks={Object.values(decks)} handleDelete={handleDelete} />
+                <div className='deck-list-container'>
+                    <div className='deck-manager-table-container'>
+                        <DeckManagerTable decks={Object.values(decks)} handleDelete={handleDelete} />
+                    </div>
                 </div>
             </div>
         </>
