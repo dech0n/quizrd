@@ -22,11 +22,7 @@ def get_all_decks():
 @deck_routes.route('/new', methods=['POST'])
 # @login_required
 def new_deck():
-    # data = request.get_json()
-    form = DeckForm()
-    # manually add CSRF token so form can be validatied
-    form['csrf_token'].data = request.cookies['csrf_token']
-    # POST data should look like this:
+    # POST data should look like this when categories are done:
     # {
     #     'title': 'some title',
     #     'description': 'some description',
@@ -37,6 +33,10 @@ def new_deck():
     #         {'name': '...'}
     #         ]
     # }
+
+    form = DeckForm()
+    # manually add CSRF token so form can be validatied
+    form['csrf_token'].data = request.cookies['csrf_token']
 
     if request.method == 'POST':
         # handle optional data

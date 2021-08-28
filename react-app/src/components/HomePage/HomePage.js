@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
-import { createDeck, deleteDeck, getUserDecks } from '../../store/decks'
+import { deleteDeck, getUserDecks } from '../../store/decks'
 import DeckFormModal from '../Deck/DeckFormModal'
 import DeckManagerTable from './DeckManagerTable'
 
 // TODO: add "edit photo" button for profile pic
 // TODO: make sure there's a default image for profile pics (and proper updates for User model)
+// TODO: add default image for decks
+// TODO: create confirmation modal for delete before deleting
+// TODO: GET AWS INTEGRATED or whatever FOR PHOTOS (& AUDIO ??)
 function HomePage() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const decks = useSelector(state => state.decks)
 
-    // TODO: click handler for New Deck button
-    const handleClick = (deckId) => {
-        // bring up deck creation modal
-        return null
-    }
     // TODO: click handler for delete (deck) button
     const handleDelete = (deckId) => {
         dispatch(deleteDeck(deckId))
@@ -26,23 +24,7 @@ function HomePage() {
         dispatch(getUserDecks(user.id))
     }, [dispatch, user.id])
 
-    //! for testing deck creation
-    const handleSubmit = (deckData) => {
-        dispatch(createDeck(deckData))
-    }
-
-    let count = 0
-    const deckData = {
-        title: `Test Deck ${++count}`,
-        description: 'This deck tests deck creation',
-        image: null,
-        categories: [
-            { name: 'Test' },
-            { name: `Test ${count}` }
-        ]
-    }
-
-    console.log('*** COMPONENT DECKS ***', decks)
+    // console.log('*** COMPONENT DECKS ***', decks)
 
     return user && decks ? (
         <>
@@ -57,7 +39,6 @@ function HomePage() {
                     </div>
                     <div className='new-deck-btn-container'>
                         <DeckFormModal />
-                        {/* <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button> */}
                     </div>
                 </div>
                 <div className='deck-manager-container'>
