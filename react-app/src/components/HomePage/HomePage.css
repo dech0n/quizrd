@@ -1,0 +1,26 @@
+.homepage-container {
+
+    background-color: lightgrey;
+    border: 1px solid black;
+}
+
+.deck-manager-page-container {
+}
+
+.deck-manager-header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#deck-manager-table {
+
+}
+
+.deck-manager-list {
+    /* background-color: blueviolet; */
+}
+
+.deck-manager-row-contents {
+    display: flex;
+    justify-content: space-between;
+}
