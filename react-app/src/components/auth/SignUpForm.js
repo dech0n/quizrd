@@ -53,9 +53,9 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div className='auth-field-container'>
+      <div className='auth-field-container form-field-container'>
         <input
-          className='username-input auth-input'
+          className='username-input auth-input form-input'
           type='text'
           name='username'
           onChange={updateUsername}
@@ -63,9 +63,9 @@ const SignUpForm = () => {
         />
         <label>User Name</label>
       </div>
-      <div className='email-container auth-field-container'>
+      <div className='email-container auth-field-container form-field-container'>
         <input
-          className='email-input auth-input'
+          className='email-input auth-input form-input'
           type='text'
           name='email'
           onChange={updateEmail}
@@ -73,9 +73,9 @@ const SignUpForm = () => {
           />
           <label>Email</label>
       </div>
-      <div className='password-container auth-field-container'>
+      <div className='password-container auth-field-container form-field-container'>
         <input
-          className='password-input auth-input'
+          className='password-input auth-input form-input'
           type='password'
           name='password'
           onChange={updatePassword}
@@ -83,9 +83,9 @@ const SignUpForm = () => {
           />
           <label>Password</label>
       </div>
-      <div className='password-container auth-field-container'>
+      <div className='password-container auth-field-container form-field-container'>
         <input
-          className='password-input auth-input'
+          className='password-input auth-input form-input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}

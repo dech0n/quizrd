@@ -53,9 +53,9 @@ function DeckForm() {
                     </li>
                 ))}
             </ul>
-            <div className='deck-field-container deck-title-container'>
+            <div className='deck-field-container deck-title-container form-field-container'>
                 <input
-                    className='deck-form-input deck-title-input'
+                    className='deck-form-input deck-title-input form-input'
                     type='text'
                     name='title'
                     value={title}
@@ -63,40 +63,43 @@ function DeckForm() {
                     required
                 />
                 <label
-                    className='deck-form-label deck-title-label'
+                    className='deck-form-label deck-title-label form-label'
                     htmlFor='title'
                 >Title</label>
             </div>
-            <div className='deck-field-container deck-description-container'>
+            <div className='deck-field-container deck-description-container form-field-container'>
                 {/* Style textarea with border-left & border-bottom only */}
                 <textarea
-                    className='deck-form-input deck-description-input'
+                    className='deck-form-input deck-description-input form-input'
                     type='text'
                     name='description'
                     value={description}
                     onChange={updateDescription}
                 />
                 <label
-                    className='deck-form-label deck-description-label'
+                    className='deck-form-label deck-description-label form-label'
                     htmlFor='description'>Description</label>
             </div>
-            <div className='deck-field-container deck-image-container'>
+            <div className='deck-field-container deck-image-container form-field-container'>
                 <input
-                    className='deck-form-input deck-image-input'
+                    className='deck-form-input deck-image-input form-input'
                     type='text' /* might have to change this ? */
                     name='image'
                     value={image}
                     onChange={updateImage} />
                 <label
-                    className='deck-form-label deck-image-label'
+                    className='deck-form-label deck-image-label form-label'
                     htmlFor='image'
                 >Image</label>
             </div>
-            <div className='deck-field-container deck-submit-container'>
+            <div className='deck-field-container deck-form-action-container form-action-container'>
                 <button
+                    className='form-btn submit-btn'
                     type='submit'
                 >Create</button>
-                <button type='button'>Cancel</button>
+                <button
+                    className='form-btn cancel-btn'
+                    type='button'>Cancel</button>
             </div>
         </form>
     )
