@@ -1,11 +1,12 @@
 .homepage-container {
     /* background-color: hotpink; */
-    margin: 0 25px 0;
+    margin: 0 15rem 0;
 }
 
 .homepage-header {
     display: flex;
     justify-content: space-between;
+    margin: 0 8rem;
 }
 
 .profile-pic {
@@ -15,11 +16,22 @@
     border: 1px solid black;
 }
 
+.new-deck-btn-container{
+    display: flex;
+}
+
+#homepage-new-deck-btn {
+    align-self: flex-end;
+    /* margin: 0 8rem 0 0; */
+    padding: .5rem 1rem;
+    border-radius: 100rem;
+}
+
 .deck-list-container {
-    background-color: lightgrey;
-    border: 1px solid black;
+    /* background-color: lightgrey; */
+    /* border: 1px solid black; */
     border-radius: .2rem;
-    margin: 1rem 0 0 0;
+    margin: 0 0 0 0;
     overflow-y: scroll;
 }
 
@@ -31,30 +43,50 @@
 }
 
 .deck-manager-row {
-    background-color: lightblue;
-    /* border-bottom: 1px solid red; */
-    border-radius: 1rem;
+    background-color: var(--rgb-purple);
+    /* background-color: var(--rgb-green); */
+    border-radius: 4rem;
     margin: 1rem 4rem;
     padding: 1rem 1rem .5rem;
 }
 
-.deck-manager-row:hover {
-    background-color: red;
+li.deck-manager-row:hover {
+    /* background-color: var(--rgb-orange); */
+    /* background-color: gold; */
+    background-color: goldenrod;
+    color: var(--rgb-jet)
 }
+
+.deck-title {
+    /* color: rgba(46, 43, 42, 1) */
+    /* color: darkgrey; */
+    color:rgba(190, 190, 190, 1)
+
+}
+
 
 .deck-manager-row-contents {
     display: flex;
     justify-content: space-between;
-    margin: 0 1rem 1rem;
+    margin: 0 3rem 1rem;
     box-sizing: content-box;
+    color: darkgrey
 }
 
 .deck-action-buttons {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    /* margin: 0 2rem 0 0; */
+}
+
+button.deck-edit-btn {
+    background-color: var(--rgb-orange);
+    /* background-color: var(--rgb-green); */
 }
 
 .deck-action-btn {
     height: 1.5rem;
+    background-color: grey;
+    padding: 0 .5rem;
 }

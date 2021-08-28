@@ -7,8 +7,11 @@ function DeckFormModal() {
 
   return (
     <>
-    {/* TODO: Change "Log In" to something else - submit ? */}
-      <button onClick={() => setShowModal(true)}>+ New Deck</button>
+      <button
+        className='new-deck-btn'
+        id='homepage-new-deck-btn'
+        onClick={() => setShowModal(true)}
+      >+ New Deck</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <DeckForm setShowModal={setShowModal} />
