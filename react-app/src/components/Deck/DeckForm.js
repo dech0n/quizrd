@@ -84,3 +84,5 @@ function DeckForm() {
         </form>
     )
 }
+
+export default DeckForm
