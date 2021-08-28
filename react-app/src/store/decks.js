@@ -56,6 +56,14 @@ export const createDeck = (deckData) => async (dispatch) => {
     if (res.ok) {
         const deck = await res.json()
         dispatch(add(deck))
+        return deck
+    } else if (res.status < 500) { // error but not server error
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
@@ -64,11 +72,11 @@ export const deleteDeck = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/decks/${deckId}`, {
         method: 'DELETE'
     })
-    console.log('*** THUNK DELETE RES ***', res)
+    // console.log('*** THUNK DELETE RES ***', res)
 
     if (res.ok) {
         const deck = await res.json()
-        console.log('*** THUNK DELETE DECK ***', deck)
+        // console.log('*** THUNK DELETE DECK ***', deck)
         dispatch(remove(deck))
     }
 }
