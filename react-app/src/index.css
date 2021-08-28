@@ -32,7 +32,7 @@ body {
 
 a {
     text-decoration: none;
-    color:rgba(38, 185, 114, 1)
+    /* color:rgba(38, 185, 114, 1) */
 }
 
 ul {
@@ -41,6 +41,8 @@ ul {
 
 button {
     /* background-color: var(--rgb-purple); */
+    /* background-color: var(--rgb-orange); */
+    /* background-color: goldenrod; */
     background-color: var(--rgb-green);
     color: lightgrey;
     border: none;

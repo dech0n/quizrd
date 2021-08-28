@@ -34,7 +34,7 @@ function HomePage() {
                 <div className='homepage-header'>
                     <div className='user-info-container'>
                         <img className='profile-pic' src={user.image} alt='profile pic' />
-                        <p>Welcome back, {user.username}!</p>
+                        <p>Welcome back, <span id='current-user'>{user.username}</span>!</p>
                         <p>Decks Created ({Object.values(decks).length})</p>
                     </div>
                     <div className='new-deck-btn-container'>

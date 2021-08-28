@@ -16,6 +16,10 @@
     border: 1px solid black;
 }
 
+#current-user {
+    font-weight: 700;
+}
+
 .new-deck-btn-container{
     display: flex;
 }
@@ -52,8 +56,8 @@
 
 li.deck-manager-row:hover {
     /* background-color: var(--rgb-orange); */
-    /* background-color: gold; */
-    background-color: goldenrod;
+    /* background-color: goldenrod; */
+    background-color: rgba(106, 72, 157, .7);
     color: var(--rgb-jet)
 }
 
@@ -81,12 +85,12 @@ li.deck-manager-row:hover {
 }
 
 button.deck-edit-btn {
-    background-color: var(--rgb-orange);
+    /* background-color: var(--rgb-orange); */
     /* background-color: var(--rgb-green); */
 }
 
 .deck-action-btn {
     height: 1.5rem;
-    background-color: grey;
+    /* background-color: grey; */
     padding: 0 .5rem;
 }
