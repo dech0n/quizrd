@@ -11,7 +11,7 @@ function DeckFormModal() {
       <button onClick={() => setShowModal(true)}>+ New Deck</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <DeckForm />
+          <DeckForm setShowModal={setShowModal} />
         </Modal>
       )}
     </>

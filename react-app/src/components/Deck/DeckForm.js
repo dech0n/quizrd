@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { createDeck } from "../../store/decks";
 
 // TODO: find a default image for new decks
-function DeckForm() {
+function DeckForm({setShowModal}) {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState("")
@@ -99,7 +99,8 @@ function DeckForm() {
                 >Create</button>
                 <button
                     className='form-btn cancel-btn'
-                    type='button'>Cancel</button>
+                    type='button'
+                    onClick={() => setShowModal(false)}>Cancel</button>
             </div>
         </form>
     )
