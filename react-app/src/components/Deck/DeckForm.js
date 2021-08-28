@@ -6,22 +6,28 @@ import { createDeck } from "../../store/decks";
 // TODO: find a default image for new decks
 function DeckForm() {
     const dispatch = useDispatch()
-    const [title, setTitle] = useState()
-    const [description, setDescription] = useState()
-    const [image, setImage] = useState(/* get a default image */)
+    const [errors, setErrors] = useState([])
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [image, setImage] = useState(""/* get a default image */)
     // const [categories, setCategories] = useState([])
 
     // TODO: create submit handler
-    const handleSubmit = (deckData) => {
-        dispatch(createDeck(deckData))
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        const deckData = {
+            title,
+            description,
+            image,
+            // categories
+        }
+        const newDeck = dispatch(createDeck(deckData))
+        if (newDeck.errors) {
+            setErrors(newDeck.errors)
+        }
     }
 
-    const deckData = {
-        title,
-        description,
-        image,
-        // categories
-    }
     // TODO: create update handlers for input (updateTitle, etc)
     const updateTitle = (e) => {
         setTitle(e.target.value)
@@ -36,9 +42,14 @@ function DeckForm() {
     }
 
     return (
-        <form>
+        <form
+        onSubmit={handleSubmit}>
             <ul className='form-errors-list deck-form-errors'>
-                {/* display errors here */}
+                {errors.map((error, index) => (
+                    <li key={`${index}-deck-create-error`}>
+                        {error}
+                    </li>
+                ))}
             </ul>
             <div className='deck-field-container deck-title-container'>
                 <input
@@ -47,11 +58,12 @@ function DeckForm() {
                     name='title'
                     value={title}
                     onChange={updateTitle}
+                    required
                 />
                 <label
                     className='deck-form-label deck-title-label'
                     htmlFor='title'
-                    >Title</label>
+                >Title</label>
             </div>
             <div className='deck-field-container deck-description-container'>
                 <input
@@ -68,18 +80,20 @@ function DeckForm() {
             <div className='deck-field-container deck-image-container'>
                 <input
                     className='deck-form-input deck-image-input'
-                    type='text' {/* might have to change this ? */}
+                    type='text' /* might have to change this ? */
                     name='image'
                     value={image}
                     onChange={updateImage} />
                 <label
                     className='deck-form-label deck-image-label'
                     htmlFor='image'
-                    >Image</label>
+                >Image</label>
             </div>
             <div className='deck-field-container deck-submit-container'>
-                <button onSubmit={() => handleSubmit(deckData)}>Create</button>
-                <button>Cancel</button>
+                <button
+                    type='submit'
+                >Create</button>
+                <button type='button'>Cancel</button>
             </div>
         </form>
     )

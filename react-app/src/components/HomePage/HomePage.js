@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 
 import { createDeck, deleteDeck, getUserDecks } from '../../store/decks'
+import DeckFormModal from '../Deck/DeckFormModal'
 import DeckManagerTable from './DeckManagerTable'
 
 // TODO: add "edit photo" button for profile pic
@@ -36,8 +37,8 @@ function HomePage() {
         description: 'This deck tests deck creation',
         image: null,
         categories: [
-            {name: 'Test'},
-            {name: `Test ${count}`}
+            { name: 'Test' },
+            { name: `Test ${count}` }
         ]
     }
 
@@ -55,12 +56,12 @@ function HomePage() {
                         <p>Decks Created ({Object.values(decks).length})</p>
                     </div>
                     <div className='new-deck-btn-container'>
-                        {/* <button>+ New Deck</button> */}
-                        <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button>
+                        <DeckFormModal />
+                        {/* <button onClick={() => handleSubmit(deckData)}>+ TEST DECK CREATE</button> */}
                     </div>
                 </div>
                 <div className='deck-manager-container'>
-                    <DeckManagerTable decks={Object.values(decks)} handleDelete={handleDelete}/>
+                    <DeckManagerTable decks={Object.values(decks)} handleDelete={handleDelete} />
                 </div>
             </div>
         </>

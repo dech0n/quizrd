@@ -56,11 +56,14 @@ export const createDeck = (deckData) => async (dispatch) => {
     if (res.ok) {
         const deck = await res.json()
         dispatch(add(deck))
+        return deck
     } else if (res.status < 500) { // error but not server error
         const data = await res.json()
         if (data.errors) {
             return data.errors
         }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
