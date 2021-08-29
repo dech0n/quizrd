@@ -22,6 +22,16 @@ const remove = (decks) => ({
 // TODO: Implement error handling for each thunk
 // TODO: create get thunk for single deck
 
+// get one deck by pk
+export const getOneDeck = (deckId) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`)
+
+    if (res.ok) {
+        const deck = await res.json()
+        dispatch(add(deck))
+    }
+}
+
 // get every deck in the db
 export const getAllDecks = () => async (dispatch) => {
     const res = await fetch(`/api/decks`)
