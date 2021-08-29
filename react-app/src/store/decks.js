@@ -127,7 +127,6 @@ export default function decksReducer(state = initialState, { type, decks }) {
                 })
             }
             return {
-                ...state,
                 ...allDecks
             }
 
