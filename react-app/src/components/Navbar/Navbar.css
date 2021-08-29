@@ -6,6 +6,7 @@ nav.navbar-container {
     padding: 10px 0 10px 0;
     box-sizing: content-box;
     margin: 0 0 50px 0;
+    align-items: baseline;
 }
 
 .all-navlinks-container {
