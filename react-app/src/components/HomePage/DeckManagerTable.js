@@ -1,8 +1,9 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-// TODO: make .deck-manager-row-contents into
+import { Link, useHistory } from 'react-router-dom'
+
 function DeckManagerTable({ decks, handleDelete }) {
-    // TODO: create click handlers for edit button
+    const history = useHistory()
+    const handleClick = (deckId) => history.push(`/decks/${deckId}/cards/add`)
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
@@ -10,6 +11,7 @@ function DeckManagerTable({ decks, handleDelete }) {
                 return (
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
+                            {/* add proper link */}
                         <Link to={'#'}>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
@@ -31,9 +33,14 @@ function DeckManagerTable({ decks, handleDelete }) {
                                 </li>
                                 <li key={`${deck.id}-deck-actions`}
                                     className='deck-action-buttons'>
-                                    <button className='deck-edit-btn deck-action-btn'>Edit</button>
-                                    <button className='deck-delete-btn deck-action-btn delete-btn'
-                                        onClick={() => handleDelete(deck.id)}>Delete</button>
+                                    <button
+                                        className='deck-edit-btn deck-action-btn'
+                                        onClick={() => handleClick(deck.id)}
+                                        >Edit</button>
+                                    <button
+                                        className='deck-delete-btn deck-action-btn delete-btn'
+                                        onClick={() => handleDelete(deck.id)}
+                                        >Delete</button>
                                 </li>
                             </ul>
                         </Link>

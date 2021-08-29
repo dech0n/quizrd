@@ -1,0 +1,20 @@
+.deck-edit-form {
+    position: absolute;
+    top: 33%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: auto; */
+}
+
+.deck-edit-form-actions {
+    display: flex;
+    justify-content: space-between;
+    width: 11rem;
+}
+
+.deck-edit-form-btn {
+    padding: 0.33rem 1rem .33rem;
+}

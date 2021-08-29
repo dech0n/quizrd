@@ -73,12 +73,23 @@ def new_deck():
         return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
 
-@deck_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@deck_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def get_or_delete_deck(id):
     deck = Deck.query.get(id)
 
     if request.method == 'GET':
         pass  # already got deck from db
+    elif request.method == 'PUT':
+        form = DeckForm()
+        form['csrf_token'].data = request.cookies['csrf_token']
+        if form.validate_on_submit:
+            deck.title = form.data['title'],
+            deck.description = form.data['description'],
+            deck.image = form.data['image']
+
+            # db.session.add(deck)
+            db.session.commit()
+
     elif request.method == 'DELETE':
         # print('*** DELETE DECK ***', deck.to_dict())
         db.session.delete(deck)
@@ -86,7 +97,7 @@ def get_or_delete_deck(id):
     return deck.to_dict()
 
 
-@deck_routes.route('/users/<int:user_id>')
+@ deck_routes.route('/users/<int:user_id>')
 # @login_required
 def get_user_decks(user_id):
     if user_id is None:

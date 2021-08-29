@@ -22,13 +22,13 @@ const remove = (decks) => ({
 // TODO: Implement error handling for each thunk
 // TODO: create get thunk for single deck
 
-// get every deck in the db
-export const getAllDecks = () => async (dispatch) => {
-    const res = await fetch(`/api/decks`)
+// get one deck by pk
+export const getOneDeck = (deckId) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`)
 
     if (res.ok) {
-        const { decks } = await res.json()
-        dispatch(load(decks))
+        const deck = await res.json()
+        dispatch(add(deck))
     }
 }
 
@@ -42,6 +42,18 @@ export const getUserDecks = (userId) => async (dispatch) => {
         dispatch(load(decks))
     }
 }
+
+
+// get every deck in the db
+export const getAllDecks = () => async (dispatch) => {
+    const res = await fetch(`/api/decks`)
+
+    if (res.ok) {
+        const { decks } = await res.json()
+        dispatch(load(decks))
+    }
+}
+
 
 // create a deck
 export const createDeck = (deckData) => async (dispatch) => {
@@ -66,6 +78,25 @@ export const createDeck = (deckData) => async (dispatch) => {
         return ["An error occurred. Please try again."]
     }
 }
+
+
+// update one deck by pk
+export const updateDeck = (deckId, deckData) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deckData)
+    })
+
+    if (res.ok) {
+        const updatedDeck = await res.json()
+        dispatch(add(updatedDeck))
+        return updatedDeck
+    }
+}
+
 
 // delete a specific deck by id
 export const deleteDeck = (deckId) => async (dispatch) => {
