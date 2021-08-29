@@ -18,7 +18,7 @@ function CardCreator() {
     }, [dispatch, deckId])
 
     return deck && deck.owner_id === user.id ? (
-        showDeckEditForm ? (<EditDeckForm deck={deck} handleCancel={setShowDeckEditForm} />) : (
+        showDeckEditForm ? (<EditDeckForm deck={deck} hideThis={setShowDeckEditForm} />) : (
             <>
                 <h1>{deck.title}</h1>
                 <h6>{deck.description}</h6>

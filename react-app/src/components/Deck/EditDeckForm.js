@@ -2,9 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { getOneDeck, updateDeck } from '../../store/decks'
+import './Deck.css'
 
 // TODO: Create submit handler for deck update form
-function EditDeckForm({ deck, handleCancel }) {
+function EditDeckForm({ deck, hideThis }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const [title, setTitle] = useState(deck.title)
@@ -33,7 +34,7 @@ function EditDeckForm({ deck, handleCancel }) {
         }
 
         const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
-        handleCancel(false)
+        hideThis(false)
     }
 
     return deck && deck.owner_id === user.id ? (
@@ -78,11 +79,17 @@ function EditDeckForm({ deck, handleCancel }) {
                 </select>
                 <label className='form-label'>Categories</label>
             </div> */}
-            <button type='submit'>Update</button>
+            <div className='form-actions deck-edit-form-actions'>
+            <button
+                type='submit'
+                className='submit-btn deck-edit-form-btn form-btn'
+            >Update</button>
             <button
                 type='button'
-                onClick={() => handleCancel(false)}
+                className='cancel-btn deck-edit-form-btn form-btn'
+                onClick={() => hideThis(false)}
             >Cancel</button>
+            </div>
         </form>
     ) : (
         <h1>Loading...</h1>

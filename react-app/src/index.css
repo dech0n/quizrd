@@ -54,7 +54,7 @@ button {
     border-radius: 2rem;
 }
 
-.delete-btn {
+.delete-btn, .cancel-btn {
     background-color: grey;
 }
 
