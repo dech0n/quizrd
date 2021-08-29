@@ -1,7 +1,10 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 // TODO: create click handlers for edit button
+// `/decks/${deck.id}/cards/add` <-- for the edit button redirect
 function DeckManagerTable({ decks, handleDelete }) {
+    const history = useHistory()
+    const handleClick = (deckId) => history.push(`/decks/${deckId}/cards/add`)
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
@@ -10,7 +13,7 @@ function DeckManagerTable({ decks, handleDelete }) {
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
                             {/* add proper link */}
-                        <Link to={`/decks/${deck.id}/cards/add`}>
+                        <Link to={'#'}>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
                                 <li key={`${deck.id}-deck-info`}
@@ -31,9 +34,14 @@ function DeckManagerTable({ decks, handleDelete }) {
                                 </li>
                                 <li key={`${deck.id}-deck-actions`}
                                     className='deck-action-buttons'>
-                                    <button className='deck-edit-btn deck-action-btn'>Edit</button>
-                                    <button className='deck-delete-btn deck-action-btn delete-btn'
-                                        onClick={() => handleDelete(deck.id)}>Delete</button>
+                                    <button
+                                        className='deck-edit-btn deck-action-btn'
+                                        onClick={() => handleClick(deck.id)}
+                                        >Edit</button>
+                                    <button
+                                        className='deck-delete-btn deck-action-btn delete-btn'
+                                        onClick={() => handleDelete(deck.id)}
+                                        >Delete</button>
                                 </li>
                             </ul>
                         </Link>
