@@ -14,7 +14,7 @@ function CardCreator() {
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
 
-    console.log('*** DECK IN CARD CREATOR ***', deck)
+    // console.log('*** DECK IN CARD CREATOR ***', deck)
 
     useEffect(() => {
         dispatch(getOneDeck(deckId))
