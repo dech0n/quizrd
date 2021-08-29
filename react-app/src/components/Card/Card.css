@@ -1,0 +1,16 @@
+.card-creator-header {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
+
+#deck-description {
+    font-weight: 100;
+}
+
+.edit-deck-btn {
+    padding: .5rem 1rem;
+    border-radius: 1rem;
+    margin: .5rem 0 0 0;
+}
