@@ -15,6 +15,7 @@ import './HomePage.css'
 function HomePage() {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    // const [decks, setDecks] = useState(useSelector(state => state.decks))
     const decks = useSelector(state => state.decks)
 
     // TODO: click handler for delete (deck) button
@@ -23,7 +24,10 @@ function HomePage() {
     }
 
     useEffect(() => {
-        dispatch(getUserDecks(user.id))
+        // (async () => {
+        //     await setDecks(dispatch(getUserDecks(user.id)))
+        // })()
+            dispatch(getUserDecks(user.id))
     }, [dispatch, user.id])
 
     // console.log('*** COMPONENT DECKS ***', decks)
