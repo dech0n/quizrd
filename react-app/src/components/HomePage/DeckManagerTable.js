@@ -37,6 +37,7 @@ function DeckManagerTable({ decks, handleDelete }) {
                                 </li>
                             </ul>
                         </Link>
+
                     </li>
                 )
             })}
