@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom'
 import { getOneDeck, updateDeck } from '../../store/decks'
 
 // TODO: Create submit handler for deck update form
-function EditDeckForm({ deck, setShowModal }) {
+function EditDeckForm({ deck, handleCancel }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const [title, setTitle] = useState(deck.title)
@@ -33,12 +33,8 @@ function EditDeckForm({ deck, setShowModal }) {
         }
 
         const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
-        setShowModal(false)
+        handleCancel(false)
     }
-
-    useEffect(() => {
-        dispatch(getOneDeck(deck.id))
-    }, [dispatch, deck.id])
 
     return deck && deck.owner_id === user.id ? (
         <form
@@ -85,7 +81,7 @@ function EditDeckForm({ deck, setShowModal }) {
             <button type='submit'>Update</button>
             <button
                 type='button'
-                onClick={() => setShowModal(false)}
+                onClick={() => handleCancel(false)}
             >Cancel</button>
         </form>
     ) : (
