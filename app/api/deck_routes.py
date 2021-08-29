@@ -93,6 +93,7 @@ def get_or_delete_deck(id):
         # print('*** DELETE DECK ***', deck.to_dict())
         db.session.delete(deck)
         db.session.commit()
+    # print('** API ONE DECK **', deck.to_dict())
     return deck.to_dict()
 
 

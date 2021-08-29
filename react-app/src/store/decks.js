@@ -27,8 +27,10 @@ export const getOneDeck = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/decks/${deckId}`)
 
     if (res.ok) {
-        const deck = await res.json()
-        dispatch(add(deck))
+        // console.log('*** GET ONE RES ***', res)
+        const deck = await res.json() // parses into object
+        // console.log('** GET ONE THUNK **', deck)
+        dispatch(load([deck])) // must be array for the reducer
     }
 }
 
@@ -117,17 +119,18 @@ const initialState = {}
 export default function decksReducer(state = initialState, { type, decks }) {
     // change payload name to clarify when there is only a single deck changing in state
     const deck = decks
+    // console.log('*** DECKS SENT TO REDUCER ***', decks)
 
     switch (type) {
         case LOAD:
             const allDecks = {}
             if (decks) {
                 decks.forEach(deck => {
+                    // console.log('*** DECK ADDED TO STATE ***', deck)
                     allDecks[deck.id] = deck
                 })
             }
             return {
-                ...state,
                 ...allDecks
             }
 
