@@ -14,18 +14,19 @@ function CardCreator() {
     const [deckImage, setDeckImage] = useState("") // TODO: Get default image instead of using: ""
 
     const updateTitle = (e) => {
-        setTitle(e.target.value || deck.title)
+        setTitle(e.target.value)
     }
 
     const updateDescription = (e) => {
-        setDescription(e.target.value || deck.description)
+        setDescription(e.target.value)
     }
 
     const updateDeckImage = (e) => {
-        setDeckImage(e.target.value || deck.image)
+        setDeckImage(e.target.value)
     }
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const updatedDeckData = {
             title,
             description,
@@ -33,7 +34,11 @@ function CardCreator() {
         }
 
         // dispatch update thunk here
-        dispatch(updateDeck(updatedDeckData))
+        const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
+        console.log('*** UPDATED DECK ***', udpatedDeck)
+        setTitle("")
+        setDescription("")
+        setDeckImage("")
     }
 
     useEffect(() => {
@@ -43,7 +48,7 @@ function CardCreator() {
     return deck && deck.owner_id === user.id ? (
         <form
             className='deck-edit-form'
-            onSubmit={''}
+            onSubmit={handleSubmit}
             >
             <div className='form-field-container'>
                 <input
@@ -52,7 +57,6 @@ function CardCreator() {
                     placeholder={deck.title}
                     value={title}
                     onChange={updateTitle}
-                    required
                 />
                 <label className='form-label'>Deck Title</label>
             </div>
@@ -63,7 +67,6 @@ function CardCreator() {
                     placeholder={deck.description}
                     value={description}
                     onChange={updateDescription}
-                    required
                 />
                 <label className='form-label'>Deck Description</label>
             </div>

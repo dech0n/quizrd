@@ -83,7 +83,7 @@ export const createDeck = (deckData) => async (dispatch) => {
 // update one deck by pk
 export const updateDeck = (deckId, deckData) => async (dispatch) => {
     const res = await fetch(`/api/decks/${deckId}`, {
-        method: 'POST',
+        method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
         },
@@ -91,8 +91,9 @@ export const updateDeck = (deckId, deckData) => async (dispatch) => {
     })
 
     if (res.ok) {
-        const updatedDeck = res.json()
+        const updatedDeck = await res.json()
         dispatch(add(updatedDeck))
+        return updatedDeck
     }
 }
 
