@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-// TODO: make .deck-manager-row-contents into
+// TODO: create click handlers for edit button
 function DeckManagerTable({ decks, handleDelete }) {
-    // TODO: create click handlers for edit button
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
@@ -10,7 +9,8 @@ function DeckManagerTable({ decks, handleDelete }) {
                 return (
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
-                        <Link to={'#'}>
+                            {/* add proper link */}
+                        <Link to={`/decks/${deck.id}/cards/add`}>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
                                 <li key={`${deck.id}-deck-info`}
