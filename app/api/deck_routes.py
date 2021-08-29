@@ -87,7 +87,6 @@ def get_or_delete_deck(id):
             deck.description = form.data['description'],
             deck.image = form.data['image']
 
-            # db.session.add(deck)
             db.session.commit()
 
     elif request.method == 'DELETE':

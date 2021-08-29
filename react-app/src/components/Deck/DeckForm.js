@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { createDeck } from "../../store/decks";
 
 // TODO: find a default image for new decks
 function DeckForm({setShowModal}) {
     const dispatch = useDispatch()
+    const history = useHistory()
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState("")
     const [description, setDescription] = useState("")
@@ -27,7 +29,7 @@ function DeckForm({setShowModal}) {
             setErrors(newDeck.errors)
         }
 
-        // TODO: redirect to card creation page
+        // history.push(`/decks/${/* deck ID */}/cards/add`)
     }
 
     // TODO: create update handlers for input (updateTitle, etc)
