@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
-// TODO: create click handlers for edit button
-// `/decks/${deck.id}/cards/add` <-- for the edit button redirect
+
 function DeckManagerTable({ decks, handleDelete }) {
     const history = useHistory()
     const handleClick = (deckId) => history.push(`/decks/${deckId}/cards/add`)
