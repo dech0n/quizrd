@@ -78,7 +78,7 @@ function DeckForm({setShowModal}) {
                 />
                 <label
                     className='deck-form-label deck-description-label form-label'
-                    htmlFor='description'>Description</label>
+                    htmlFor='description'>Description (optional)</label>
             </div>
             <div className='deck-field-container deck-image-container form-field-container'>
                 <input
@@ -90,7 +90,7 @@ function DeckForm({setShowModal}) {
                 <label
                     className='deck-form-label deck-image-label form-label'
                     htmlFor='image'
-                >Image</label>
+                >Image (optional)</label>
             </div>
             <div className='deck-field-container deck-form-action-container form-action-container'>
                 <button
