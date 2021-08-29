@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
-import { getOneDeck } from '../../store/decks'
+import { getOneDeck, updateDeck } from '../../store/decks'
 
 // TODO: Create submit handler for deck update form
 function CardCreator() {
@@ -26,13 +26,14 @@ function CardCreator() {
     }
 
     const handleSubmit = () => {
-        const updateDeckData = {
+        const updatedDeckData = {
             title,
             description,
             deckImage
         }
 
         // dispatch update thunk here
+        dispatch(updateDeck(updatedDeckData))
     }
 
     useEffect(() => {

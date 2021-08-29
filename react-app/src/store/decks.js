@@ -32,16 +32,6 @@ export const getOneDeck = (deckId) => async (dispatch) => {
     }
 }
 
-// get every deck in the db
-export const getAllDecks = () => async (dispatch) => {
-    const res = await fetch(`/api/decks`)
-
-    if (res.ok) {
-        const { decks } = await res.json()
-        dispatch(load(decks))
-    }
-}
-
 
 // get all decks owned by one user
 export const getUserDecks = (userId) => async (dispatch) => {
@@ -52,6 +42,18 @@ export const getUserDecks = (userId) => async (dispatch) => {
         dispatch(load(decks))
     }
 }
+
+
+// get every deck in the db
+export const getAllDecks = () => async (dispatch) => {
+    const res = await fetch(`/api/decks`)
+
+    if (res.ok) {
+        const { decks } = await res.json()
+        dispatch(load(decks))
+    }
+}
+
 
 // create a deck
 export const createDeck = (deckData) => async (dispatch) => {
@@ -76,6 +78,24 @@ export const createDeck = (deckData) => async (dispatch) => {
         return ["An error occurred. Please try again."]
     }
 }
+
+
+// update one deck by pk
+export const updateDeck = (deckId, deckData) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deckData)
+    })
+
+    if (res.ok) {
+        const updatedDeck = res.json()
+        dispatch(add(updatedDeck))
+    }
+}
+
 
 // delete a specific deck by id
 export const deleteDeck = (deckId) => async (dispatch) => {
