@@ -37,7 +37,10 @@ function CardCreator() {
             </>)
 
     ) : (
-        <h1>Loading...</h1>
+        <>
+            <h1>Loading...</h1>
+            <p>If you've been waiting a while, this deck may not belong to you</p>
+        </>
     )
 }
 
