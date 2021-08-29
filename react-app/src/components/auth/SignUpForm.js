@@ -61,7 +61,7 @@ const SignUpForm = () => {
           onChange={updateUsername}
           value={username}
         />
-        <label>User Name</label>
+        <label className='auth-field form-field'>User Name</label>
       </div>
       <div className='email-container auth-field-container form-field-container'>
         <input
@@ -71,7 +71,7 @@ const SignUpForm = () => {
           onChange={updateEmail}
           value={email}
           />
-          <label>Email</label>
+          <label className='auth-field form-field'>Email</label>
       </div>
       <div className='password-container auth-field-container form-field-container'>
         <input
@@ -81,7 +81,7 @@ const SignUpForm = () => {
           onChange={updatePassword}
           value={password}
           />
-          <label>Password</label>
+          <label className='auth-field form-field'>Password</label>
       </div>
       <div className='password-container auth-field-container form-field-container'>
         <input
@@ -92,7 +92,7 @@ const SignUpForm = () => {
           value={repeatPassword}
           required={true}
           />
-          <label>Repeat Password</label>
+          <label className='auth-field form-field'>Repeat Password</label>
       </div>
       <button
         className='submit-btn auth-btn'
