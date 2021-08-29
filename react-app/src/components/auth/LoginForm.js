@@ -70,12 +70,11 @@ const LoginForm = () => {
           className='submit-btn auth-btn form-btn'
           id='login-btn'
           type='submit'>Login</button>
+          <p id='or'>or</p>
         <DemoLoginButton />
       </div>
-      {/* <div> */}
       <Link to='/sign-up'
         className='auth-link'>Don't have an account?<br />Sign up here!</Link>
-      {/* </div> */}
     </form>
   );
 };
