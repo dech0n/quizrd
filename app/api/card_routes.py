@@ -77,6 +77,9 @@ def get_deck_cards(deck_id):
     specified by deck_id and returns the data in a dictionary.
     """
     cards = Card.query.filter_by(deck_id=deck_id).all()
+    # print('*** CARDS FROM QUERY ***', cards)
     if cards:
         return {"cards": [card.to_dict() for card in cards]}
+    elif cards == []:
+        return {"cards": [{"id": "empty", "message": "There are no cards in this deck"}]}
     # return errors here
