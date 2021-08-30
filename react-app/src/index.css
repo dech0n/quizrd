@@ -24,9 +24,7 @@ TODO: Add global form styling (incl form buttons?)
 }
 
 body {
-    /* background-color: var(--rgb-jet); */
     background-color: rgba(0, 0, 0, .95);
-    /* color:rgba(146, 143, 142, 1) */
     color: darkgrey;
 }
 
@@ -45,9 +43,6 @@ textarea {
 }
 
 button {
-    /* background-color: var(--rgb-purple); */
-    /* background-color: var(--rgb-orange); */
-    /* background-color: goldenrod; */
     background-color: var(--rgb-green);
     color: lightgrey;
     border: none;
@@ -67,8 +62,7 @@ button {
     border: none;
     border-bottom: 1px solid darkgrey;
     background-color: rgba(0, 0, 0, .1);
-    color: rgb(130, 90, 191);
-    /* color: var(--rgb-purple); */
+    color: rgb(163, 110, 244);
     font-size: large;
 }
 
