@@ -24,12 +24,12 @@ function DeckForm({setShowModal}) {
             image,
             // categories
         }
-        const newDeck = dispatch(createDeck(deckData))
+        const newDeck = await dispatch(createDeck(deckData))
         if (newDeck.errors) {
             setErrors(newDeck.errors)
         }
 
-        // history.push(`/decks/${/* deck ID */}/cards/add`)
+        history.push(`/decks/${newDeck.id}/cards/add`)
     }
 
     // TODO: create update handlers for input (updateTitle, etc)
