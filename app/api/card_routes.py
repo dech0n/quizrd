@@ -41,13 +41,15 @@ def get_one_card(id):
     """
     card = Card.query.get(id)
 
-    if request.method == 'GET':
-        pass  # already queried card from db
-    elif request.method == 'DELETE':
-        db.session.delete(card)
-        db.session.commit()
+    if card:
+        if request.method == 'GET':
+            pass  # already queried card from db
+        elif request.method == 'DELETE':
+            db.session.delete(card)
+            db.session.commit()
 
-    return card.to_dict()
+        return card.to_dict()
+    # return errors here
 
 
 @card_routes.route('/decks/<int:deck_id>')
@@ -57,5 +59,6 @@ def get_deck_cards(deck_id):
     specified by deck_id and returns the data in a dictionary.
     """
     cards = Card.query.filter_by(deck_id=deck_id).all()
-
-    return {"cards": [card.to_dict() for card in cards]}
+    if cards:
+        return {"cards": [card.to_dict() for card in cards]}
+    # return errors here
