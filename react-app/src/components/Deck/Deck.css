@@ -18,11 +18,13 @@
 
 .deck-form-actions {
     display: flex;
-    /* justify-content: flex-end; */
-    justify-content: center;
-    /* width: 11rem; */
+    justify-content: flex-end;
 }
 
-.deck-edit-form-btn {
+.deck-form-btn {
     padding: 0.33rem 1rem .33rem;
+}
+
+button.deck-cancel-btn {
+    margin-left: 5px;
 }

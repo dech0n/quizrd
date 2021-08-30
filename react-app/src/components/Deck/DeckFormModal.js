@@ -14,6 +14,7 @@ function DeckFormModal() {
       >+ New Deck</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
+          <h3 className='modal-title'>New Deck</h3>
           <DeckForm setShowModal={setShowModal} />
         </Modal>
       )}
