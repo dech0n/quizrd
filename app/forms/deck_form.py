@@ -11,6 +11,16 @@ class DeckForm(FlaskForm):
             max=50,
             message="Title must be 3-50 characters."
         )
-        ])
-    description = StringField('description')
-    image = StringField('image')
+    ])
+    description = StringField('description', validators=[
+        Length(
+            max=255,
+            message="Title must be less than 255 characters."
+        )
+    ])
+    image = StringField('image', validators=[
+        Length(
+            max=255,
+            message="File name must be less than 255 characters."
+        )
+    ])
