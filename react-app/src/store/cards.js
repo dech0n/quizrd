@@ -103,6 +103,13 @@ export default function cardsReducer(state = initialState, {type, cards}) {
                 }
             }
 
+        case REMOVE:
+            const newState = {...state}
+            delete newState[card.id]
+            return {
+                ...newState
+            }
+
         default:
             return state;
     }
