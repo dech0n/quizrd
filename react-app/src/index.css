@@ -67,7 +67,8 @@ button {
     border: none;
     border-bottom: 1px solid darkgrey;
     background-color: rgba(0, 0, 0, .1);
-    color: var(--rgb-purple);
+    color: rgb(130, 90, 191);
+    /* color: var(--rgb-purple); */
     font-size: large;
 }
 

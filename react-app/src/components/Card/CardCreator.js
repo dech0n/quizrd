@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { getOneDeck, updateDeck } from '../../store/decks'
 import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
@@ -17,9 +17,10 @@ function CardCreator() {
 
     // console.log('*** DECK IN CARD CREATOR ***', deck)
 
-    useEffect(() => {
-        dispatch(getOneDeck(deckId))
-    }, [dispatch, deckId])
+    //! caused slight delay loading additional decks when going back to homepage
+    // useEffect(() => {
+    //     dispatch(getOneDeck(deckId))
+    // }, [dispatch, deckId])
 
     return deck && deck.owner_id === user.id ? (
 
@@ -43,7 +44,7 @@ function CardCreator() {
     ) : (
         <>
             <h1>Loading...</h1>
-            <p>If you've been waiting a while, this deck may not belong to you</p>
+            <p>If you've been waiting a while, there may have been an error.<br/>Click <Link to='/'>here</Link> and try again.</p>
         </>
     )
 }
