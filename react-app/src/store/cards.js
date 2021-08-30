@@ -67,6 +67,23 @@ const createCard = (cardData) => async (dispatch) => {
     }
 }
 
+// update a single card by pk
+const updateCard = (cardId, cardData) => async (dispatch) => {
+    const res = await fetch(`/api/cards/${cardId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardData)
+    })
+
+    if (res.ok) {
+        const updatedCard = await res.json()
+        dispatch(add(updatedCard))
+        return updateCard
+    }
+}
+
 // delete a single card by pk
 const deleteCard = (cardId) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`, {
