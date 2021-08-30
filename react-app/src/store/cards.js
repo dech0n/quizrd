@@ -43,7 +43,7 @@ const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/decks/${deckId}`)
 
     if (res.ok) {
-        const {cards} = res.json()
+        const { cards } = res.json()
         dispatch(load(cards))
         // return cards
     }
@@ -80,8 +80,10 @@ const deleteCard = (cardId) => async (dispatch) => {
     }
 }
 
+
 const initialState = {}
-export default function cardsReducer(state = initialState, {type, cards}) {
+
+export default function cardsReducer(state = initialState, { type, cards }) {
     // makes it easier to denote a single card vs. multiple cards
     const card = cards
 
@@ -120,7 +122,7 @@ export default function cardsReducer(state = initialState, {type, cards}) {
             }
 
         case REMOVE:
-            const newState = {...state}
+            const newState = { ...state }
             delete newState[card.id]
             return {
                 ...newState
