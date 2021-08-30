@@ -31,20 +31,38 @@ def cards():
         # return errors here
 
 
-@card_routes.route('/<int:id>', methods=['GET', 'DELETE'])
+@card_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def get_one_card(id):
     """
     Queries a single card from the database with the id/pk provided in the URL
     and returns the data in dictionary.
 
     DELETE method also removes the card from the database.
+    
+    PUT method updates the card data in the database
+    as well as the data for the returned card.
     """
     card = Card.query.get(id)
 
     if card:
         if request.method == 'GET':
             pass  # already queried card from db
-        elif request.method == 'DELETE':
+        elif request.method == 'PUT':
+            form = CardForm()
+            form.data['csrf_token'] = request.cookies['csrf_token']
+            if form.validate_on_submit():
+                if "front_image" not in form.data:
+                    form.data.setdefault("front_image")
+                if "back_image" not in form.data:
+                    form.data.setdefault("back_image")
+
+                card.front_text = form.data['front_text']
+                card.back_text = form.data['back_text']
+                card.front_image = form.data['front_image']
+                card.back_image = form.data['back_image']
+
+                db.session.commit()
+        else:
             db.session.delete(card)
             db.session.commit()
 
