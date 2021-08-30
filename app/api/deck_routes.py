@@ -20,7 +20,7 @@ def get_all_decks():
 
 
 @deck_routes.route('/new', methods=['POST'])
-# @login_required
+@login_required
 def new_deck():
     # POST data should look like this when categories are done:
     # {
@@ -98,7 +98,7 @@ def get_or_delete_deck(id):
 
 
 @ deck_routes.route('/users/<int:user_id>')
-# @login_required
+@login_required
 def get_user_decks(user_id):
     if user_id is None:
         # saves a query ?
