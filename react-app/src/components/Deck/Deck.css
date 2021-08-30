@@ -11,7 +11,7 @@
 
 .deck-form-input {
     background-color: rgba(75, 75, 75, .5);
-    color: var(--rgb-green);
+    /* color: var(--rgb-green); */
     /* color: var(--rgb-purple); */
     border-radius: .2rem;
 }
