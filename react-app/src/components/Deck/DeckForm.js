@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 import { createDeck } from "../../store/decks";
 
 // TODO: find a default image for new decks
-function DeckForm({setShowModal}) {
+function DeckForm({ setShowModal }) {
     const dispatch = useDispatch()
     const history = useHistory()
     const [errors, setErrors] = useState([])
@@ -47,7 +47,8 @@ function DeckForm({setShowModal}) {
 
     return (
         <form
-        onSubmit={handleSubmit}>
+            className='deck-create-form'
+            onSubmit={handleSubmit}>
             <ul className='form-errors-list deck-form-errors'>
                 {errors.map((error, index) => (
                     <li key={`${index}-deck-create-error`}>
@@ -88,19 +89,20 @@ function DeckForm({setShowModal}) {
                     type='text' /* might have to change this ? */
                     name='image'
                     value={image}
-                    onChange={updateImage} />
+                    onChange={updateImage}
+                />
                 <label
                     className='deck-form-label deck-image-label form-label'
                     htmlFor='image'
                 >Image (optional)</label>
             </div>
-            <div className='deck-field-container deck-form-action-container form-action-container'>
+            <div className='deck-field-container deck-form-actions form-action-container'>
                 <button
-                    className='form-btn submit-btn'
+                    className='form-btn submit-btn deck-form-btn'
                     type='submit'
                 >Create</button>
                 <button
-                    className='form-btn cancel-btn'
+                    className='form-btn cancel-btn deck-cancel-btn deck-form-btn'
                     type='button'
                     onClick={() => setShowModal(false)}>Cancel</button>
             </div>
