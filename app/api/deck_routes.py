@@ -42,7 +42,7 @@ def new_deck():
         # handle optional data
         # maybe implement this on the frontend/clientside instead for efficency
         if "description" not in form.data:
-            form.data.setdefault("description")
+            form.data.setdefault("description", "A great deck!")
         if "image" not in form.data:
             form.data.setdefault("image")
 

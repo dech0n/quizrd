@@ -38,7 +38,7 @@ function EditDeckForm({ deck, hideThis }) {
 
     return deck && deck.owner_id === user.id ? (
         <form
-            className='deck-edit-form'
+            className='deck-edit-form deck-form'
             onSubmit={handleSubmit}
         >
             <div className='form-field-container'>
@@ -78,14 +78,14 @@ function EditDeckForm({ deck, hideThis }) {
                 </select>
                 <label className='form-label'>Categories</label>
             </div> */}
-            <div className='form-actions deck-edit-form-actions'>
+            <div className='form-actions deck-form-actions'>
             <button
                 type='submit'
-                className='submit-btn deck-edit-form-btn form-btn'
+                className='submit-btn deck-form-btn form-btn'
             >Update</button>
             <button
                 type='button'
-                className='cancel-btn deck-edit-form-btn form-btn'
+                className='cancel-btn deck-cancel-btn deck-form-btn form-btn'
                 onClick={() => hideThis(false)}
             >Cancel</button>
             </div>
