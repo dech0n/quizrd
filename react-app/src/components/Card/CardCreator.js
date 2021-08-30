@@ -50,7 +50,13 @@ function CardCreator() {
             <div id='card-creator'>
                 <h1>Card Creator</h1>
                 <div id='cards'>
-                    {/* cards map goes here */}
+                    {
+                        cards && !cards["empty"] ? (
+                            <h6>The Cards</h6>
+                        ) : (
+                            <h3>There are no cards in this deck!</h3>
+                        )
+                    }
                 </div>
                 <div id='card-preview'>
                     <h2>Card Preview</h2>
