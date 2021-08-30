@@ -10,7 +10,8 @@ import './Card.css'
 function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
-    const [deck] = Object.values(useSelector(state => state.decks))
+    // const [deck] = Object.values(useSelector(state => state.decks))
+    const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
 
@@ -36,7 +37,8 @@ function CardCreator() {
                     >Change Deck Details</button>
                     {/* <EditDeckFormModal deck={deck} /> */}
                 </div>
-            </>)
+            </>
+        )
 
     ) : (
         <>
