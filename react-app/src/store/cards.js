@@ -32,6 +32,7 @@ const getOneCard = (cardId) => async (dispatch) => {
     }
 }
 
+
 // get all cards for a single deck
 const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/decks/${deckId}`)
@@ -42,7 +43,24 @@ const getDeckCards = (deckId) => async (dispatch) => {
         // return cards
     }
 }
+
+
 // create a card
+const createCard = (cardData) => async (dispatch) => {
+    const res = await fetch(`/cards`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(cardData)
+    })
+
+    if (res.ok) {
+        const card = res.json()
+        dispatch(add(card))
+        return card
+    }
+}
 
 // delete a single card by pk
 
