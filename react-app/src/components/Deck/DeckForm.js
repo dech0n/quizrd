@@ -96,7 +96,8 @@ function DeckForm({ setShowModal }) {
                     htmlFor='image'
                 >Image (optional)</label>
             </div>
-            <div className='deck-field-container deck-form-actions form-action-container'>
+            <div className='deck-field-container deck-form-actions create-deck-form-actions'>
+
                 <button
                     className='form-btn submit-btn deck-form-btn'
                     type='submit'
