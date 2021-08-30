@@ -27,7 +27,7 @@ const remove = (cards) => ({
 // TODO: Implement error handling for each thunk
 
 // get a single card by pk
-const getOneCard = (cardId) => async (dispatch) => {
+export const getOneCard = (cardId) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`)
 
     if (res.ok) {
@@ -39,7 +39,7 @@ const getOneCard = (cardId) => async (dispatch) => {
 
 
 // get all cards for a single deck
-const getDeckCards = (deckId) => async (dispatch) => {
+export const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/decks/${deckId}`)
 
     if (res.ok) {
@@ -51,7 +51,7 @@ const getDeckCards = (deckId) => async (dispatch) => {
 
 
 // create a card
-const createCard = (cardData) => async (dispatch) => {
+export const createCard = (cardData) => async (dispatch) => {
     const res = await fetch(`/cards`, {
         method: 'POST',
         headers: {
@@ -68,7 +68,7 @@ const createCard = (cardData) => async (dispatch) => {
 }
 
 // update a single card by pk
-const updateCard = (cardId, cardData) => async (dispatch) => {
+export const updateCard = (cardId, cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`, {
         method: 'PUT',
         headers: {
@@ -85,7 +85,7 @@ const updateCard = (cardId, cardData) => async (dispatch) => {
 }
 
 // delete a single card by pk
-const deleteCard = (cardId) => async (dispatch) => {
+export const deleteCard = (cardId) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`, {
         method: 'DELETE'
     })

@@ -35,12 +35,12 @@ def cards():
 def get_one_card(id):
     """
     Queries a single card from the database with the id/pk provided in the URL
-    and returns the data in dictionary.
+    and returns the data in a dictionary.
 
     DELETE method also removes the card from the database.
-    
-    PUT method updates the card data in the database
-    as well as the data for the returned card.
+
+    PUT method also updates the card data in the database
+    and the returned card data.
     """
     card = Card.query.get(id)
 
