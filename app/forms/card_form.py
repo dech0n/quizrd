@@ -4,7 +4,7 @@ from wtforms.validators import DataRequired
 
 
 class CardForm(FlaskForm):
-    frontText = StringField('frontText', validators=[DataRequired()])
-    backText = StringField('backText', validators=[DataRequired()])
-    frontImage = StringField('frontImage')
-    backImage = StringField('backImage')
+    front_text = StringField('front_text', validators=[DataRequired()])
+    back_text = StringField('back_text', validators=[DataRequired()])
+    front_image = StringField('front_image')
+    back_image = StringField('back_image')
