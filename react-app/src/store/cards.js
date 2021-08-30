@@ -6,7 +6,7 @@ const REMOVE = 'cards/REMOVE'
 // ACTION CREATORS
 const load = (cards) => ({
     type: LOAD,
-    cards
+    cards: Array.from(cards)
 })
 
 const add = (cards) => ({
@@ -27,7 +27,7 @@ const getOneCard = (cardId) => async (dispatch) => {
 
     if (res.ok) {
         const card = await res.json()
-        dispatch(load([card])) // must be array for the reducer
+        dispatch(load(card))
         // return card
     }
 }
@@ -81,6 +81,27 @@ export default function cardsReducer(state = initialState, {type, cards}) {
             return {
                 ...allCards
             };
+
+        case ADD:
+            // for a new card
+            if (!state[card.id]) {
+                const newState = {
+                    ...state,
+                    [card.id]: card
+                }
+                return {
+                    ...newState
+                }
+            }
+
+            // for an updated card
+            return {
+                ...state,
+                [card.id]: {
+                    ...state[card.id],
+                    ...card
+                }
+            }
 
         default:
             return state;
