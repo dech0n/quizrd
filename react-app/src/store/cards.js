@@ -4,15 +4,20 @@ const ADD = 'cards/ADD'
 const REMOVE = 'cards/REMOVE'
 
 // ACTION CREATORS
+
+// loads one or more cards to the state
 const load = (cards) => ({
     type: LOAD,
     cards: Array.from(cards)
 })
 
+// adds a single card to the state
 const add = (cards) => ({
     type: ADD,
     cards
 })
+
+// removes a single card from the state
 const remove = (cards) => ({
     type: REMOVE,
     cards
@@ -63,6 +68,17 @@ const createCard = (cardData) => async (dispatch) => {
 }
 
 // delete a single card by pk
+const deleteCard = (cardId) => async (dispatch) => {
+    const res = await fetch(`/api/cards/${cardId}`, {
+        method: 'DELETE'
+    })
+
+    if (res.ok) {
+        const card = await res.json()
+        dispatch(remove(card))
+        return card
+    }
+}
 
 const initialState = {}
 export default function cardsReducer(state = initialState, {type, cards}) {
