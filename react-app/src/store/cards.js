@@ -8,7 +8,7 @@ const REMOVE = 'cards/REMOVE'
 // loads one or more cards to the state
 const load = (cards) => ({
     type: LOAD,
-    cards: Array.from(cards)
+    cards: cards
 })
 
 // adds a single card to the state
@@ -32,7 +32,7 @@ export const getOneCard = (cardId) => async (dispatch) => {
 
     if (res.ok) {
         const card = await res.json()
-        dispatch(load(card))
+        dispatch(load([card])) // must be an array for LOAD case in reducer
         // return card
     }
 }
@@ -43,7 +43,8 @@ export const getDeckCards = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/cards/decks/${deckId}`)
 
     if (res.ok) {
-        const { cards } = res.json()
+        const { cards } = await res.json()
+        // console.log('*** DECK CARDS - THUNK ***', cards)
         dispatch(load(cards))
         // return cards
     }
