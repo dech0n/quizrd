@@ -44,6 +44,7 @@ textarea {
 
 button {
     background-color: var(--rgb-green);
+    /* background-color: rgb(1, 255, 177); */
     color: lightgrey;
     border: none;
     border-radius: 2rem;
