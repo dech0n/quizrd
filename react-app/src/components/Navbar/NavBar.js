@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <nav className='navbar navbar-container'>
-        <img id='logo' src='public/images/logo_wizard-red.png' alt='logo' />
+        <img id='logo' src='/images/logo-resized.png' alt='logo' />
         <span id='logo-title'>QUIZRD</span>
       <ul className='all-navlinks-container'>
         {!user ? (
