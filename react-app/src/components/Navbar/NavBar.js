@@ -10,7 +10,10 @@ const NavBar = () => {
 
   return (
     <nav className='navbar navbar-container'>
-      <div id='logo'>[****LOGO****]</div>
+      {/* <div id='logo'>[****LOGO****]</div> */}
+        {/* <img id='logo' src='/images/logo_wizard-white-outline.png' alt='logo' /> */}
+        <img id='logo' src='/images/logo_wizard-red.png' alt='logo' />
+        <span id='logo-title'>QUIZRD</span>
       <ul className='all-navlinks-container'>
 
         {!user ? (

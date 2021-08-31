@@ -22,6 +22,8 @@ const SignUpForm = () => {
       if (data) {
         setErrors(data)
       }
+    } else {
+      setErrors(["Passwords must match."])
     }
   };
 
@@ -90,7 +92,6 @@ const SignUpForm = () => {
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
-          required={true}
           />
           <label className='auth-field form-field'>Repeat Password</label>
       </div>
