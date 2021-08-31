@@ -96,6 +96,8 @@ def get_or_delete_deck(id):
             deck.image = form.data['image']
 
             db.session.commit()
+        else:
+            return {'errors': validation_errors_to_error_messages(form.errors)}, 400
 
     elif request.method == 'DELETE':
         # print('*** DELETE DECK ***', deck.to_dict())

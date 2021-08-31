@@ -96,6 +96,13 @@ export const updateDeck = (deckId, deckData) => async (dispatch) => {
         const updatedDeck = await res.json()
         dispatch(add(updatedDeck))
         return updatedDeck
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
