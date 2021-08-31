@@ -11,7 +11,6 @@ function DeckManagerTable({ decks, handleDelete }) {
                 return (
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
-                            {/* add proper link */}
                         <Link to={`/decks/${deck.id}/study`}>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
@@ -30,19 +29,19 @@ function DeckManagerTable({ decks, handleDelete }) {
                                         ))}
                                     </p>
                                 </li>
-                                <li key={`${deck.id}-deck-actions`}
-                                    className='deck-action-buttons'>
-                                    <button
-                                        className='deck-edit-btn deck-action-btn'
-                                        onClick={() => handleClick(deck.id)}
-                                        >Edit</button>
-                                    <button
-                                        className='deck-delete-btn deck-action-btn delete-btn'
-                                        onClick={() => handleDelete(deck.id)}
-                                        >Delete</button>
-                                </li>
                             </ul>
                         </Link>
+                        <li key={`${deck.id}-deck-actions`}
+                            className='deck-action-buttons'>
+                            <button
+                                className='deck-edit-btn deck-action-btn'
+                                onClick={() => handleClick(deck.id)}
+                            >Edit</button>
+                            <button
+                                className='deck-delete-btn deck-action-btn delete-btn'
+                                onClick={() => handleDelete(deck.id)}
+                            >Delete</button>
+                        </li>
 
                     </li>
                 )
