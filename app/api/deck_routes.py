@@ -82,7 +82,15 @@ def get_or_delete_deck(id):
     elif request.method == 'PUT':
         form = DeckForm()
         form['csrf_token'].data = request.cookies['csrf_token']
-        if form.validate_on_submit:
+        # handle empty/missing data from form
+        # if 'title' not in form.data:
+        #     form.data.setdefault('title', None)
+        # if 'description' not in form.data:
+        #     form.data.setdefault('description', None)
+        # if 'image' not in form.data:
+        #     form.data.setdefault('image', None)
+        # update the data in the db if form validates
+        if form.validate_on_submit():
             deck.title = form.data['title'],
             deck.description = form.data['description'],
             deck.image = form.data['image']
