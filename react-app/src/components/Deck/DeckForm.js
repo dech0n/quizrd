@@ -25,11 +25,12 @@ function DeckForm({ setShowModal }) {
             // categories
         }
         const newDeck = await dispatch(createDeck(deckData))
-        if (newDeck.errors) {
-            setErrors(newDeck.errors)
+        if (newDeck.length) {
+            setErrors(newDeck)
+        } else {
+            history.push(`/decks/${newDeck.id}/cards/add`)
         }
 
-        history.push(`/decks/${newDeck.id}/cards/add`)
     }
 
     // TODO: create update handlers for input (updateTitle, etc)
@@ -63,7 +64,7 @@ function DeckForm({ setShowModal }) {
                     name='title'
                     value={title}
                     onChange={updateTitle}
-                    required
+                    // required
                 />
                 <label
                     className='deck-form-label deck-title-label form-label'
