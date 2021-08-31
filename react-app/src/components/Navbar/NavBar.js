@@ -32,7 +32,7 @@ const NavBar = () => {
           <>
             <li className='navlink-container'>
               Welcome back, &nbsp;
-              <NavLink to='/' exact={true} activeClassName='active' className='navbar navlink' id='home'>
+              <NavLink to='/' exact={true} activeClassName='active' className='navbar navlink username' id='home'>
                 {user.username}
               </NavLink>
               !
