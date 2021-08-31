@@ -29,9 +29,10 @@ nav.navbar-container {
 .all-navlinks-container {
     display: flex;
     list-style: none;
+    margin: 0 1rem 0 0;
 }
 
-.navlink-container, #logo, #logout-btn {
+.navlink-container, #logo {
     padding: 10px 10px;
 }
 
@@ -42,14 +43,19 @@ nav.navbar-container {
 
 #logout {
     padding-right: 10px;
-}
-
-li#logout-btn-container {
 
 }
 
-.auth-btn, #logout-btn {
-    /* height: auto; */
-    /* width: auto; */
-    border: none;
+li#logout-btn-container.navlink-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+}
+
+#logout-btn {
+    /* height: 26px; */
+    /* width: 55px; */
+    height: 2rem;
+    width: 5rem;
 }
