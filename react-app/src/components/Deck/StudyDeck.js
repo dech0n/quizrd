@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams, Link } from 'react-router-dom'
 import { getDeckCards } from '../../store/cards';
 import { getOneDeck } from '../../store/decks';
+import Card from '../Card/Card.js';
 
 function StudyDeck() {
     const dispatch = useDispatch()
@@ -10,6 +11,7 @@ function StudyDeck() {
     const user = useSelector(state => state.session.user)
     const deck = useSelector(state => state.decks[deckId])
     const cards = Object.values(useSelector(state => state.cards))
+    const [cardId, setCardId] = useState(1)
 
     // console.log('*** STUDY DECK ***', deck)
     // console.log('*** STUDY CARDS ***', cards)
@@ -19,7 +21,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return deck && cards ? (
+    return !cards["empty"] ? (
         <>
             <h1>Study Deck Page</h1>
             {/* Add deck tile (and desc?) somewhere */}
@@ -35,10 +37,12 @@ function StudyDeck() {
                  * set conditional render:
                  *   - previous arrow: cardId > 1
                  *   - next arrow: cardId < cards.length
-                 * get initial cardId from useParams   ***/}
+                 * get initial cardId from useParams (or just start at 1)   ***/}
                 {/* "Previous" button here */}
                 {/* render one card at a time */}
                 {/* "Next" button here */}
+
+                <Card cardId={cardId} />
             </div>
         </>
     ) : (
