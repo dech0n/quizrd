@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { getDeckCards } from '../../store/cards';
 import { getOneDeck } from '../../store/decks';
 
@@ -19,8 +19,19 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return (
-        <h1>Study Deck Page</h1>
+    return user && deck && cards ? (
+        <>
+            <h1>Study Deck Page</h1>
+            <div className='deck-study-actions'>
+                {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
+                <button type="button">Preview Deck</button>
+            </div>
+        </>
+    ) : (
+        <>
+            <h1>Loading...</h1>
+            <p>If you've been waiting a while, there may have been an error.<br />Click <Link to='/'>here</Link> and try again.</p>
+        </>
     )
 }
 
