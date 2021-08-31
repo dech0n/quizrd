@@ -1,8 +1,25 @@
+#logo {
+    position: absolute;
+    left: 0;
+    top: 0;
+    object-fit: contain;
+    width: 100px;
+}
+
+#logo-title {
+    position: absolute;
+    font-weight: 900;
+    left: 6rem;
+    top: 2rem;
+    color: rgb(1, 255, 177)
+}
+
 nav.navbar-container {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: flex-end;
     height: 5vh;
-    border-bottom: 1px solid black;
+    /* border-bottom: 1px solid black; */
     padding: 10px 0 10px 0;
     box-sizing: content-box;
     margin: 0 0 50px 0;
