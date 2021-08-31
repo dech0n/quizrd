@@ -10,8 +10,10 @@ const NavBar = () => {
 
   return (
     <nav className='navbar navbar-container'>
+      <NavLink to='/'>
         <img id='logo' src='/images/logo-resized.png' alt='logo' />
         <span id='logo-title'>QUIZRD</span>
+      </NavLink>
       <ul className='all-navlinks-container'>
         {!user ? (
           <>
