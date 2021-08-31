@@ -18,23 +18,13 @@ TODO: Make demo user into me!
     height: auto;
 }
 
-/* .auth-field-container {
-    display: flex;
-    flex-direction: column;
+.all-auth-errors-container {
+    margin: 0 0 1rem;
 }
 
-.auth-input {
-    border: none;
-    border-bottom: 1px solid black;
+.auth-error-container {
+    color: var(--rgb-orange);
 }
-
-.auth-input:focus {
-    outline: none;
-}
-
-.auth-label {
-    padding: 0px 0 10px 0;
-} */
 
 .auth-link {
     text-decoration: none;
