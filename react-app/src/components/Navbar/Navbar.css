@@ -1,7 +1,8 @@
 #logo {
     position: absolute;
     left: 0;
-    top: -10px;
+    /* top: -10px; */
+    top: -5px;
     object-fit: contain;
     width: 100px;
 }
@@ -9,8 +10,9 @@
 #logo-title {
     position: absolute;
     font-weight: 900;
+    font-size: 1.5rem;
     left: 6rem;
-    top: 2rem;
+    top: 1.5rem;
     color: rgb(1, 255, 177)
 }
 

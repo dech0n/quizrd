@@ -10,7 +10,7 @@ const NavBar = () => {
 
   return (
     <nav className='navbar navbar-container'>
-      <NavLink to='/'>
+      <NavLink to='/' className='logo-navlink'>
         <img id='logo' src='/images/logo-resized.png' alt='logo' />
         <span id='logo-title'>QUIZRD</span>
       </NavLink>
