@@ -12,16 +12,16 @@ import './Card.css'
 function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
-    const [deck] = Object.values(useSelector(state => state.decks))
+    // const [deck] = Object.values(useSelector(state => state.decks))
     const cards = Object.values(useSelector(state => state.cards))
-    // const deck = useSelector(state => state.decks[deckId])
+    const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
 
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
-    // console.log('*** DECK IN CARD CREATOR ***', deck)
+    console.log('*** DECK IN CARD CREATOR ***', deck)
     // console.log('*** CARDS IN CARD CREATOR ***', cards)
 
     useEffect(() => {
