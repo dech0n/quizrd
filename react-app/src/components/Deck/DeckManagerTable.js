@@ -12,12 +12,11 @@ function DeckManagerTable({ decks, handleDelete }) {
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
                             {/* add proper link */}
-                        <Link to={'#'}>
+                        <Link to={`/decks/${deck.id}/study`}>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
                                 <li key={`${deck.id}-deck-info`}
                                     className='deck-info'>
-                                    {/* TODO: Link to Deck page */}
                                     <h4 key={`${deck.id}-deck-title`}
                                         className='deck-title'>{deck.title}</h4>
                                     <p key={`${deck.id}-deck-desc`}
