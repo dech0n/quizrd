@@ -1,7 +1,7 @@
 #logo {
     position: absolute;
     left: 0;
-    top: 0;
+    top: -10px;
     object-fit: contain;
     width: 100px;
 }
