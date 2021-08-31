@@ -42,6 +42,10 @@ button.deck-cancel-btn {
     padding: 1rem 1rem .5rem;
 }
 
+.deck-study-navlink {
+    width: 100%;
+}
+
 li.deck-manager-row:hover {
     background-color: var(--rgb-purple);
     /* background-color: rgba(106, 72, 200, .7); */
@@ -51,9 +55,9 @@ li.deck-manager-row:hover {
 .deck-manager-row-contents {
     display: flex;
     justify-content: space-between;
-    margin: 0 3rem .5rem;
+    margin: 0 3rem .5rem 3rem;
     box-sizing: content-box;
-    color: darkgrey
+    color: darkgrey;
 }
 .deck-title {
     color:rgba(190, 190, 190, 1)
