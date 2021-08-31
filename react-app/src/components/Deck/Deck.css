@@ -33,6 +33,8 @@ button.deck-cancel-btn {
 }
 
 .deck-manager-row {
+    display: flex;
+    justify-content: space-between;
     background-color: rgba(106, 72, 200, .7);
     /* background-color: var(--rgb-purple); */
     border-radius: 4rem;
