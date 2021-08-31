@@ -26,7 +26,7 @@ function EditDeckForm({ deck, hideThis }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        if (title === "") setTitle(deck.title)
+        // if (title === "") setTitle(deck.title)
         const updatedDeckData = {
             title,
             description,
@@ -34,9 +34,9 @@ function EditDeckForm({ deck, hideThis }) {
         }
 
         const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
-        // if (udpatedDeck) {
-        //     setErrors(udpatedDeck)
-        // }
+        if (udpatedDeck.length) { // implies an array instead of an object
+            setErrors(udpatedDeck)
+        }
 
         if(!errors) hideThis(false)
     }

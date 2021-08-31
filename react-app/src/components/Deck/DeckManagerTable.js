@@ -11,7 +11,7 @@ function DeckManagerTable({ decks, handleDelete }) {
                 return (
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
-                        <Link to={`/decks/${deck.id}/study`}>
+                        <Link to={`/decks/${deck.id}/study`} className='deck-study-navlink'>
                             <ul key={`${deck.id}-deck-contents`}
                                 className='deck-manager-row-contents'>
                                 <li key={`${deck.id}-deck-info`}
