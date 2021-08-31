@@ -31,9 +31,11 @@ const NavBar = () => {
         ) : (
           <>
             <li className='navlink-container'>
+              Welcome back, &nbsp;
               <NavLink to='/' exact={true} activeClassName='active' className='navbar navlink' id='home'>
-                Home
+                {user.username}
               </NavLink>
+              !
             </li>
             <li className='navlink-container' id='logout-btn-container'>
               <LogoutButton id='logout-btn' />
