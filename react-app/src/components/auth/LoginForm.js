@@ -42,9 +42,9 @@ const LoginForm = () => {
             key={ind}>{error}</div>
         ))}
       </div>
-      <div className='email-container auth-field-container'>
+      <div className='email-container auth-field-container form-field-container'>
         <input
-          className='email-input auth-input'
+          className='email-input auth-input form-input'
           name='email'
           type='text'
           // placeholder='Email'
@@ -52,12 +52,12 @@ const LoginForm = () => {
           onChange={updateEmail}
         />
         <label
-          className='email-label auth-label'
+          className='email-label auth-label form-label'
           htmlFor='email'>Email</label>
       </div>
-      <div className='password-container auth-field-container'>
+      <div className='password-container auth-field-container form-field-container'>
         <input
-          className='password-input auth-input'
+          className='password-input auth-input form-input'
           name='password'
           type='password'
           // placeholder='Password'
@@ -65,17 +65,16 @@ const LoginForm = () => {
           onChange={updatePassword}
         />
         <label
-          className='password-label auth-label' htmlFor='password'>Password</label>
+          className='password-label auth-label form-label' htmlFor='password'>Password</label>
         <button
-          className='submit-btn auth-btn'
+          className='submit-btn auth-btn form-btn'
           id='login-btn'
           type='submit'>Login</button>
-          <DemoLoginButton />
+          <p id='or'>or</p>
+        <DemoLoginButton />
       </div>
-      {/* <div> */}
-        <Link to='/sign-up'
-          className='auth-link'>Don't have an account?<br />Sign up here!</Link>
-      {/* </div> */}
+      <Link to='/sign-up'
+        className='auth-link'>Don't have an account?<br />Sign up here!</Link>
     </form>
   );
 };

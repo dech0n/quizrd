@@ -18,7 +18,7 @@ TODO: Make demo user into me!
     height: auto;
 }
 
-.auth-field-container {
+/* .auth-field-container {
     display: flex;
     flex-direction: column;
 }
@@ -33,9 +33,8 @@ TODO: Make demo user into me!
 }
 
 .auth-label {
-    /* visibility: hidden; */
     padding: 0px 0 10px 0;
-}
+} */
 
 .auth-link {
     text-decoration: none;
@@ -44,16 +43,24 @@ TODO: Make demo user into me!
 
 #signup-btn {
     margin: 15px 0 20px 0;
+    padding: .5rem 1rem;
 }
 
 #login-btn {
     margin: 10px 0 0 0;
+    padding: 5px 0;
 }
 
-#logout-btn {
-    cursor: pointer;
+#or {
+    text-align: center;
+    margin-top: 5px;
 }
 
 #demo-login-btn {
     margin: 5px 0 10px 0;
+    padding: 5px 0;
+}
+
+#logout-btn {
+    cursor: pointer;
 }

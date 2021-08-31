@@ -53,46 +53,46 @@ const SignUpForm = () => {
           <div key={ind}>{error}</div>
         ))}
       </div>
-      <div className='auth-field-container'>
+      <div className='auth-field-container form-field-container'>
         <input
-          className='username-input auth-input'
+          className='username-input auth-input form-input'
           type='text'
           name='username'
           onChange={updateUsername}
           value={username}
         />
-        <label>User Name</label>
+        <label className='auth-field form-field'>User Name</label>
       </div>
-      <div className='email-container auth-field-container'>
+      <div className='email-container auth-field-container form-field-container'>
         <input
-          className='email-input auth-input'
+          className='email-input auth-input form-input'
           type='text'
           name='email'
           onChange={updateEmail}
           value={email}
           />
-          <label>Email</label>
+          <label className='auth-field form-field'>Email</label>
       </div>
-      <div className='password-container auth-field-container'>
+      <div className='password-container auth-field-container form-field-container'>
         <input
-          className='password-input auth-input'
+          className='password-input auth-input form-input'
           type='password'
           name='password'
           onChange={updatePassword}
           value={password}
           />
-          <label>Password</label>
+          <label className='auth-field form-field'>Password</label>
       </div>
-      <div className='password-container auth-field-container'>
+      <div className='password-container auth-field-container form-field-container'>
         <input
-          className='password-input auth-input'
+          className='password-input auth-input form-input'
           type='password'
           name='repeat_password'
           onChange={updateRepeatPassword}
           value={repeatPassword}
           required={true}
           />
-          <label>Repeat Password</label>
+          <label className='auth-field form-field'>Repeat Password</label>
       </div>
       <button
         className='submit-btn auth-btn'

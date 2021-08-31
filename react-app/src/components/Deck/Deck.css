@@ -1,0 +1,28 @@
+.deck-edit-form {
+    position: absolute;
+    top: 17%;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* height: auto; */
+}
+
+.deck-form-input {
+    background-color: rgba(75, 75, 75, .5);
+    border-radius: .2rem;
+}
+
+.deck-form-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.deck-form-btn {
+    padding: 0.33rem 1rem .33rem;
+}
+
+button.deck-cancel-btn {
+    margin-left: 5px;
+}

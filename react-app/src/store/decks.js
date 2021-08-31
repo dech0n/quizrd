@@ -5,22 +5,46 @@ const REMOVE = 'decks/REMOVE'
 
 // ACTION CREATORS
 const load = (decks) => ({
-    action: LOAD,
+    type: LOAD,
     decks
 })
 
 const add = (decks) => ({
-    action: ADD,
+    type: ADD,
     decks
 })
 const remove = (decks) => ({
-    action: REMOVE,
+    type: REMOVE,
     decks
 })
 
 // THUNK ACTIONS
 // TODO: Implement error handling for each thunk
 // TODO: create get thunk for single deck
+
+// get one deck by pk
+export const getOneDeck = (deckId) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`)
+
+    if (res.ok) {
+        // console.log('*** GET ONE RES ***', res)
+        const deck = await res.json() // parses into object
+        // console.log('** GET ONE THUNK **', deck)
+        dispatch(load([deck])) // must be array for the reducer
+    }
+}
+
+
+// get all decks owned by one user
+export const getUserDecks = (userId) => async (dispatch) => {
+    const res = await fetch(`/api/decks/users/${userId}`)
+
+    if (res.ok) {
+        const { decks } = await res.json()
+        dispatch(load(decks))
+    }
+}
+
 
 // get every deck in the db
 export const getAllDecks = () => async (dispatch) => {
@@ -32,16 +56,6 @@ export const getAllDecks = () => async (dispatch) => {
     }
 }
 
-
-// get all decks owned by one user
-export const getUserDecks = (userId) => async (dispatch) => {
-    const res = await fetch(`/api/decks/${userId}`)
-
-    if (res.ok) {
-        const { decks } = await res.json()
-        dispatch(load(decks))
-    }
-}
 
 // create a deck
 export const createDeck = (deckData) => async (dispatch) => {
@@ -56,38 +70,71 @@ export const createDeck = (deckData) => async (dispatch) => {
     if (res.ok) {
         const deck = await res.json()
         dispatch(add(deck))
+        return deck
+    } else if (res.status < 500) { // error but not server error
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
+
+
+// update one deck by pk
+export const updateDeck = (deckId, deckData) => async (dispatch) => {
+    const res = await fetch(`/api/decks/${deckId}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(deckData)
+    })
+
+    if (res.ok) {
+        const updatedDeck = await res.json()
+        dispatch(add(updatedDeck))
+        return updatedDeck
+    }
+}
+
 
 // delete a specific deck by id
 export const deleteDeck = (deckId) => async (dispatch) => {
     const res = await fetch(`/api/decks/${deckId}`, {
         method: 'DELETE'
     })
+    // console.log('*** THUNK DELETE RES ***', res)
 
     if (res.ok) {
         const deck = await res.json()
+        // console.log('*** THUNK DELETE DECK ***', deck)
         dispatch(remove(deck))
     }
 }
 
 // REDUCER
 const initialState = {}
-export default function decksReducer(state = initialState, {type, decks}) {
+export default function decksReducer(state = initialState, { type, decks }) {
+    // change payload name to clarify when there is only a single deck changing in state
+    const deck = decks
+    // console.log('*** DECKS SENT TO REDUCER ***', decks)
+
     switch (type) {
         case LOAD:
             const allDecks = {}
-            decks.forEach(deck => {
-                allDecks[deck.id] = deck
-            })
-
+            if (decks) {
+                decks.forEach(deck => {
+                    // console.log('*** DECK ADDED TO STATE ***', deck)
+                    allDecks[deck.id] = deck
+                })
+            }
             return {
-                ...state,
                 ...allDecks
             }
 
         case ADD:
-            const deck = decks // to clarify this is a single deck
             // if this is a new deck
             if (!state[deck.id]) {
                 const newState = {
@@ -108,7 +155,7 @@ export default function decksReducer(state = initialState, {type, decks}) {
             }
 
         case REMOVE:
-            const newState = {...state}
+            const newState = { ...state }
             delete newState[deck.id]
             return {
                 ...newState
