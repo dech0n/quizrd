@@ -64,6 +64,7 @@ li.deck-manager-row:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    margin: 0 3rem .5rem;
 }
 
 .deck-action-btn {
