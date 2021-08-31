@@ -19,7 +19,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return user && deck && cards ? (
+    return deck && cards ? (
         <>
             <h1>Study Deck Page</h1>
             <div className='deck-study-actions'>
