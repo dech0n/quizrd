@@ -6,6 +6,7 @@ import DeckFormModal from '../Deck/DeckFormModal'
 import DeckManagerTable from '../Deck/DeckManagerTable'
 import './HomePage.css'
 
+// TODO: Implement profile photo
 // TODO: add "edit photo" button for profile pic
 // TODO: make sure there's a default image for profile pics (and proper updates for User model)
 // TODO: add default image for decks
@@ -18,7 +19,6 @@ function HomePage() {
     // const [decks, setDecks] = useState(useSelector(state => state.decks))
     const decks = useSelector(state => state.decks)
 
-    // TODO: click handler for delete (deck) button
     const handleDelete = (deckId) => {
         dispatch(deleteDeck(deckId))
     }
@@ -37,8 +37,9 @@ function HomePage() {
             <div className='homepage-container'>
                 <div className='homepage-header'>
                     <div className='user-info-container'>
-                        <img className='profile-pic' src={user.image} alt='profile pic' />
-                        <p>Welcome back, <span id='current-user'>{user.username}</span>!</p>
+                        {/* TODO: Add profile pic back to page once that's figured out */}
+                        {/* <img className='profile-pic' src={user.image} alt='profile pic' /> */}
+                        <p><span id='current-user'>{user.username}</span></p>
                         <p>Decks Created ({Object.values(decks).length})</p>
                     </div>
                     <div className='new-deck-btn-container'>

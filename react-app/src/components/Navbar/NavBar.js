@@ -10,8 +10,10 @@ const NavBar = () => {
 
   return (
     <nav className='navbar navbar-container'>
+      <NavLink to='/'>
         <img id='logo' src='/images/logo-resized.png' alt='logo' />
         <span id='logo-title'>QUIZRD</span>
+      </NavLink>
       <ul className='all-navlinks-container'>
         {!user ? (
           <>
@@ -29,9 +31,11 @@ const NavBar = () => {
         ) : (
           <>
             <li className='navlink-container'>
+              Welcome back, &nbsp;
               <NavLink to='/' exact={true} activeClassName='active' className='navbar navlink' id='home'>
-                Home
+                {user.username}
               </NavLink>
+              !
             </li>
             <li className='navlink-container' id='logout-btn-container'>
               <LogoutButton id='logout-btn' />
