@@ -10,6 +10,7 @@ import User from './components/User';
 import HomePage from './components/HomePage/HomePage.js'
 import CardCreator from './components/Card/CardCreator';
 import { authenticate } from './store/session';
+import StudyDeck from './components/Deck/StudyDeck';
 
 function App() {
   const [loaded, setLoaded] = useState(false);
@@ -45,6 +46,9 @@ function App() {
         <ProtectedRoute path='/decks/:deckId/cards/add' exact={true} >
           <CardCreator />
         </ProtectedRoute>
+        <Route path='/decks/:deckId/study' exact={true}>
+          <StudyDeck />
+        </Route>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />
         </ProtectedRoute>
