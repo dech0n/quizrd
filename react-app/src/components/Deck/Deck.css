@@ -39,11 +39,11 @@ button.deck-cancel-btn {
     /* background-color: var(--rgb-purple); */
     border-radius: 4rem;
     margin: 1rem 4rem;
-    padding: 1rem 1rem .5rem;
-}
+    /* padding: 1rem 1rem .5rem; */
+    padding: 1rem 1rem;
+    height: 4rem;
+    overflow-x: hidden;
 
-.deck-study-navlink {
-    width: 100%;
 }
 
 li.deck-manager-row:hover {
@@ -52,23 +52,38 @@ li.deck-manager-row:hover {
     color: var(--rgb-jet)
 }
 
+.deck-study-navlink {
+    width: 100%;
+    /* height: auto; */
+}
+
 .deck-manager-row-contents {
     display: flex;
     justify-content: space-between;
-    margin: 0 3rem .5rem 3rem;
+    align-items: center;
+    /* margin: 0 3rem .5rem 3rem; */
+    margin: 0 3rem;
     box-sizing: content-box;
     color: darkgrey;
+    height: 100%;
 }
+
+/* .deck-info {
+
+} */
+
 .deck-title {
     color:rgba(190, 190, 190, 1)
-
 }
 
 .deck-action-buttons {
+    position: relative;
+    right: 0;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin: 0 3rem .5rem;
+    justify-content: space-around;
+    /* margin: 0 3rem .5rem; */
+    margin: 0 3rem;
 }
 
 .deck-action-btn {
