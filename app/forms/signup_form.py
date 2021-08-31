@@ -23,10 +23,16 @@ def username_exists(form, field):
 # TODO: Add optional field for profile pic
 class SignUpForm(FlaskForm):
     username = StringField(
-        'username', validators=[DataRequired(), username_exists])
-    email = StringField('email', validators=[DataRequired(), user_exists])
+        'username', validators=[
+            DataRequired(message="Username is required."),
+            username_exists
+        ])
+    email = StringField('email', validators=[
+        DataRequired(message="Email is required."),
+        user_exists
+    ])
     password = StringField('password', validators=[
-        DataRequired(),
+        DataRequired(message="Password is required."),
         Length(
             min=8,
             message="Password must contain at least 8 characters."
