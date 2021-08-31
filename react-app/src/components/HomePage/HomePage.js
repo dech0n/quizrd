@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { deleteDeck, getUserDecks } from '../../store/decks'
 import DeckFormModal from '../Deck/DeckFormModal'
-import DeckManagerTable from './DeckManagerTable'
+import DeckManagerTable from '../Deck/DeckManagerTable'
 import './HomePage.css'
 
 // TODO: add "edit photo" button for profile pic

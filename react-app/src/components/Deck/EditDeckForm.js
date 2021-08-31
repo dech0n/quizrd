@@ -7,6 +7,7 @@ import './Deck.css'
 function EditDeckForm({ deck, hideThis }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
+    const [errors, setErrors] = useState([])
     const [title, setTitle] = useState(deck.title)
     const [description, setDescription] = useState(deck.description)
     const [deckImage, setDeckImage] = useState("") // TODO: Get default image instead of using: ""
@@ -33,7 +34,11 @@ function EditDeckForm({ deck, hideThis }) {
         }
 
         const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
-        hideThis(false)
+        // if (udpatedDeck) {
+        //     setErrors(udpatedDeck)
+        // }
+
+        if(!errors) hideThis(false)
     }
 
     return deck && deck.owner_id === user.id ? (
@@ -41,6 +46,12 @@ function EditDeckForm({ deck, hideThis }) {
             className='deck-edit-form deck-form'
             onSubmit={handleSubmit}
         >
+            <div>
+            {console.log('*** FORM ERRORS ***', errors)}
+                {errors.map(error => (
+                    <div>{error}</div>
+                ))}
+            </div>
             <div className='form-field-container'>
                 <input
                     className='form-input'

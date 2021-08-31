@@ -5,7 +5,7 @@ from wtforms.validators import DataRequired, Length
 
 class DeckForm(FlaskForm):
     title = StringField('title', validators=[
-        DataRequired(),
+        DataRequired(message="This deck needs a title."),
         Length(
             min=3,
             max=50,
