@@ -6,6 +6,7 @@ import { createCard, getDeckCards } from '../../store/cards'
 import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
+import CardForm from './CardForm'
 
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
@@ -17,11 +18,6 @@ function CardCreator() {
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [frontText, setFrontText] = useState("")
-    const [backText, setBackText] = useState("")
-    const [frontImage, setFrontImage] = useState("")
-    const [backImage, setBackImage] = useState("")
 
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
@@ -30,42 +26,7 @@ function CardCreator() {
     // TODO: Create handleEdit for edit buttons (or conditional render, or modal)
     // TODO: create a click handler for the Finish button (just redirect ?)
 
-    const updateFrontText = (e) => {
-        setFrontText(e.target.value)
-    }
 
-    const updateBackText = (e) => {
-        setBackText(e.target.value)
-    }
-
-    const updateFrontImage = (e) => {
-        setFrontImage(e.target.value)
-    }
-
-    const updateBackImage = (e) => {
-        setBackImage(e.target.value)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const cardData = {
-            deck_id: deckId,
-            front_text: frontText,
-            back_text: backText,
-            front_image: frontImage,
-            back_image: backImage
-        }
-
-        const newCard = await dispatch(createCard(cardData))
-        if (newCard.length) {
-            setErrors(newCard)
-        } else {
-            setFrontText("")
-            setFrontImage("")
-            setBackText("")
-            setBackImage("")
-        }
-    }
 
     // console.log('*** DECK IN CARD CREATOR ***', deck)
     // console.log('*** CARDS IN CARD CREATOR ***', cards)
@@ -142,46 +103,7 @@ function CardCreator() {
                 </div>
                 <div id='card-creator-user-input'>
                     <h2>Form and Buttons</h2>
-                    <form
-                        className='card-form'
-                        onSubmit={handleSubmit}
-                    >
-                        <div className='card-form-errors form-errors'>
-                            {errors.map(error => (
-                                <div>{error}</div>
-                            ))}
-                        </div>
-                        <input
-                            type='text'
-                            value={frontText}
-                            onChange={updateFrontText}
-                        />
-                        <label>Front of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={frontImage}
-                            onChange={updateFrontImage}
-                        />
-                        <label>Front image (optional)</label>
-
-                        <input
-                            type='text'
-                            value={backText}
-                            onChange={updateBackText}
-                        />
-                        <label>Back of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={backImage}
-                            onChange={updateBackImage}
-                        />
-                        <label>Back image (optional)</label>
-
-                        <button type='submit'>+ Add to Deck</button>
-                        <button type='button'>Finish</button>
-                    </form>
+                    <CardForm deckId={deckId} />
                 </div>
             </div>
         </div>
