@@ -11,10 +11,23 @@ function StudyDeck() {
     const user = useSelector(state => state.session.user)
     const deck = useSelector(state => state.decks[deckId])
     const cards = Object.values(useSelector(state => state.cards))
-    const [cardId, setCardId] = useState(1)
+    const [cardId, setCardId] = useState()
+    const [cardNum, setCardNum] = useState(1) // number within deck sequence, not card.id
 
     // console.log('*** STUDY DECK ***', deck)
-    // console.log('*** STUDY CARDS ***', cards)
+    console.log('*** STUDY CARDS ***', cards)
+
+    // TODO: create handleNext and handlePrev click handlers
+
+    const handlePrev = () => {
+        setCardId(cardId - 1)
+        setCardNum(cardNum - 1)
+    }
+
+    const handleNext = () => {
+        setCardId(cardId + 1)
+        setCardNum(cardNum + 1)
+    }
 
     useEffect(() => {
         dispatch(getOneDeck(deckId))
@@ -23,6 +36,8 @@ function StudyDeck() {
 
     return !cards["empty"] ? (
         <>
+            {console.log('*** PRE CARD ID ***', cardId)}
+            {console.log('*** PRE CARD ID ***', cardId)}
             <h1>Study Deck Page</h1>
             {/* Add deck tile (and desc?) somewhere */}
             <div className='deck-study-actions'>
@@ -41,8 +56,21 @@ function StudyDeck() {
                 {/* "Previous" button here */}
                 {/* render one card at a time */}
                 {/* "Next" button here */}
-
-                <Card cardId={cardId} />
+                {cardNum > 1 ?
+                    <button
+                        type='button'
+                        onClick={handlePrev}
+                    >
+                        Previous
+                    </button> : null
+                }
+                <Card card={cards[cardId]} />
+                {cardNum < cards.length ? <button
+                    type='button'
+                    onClick={handleNext}
+                >
+                    next
+                </button> : null}
             </div>
         </>
     ) : (
