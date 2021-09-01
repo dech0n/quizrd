@@ -39,10 +39,10 @@ function StudyDeck() {
             <div id='deck-study-header'>
                 <h1>{deck.title}</h1>
                 <p>{deck.description}</p>
-            </div>
             <div className='deck-study-actions'>
                 {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
                 <button type="button">Preview Deck</button> {/* Brings up modal to preview both sides of every card */}
+            </div>
             </div>
             <div id='deck-study-flashcards'>
                 {cardsIndex > 0 ?
