@@ -19,9 +19,13 @@ def cards():
     """
     if request.method == 'POST':
         form = CardForm()
-        deck = Deck.query.get(form.data["deck_id"])
         form.data['csrf_token'] = request.cookies['csrf_token']
+        deck = Deck.query.get(form.data["deck_id"])
         if form.validate_on_submit():
+            if 'front_image' not in form.data:
+                form.data.setdefault('front_image')
+            if 'back_image' not in form.data:
+                form.data.setdefault('back_image')
             card = Card(
                 deck=deck,
                 front_text=form.data['front_text'],
