@@ -19,10 +19,10 @@ function CardCreator() {
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
     const [errors, setErrors] = useState([])
-    const [frontText, setFrontText] = useState()
-    const [backText, setBackText] = useState()
-    const [frontImage, setFrontImage] = useState()
-    const [backImage, setBackImage] = useState()
+    const [frontText, setFrontText] = useState("")
+    const [backText, setBackText] = useState("")
+    const [frontImage, setFrontImage] = useState("")
+    const [backImage, setBackImage] = useState("")
 
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
@@ -57,10 +57,10 @@ function CardCreator() {
         if (newCard.length) {
             setErrors(newCard)
         } else {
-            setFrontText()
-            setFrontImage()
-            setBackText()
-            setBackImage()
+            setFrontText("")
+            setFrontImage("")
+            setBackText("")
+            setBackImage("")
         }
     }
 
