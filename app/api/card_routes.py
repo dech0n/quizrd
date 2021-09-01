@@ -3,6 +3,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import db, Deck, Card
 from app.forms import CardForm
 from flask_login import current_user, login_required
+import pdb
 
 
 card_routes = Blueprint('cards', __name__)
@@ -19,7 +20,9 @@ def cards():
     """
     if request.method == 'POST':
         form = CardForm()
-        form.data['csrf_token'] = request.cookies['csrf_token']
+        # pdb.set_trace() #! debug
+        form['csrf_token'].data = request.cookies['csrf_token']
+        # pdb.set_trace() #! debug
         deck = Deck.query.get(form.data["deck_id"])
         if form.validate_on_submit():
             if 'front_image' not in form.data:
