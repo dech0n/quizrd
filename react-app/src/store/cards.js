@@ -1,5 +1,6 @@
 // ACTION CONSTANTS
 const LOAD = 'cards/LOAD'
+const DECK_LOAD = 'cards/DECK_LOAD'
 const ADD = 'cards/ADD'
 const REMOVE = 'cards/REMOVE'
 
@@ -8,6 +9,11 @@ const REMOVE = 'cards/REMOVE'
 // loads one or more cards to the state
 const load = (cards) => ({
     type: LOAD,
+    cards: cards
+})
+
+const deckLoad = (cards) => ({
+    type: DECK_LOAD,
     cards: cards
 })
 
@@ -45,7 +51,7 @@ export const getDeckCards = (deckId) => async (dispatch) => {
     if (res.ok) {
         const { cards } = await res.json()
         // console.log('*** DECK CARDS - THUNK ***', cards)
-        dispatch(load(cards))
+        dispatch(deckLoad(cards))
         return cards
     }
 }
@@ -115,6 +121,19 @@ export default function cardsReducer(state = initialState, { type, cards }) {
     switch (type) {
         case LOAD:
             const allCards = {}
+            if (cards) {
+                cards.forEach(card => {
+                    allCards[card.id] = card
+                })
+            }
+
+            return {
+                ...state,
+                ...allCards
+            };
+
+        case DECK_LOAD:
+            const allDeckCards = {}
             if (cards) {
                 cards.forEach(card => {
                     allCards[card.id] = card
