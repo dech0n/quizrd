@@ -6,6 +6,7 @@ import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
 
 // TODO: use local storage to save user's place in the deck when they refresh
+// TODO: figure out why state update is delayed. Maybe need to create a new case where existing state and new items are loaded (excl getUserDecks)
 function StudyDeck() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
@@ -33,7 +34,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return deck.cards !== [] && !cards["empty"] ? (
+    return !cards["empty"] ? (
         <>
             {console.log('*** CARD ***', cards[cardsIndex - 1])}
             {console.log('*** CARD INDEX ***', cardsIndex, "-1")}
@@ -44,17 +45,6 @@ function StudyDeck() {
                 <button type="button">Preview Deck</button> {/* Brings up modal to preview both sides of every card */}
             </div>
             <div id='deck-study-flashcards'>
-                {/***   use a separate component here ???
-                 * useState above for cardId,
-                 * send to flashcard component as prop,
-                 * increment/decrement (setCardId) every time arrow is clicked,
-                 * set conditional render:
-                 *   - previous arrow: cardId > 1
-                 *   - next arrow: cardId < cards.length
-                 * get initial cardId from useParams (or just start at 1)   ***/}
-                {/* "Previous" button here */}
-                {/* render one card at a time */}
-                {/* "Next" button here */}
                 {cardsIndex > 0 ?
                     <button
                         type='button'
@@ -64,7 +54,7 @@ function StudyDeck() {
                     </button> : null
                 }
                 <Card card={cards[cardsIndex]} />
-                {cardsIndex < deck.cards?.length - 1 ? <button
+                {cardsIndex < cards.length - 1 ? <button
                     type='button'
                     onClick={handleNext}
                 >
