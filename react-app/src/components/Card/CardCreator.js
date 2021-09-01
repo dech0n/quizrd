@@ -8,19 +8,30 @@ import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
 import CardForm from './CardForm'
 import CardList from './CardList'
+import CardPreview from './CardPreview'
+
+
+/*
+CARD PREVIEW logic... hopefully
+
+CardPreview is populated by what is in the card form, so...
+CardForm will either take what the user types, or...
+the values from whatever card has been clicked in CardList.
+
+useState will help with this.
+*/
+
 
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
-    // const [deck] = Object.values(useSelector(state => state.decks))
-    // const cards = Object.values(useSelector(state => state.cards))
     const cards = useSelector(state => state.cards)
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
+    const [cardId, setCardId] = useState()
 
-    const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
     // TODO: Create handleDelete for card delete buttons
@@ -71,20 +82,7 @@ function CardCreator() {
                 </div>
                 <div id='card-preview'>
                     <h2>Card Preview</h2>
-                    <h3>FRONT</h3>
-                    <div className='card-preview-front'>
-                        <div className='card-front card-creator-card-front'>
-                            {/* {card.front_image ? <div className={frontImageClasses}>{card.front_image}</div> : null} */}
-                            {/* {card.front_text} */}
-                        </div>
-                    </div>
-                    <h3>BACK</h3>
-                    <div className='card-preview-back'>
-                        <div className='card-back card-creator-card-back'>
-                            {/* {card.back_image ? <div className={backImageClasses}>{card.back_image}</div> : null} */}
-                            {/* {card.back_text} */}
-                        </div>
-                    </div>
+                    <CardPreview />
                 </div>
                 <div id='card-creator-user-input'>
                     <h2>Form and Buttons</h2>

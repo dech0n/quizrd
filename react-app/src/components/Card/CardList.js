@@ -1,6 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
+// TODO: Create click handler for li.card-creator-card that sets the cardId to be used in card preview.
 function CardList({ cards }) {
+    const [cardId, setCardId] = useState()
+
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     return (
         <>
