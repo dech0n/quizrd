@@ -33,7 +33,7 @@ export const getOneCard = (cardId) => async (dispatch) => {
     if (res.ok) {
         const card = await res.json()
         dispatch(load([card])) // must be an array for LOAD case in reducer
-        // return card
+        return card
     }
 }
 
@@ -46,7 +46,7 @@ export const getDeckCards = (deckId) => async (dispatch) => {
         const { cards } = await res.json()
         // console.log('*** DECK CARDS - THUNK ***', cards)
         dispatch(load(cards))
-        // return cards
+        return cards
     }
 }
 
