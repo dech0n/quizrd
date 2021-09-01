@@ -53,7 +53,7 @@ export const getDeckCards = (deckId) => async (dispatch) => {
 
 // create a card
 export const createCard = (cardData) => async (dispatch) => {
-    const res = await fetch(`/cards`, {
+    const res = await fetch(`/api/cards`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
