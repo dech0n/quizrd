@@ -94,11 +94,36 @@ li.deck-manager-row:hover {
 
 /* Deck study page */
 
+#deck-study-page-container {
+    margin: 0 20rem 0;
+}
+
+#spacer-div {
+    width: 8rem
+}
+#deck-study-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 5rem 0;
+}
+
+#deck-details {
+    position: relative;
+    text-align: center;
+    justify-content: center;
+}
+
+.deck-study-actions {
+    align-self: flex-end;
+    /* align-self: center; */
+}
+
 .hidden-btn {
     visibility: hidden;
 }
 
-#deck-study-flashcards {
+#deck-study-flashcard {
     display: flex;
     justify-content: center;
+    /* border: 1px solid rebeccapurple; */
 }

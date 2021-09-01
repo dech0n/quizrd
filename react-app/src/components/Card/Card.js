@@ -7,6 +7,10 @@ function Card({ card, deckId }) {
     const dispatch = useDispatch()
     const [flipCard, setFlipCard] = useState(true)
 
+    useEffect(() => {
+        setFlipCard(true)
+    }, [card])
+
     return card ? (
         <>
             {/* <h1>The Current Flashcard</h1> */}

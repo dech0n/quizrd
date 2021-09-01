@@ -31,8 +31,9 @@ function StudyDeck() {
     }, [dispatch, deckId])
 
     return deck && cards ? (
-        <>
+        <div id='deck-study-page-container'>
             <div id='deck-study-header'>
+                <div id='spacer-div' />
                 <div id='deck-details'>
                     <h1>{deck.title}</h1>
                     <p>{deck.description}</p>
@@ -42,7 +43,7 @@ function StudyDeck() {
                     <button type="button">Preview Deck</button> {/* Bring up modal to preview both sides of every card */}
                 </div>
             </div>
-            <div id='deck-study-flashcards'>
+            <div id='deck-study-flashcard'>
                 {cardsIndex > 0 ?
                     <button
                         type='button'
@@ -66,7 +67,7 @@ function StudyDeck() {
                     <button className='hidden-btn'>Next</button>
                 }
             </div>
-        </>
+        </div>
     ) : (
         <>
             <h3>Loading...</h3>

@@ -20,7 +20,17 @@
     display: flex;
     border: 1px solid darkgrey;
     justify-content: center;
+    height: 15rem;
+    width: 15rem;
+    margin: 0 3rem;
+    border-radius: 1rem;
+    align-items: center;
+
 }
+
+/* #study-card-front, #study-card-back {
+
+} */
 
 #no-cards {
     text-align: center;
