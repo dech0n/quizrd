@@ -16,9 +16,7 @@ function StudyDeck() {
     const [cardsIndex, setCardsIndex] = useState(0) // number within deck sequence, not card.id -- can be used as an index!!!! (just remember -1)
 
     // console.log('*** STUDY DECK ***', deck)
-    console.log('*** STUDY CARDS ***', cards)
-
-    // TODO: create handleNext and handlePrev click handlers
+    // console.log('*** STUDY CARDS ***', cards)
 
     const handlePrev = () => {
         setCardId(cardId - 1)
@@ -35,7 +33,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return deck && !cards["empty"] ? (
+    return deck.cards !== [] && !cards["empty"] ? (
         <>
             {console.log('*** CARD ***', cards[cardsIndex - 1])}
             {console.log('*** CARD INDEX ***', cardsIndex, "-1")}
@@ -66,7 +64,7 @@ function StudyDeck() {
                     </button> : null
                 }
                 <Card card={cards[cardsIndex]} />
-                {cardsIndex < deck.cards?.length ? <button
+                {cardsIndex < deck.cards?.length - 1 ? <button
                     type='button'
                     onClick={handleNext}
                 >
@@ -76,8 +74,8 @@ function StudyDeck() {
         </>
     ) : (
         <>
-            <h1>Loading...</h1>
-            <p>If you've been waiting a while, there may have been an error.<br />Click <Link to='/'>here</Link> and try again.</p>
+            <h3>There aren't any cards in this deck!</h3>
+            <p>Try adding a few <Link to={`/decks/${deck.id}/cards/add`}>here</Link>.</p>
         </>
     )
 }
