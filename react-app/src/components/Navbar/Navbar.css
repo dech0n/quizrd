@@ -21,6 +21,10 @@
     color: rgb(53, 226, 142)
 }
 
+.username:hover {
+    text-decoration: underline;
+}
+
 nav.navbar-container {
     display: flex;
     /* justify-content: space-between; */
