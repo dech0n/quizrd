@@ -4,6 +4,7 @@ import { useParams, Link } from 'react-router-dom'
 import { getDeckCards } from '../../store/cards';
 import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
+import './Deck.css'
 
 // TODO: use local storage to save user's place in the deck when they refresh
 function StudyDeck() {
@@ -44,28 +45,37 @@ function StudyDeck() {
                 </div>
             </div>
             <div id='deck-study-flashcard'>
-                {cardsIndex > 0 ?
-                    <button
-                        type='button'
-                        onClick={handlePrev}
-                    >
-                        Previous
-                    </button>
-                    : // else
-                    // invisible dead button to preserve spacing
-                    <button className='hidden-btn'>Previous</button>
-                }
+                <div className='study-card-action-btn-container'>
+                    {cardsIndex > 0 ?
+                        <button
+                            id='study-card-prev-btn'
+                            className='study-card-action-btn'
+                            type='button'
+                            onClick={handlePrev}
+                        >
+                            Previous
+                        </button>
+                        : // else
+                        // invisible dead button to preserve spacing
+                        <button className='hidden-btn'>Previous</button>
+                    }
+                </div>
                 <Card card={cards[cardsIndex]} deckId={deckId} />
-                {cardsIndex < cards.length - 1 ? <button
-                    type='button'
-                    onClick={handleNext}
-                >
-                    Next
-                </button>
-                    :
-                    // invisible dead button to preserve spacing
-                    <button className='hidden-btn'>Next</button>
-                }
+                <div className='study-card-action-btn-container'>
+                    {cardsIndex < cards.length - 1 ?
+                        <button
+                            id='study-card-next-btn'
+                            className='study-card-action-btn'
+                            type='button'
+                            onClick={handleNext}
+                        >
+                            Next
+                        </button>
+                        :
+                        // invisible dead button to preserve spacing
+                        <button className='hidden-btn'>Next</button>
+                    }
+                </div>
             </div>
         </div>
     ) : (

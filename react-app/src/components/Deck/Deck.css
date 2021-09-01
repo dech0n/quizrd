@@ -118,6 +118,17 @@ li.deck-manager-row:hover {
     /* align-self: center; */
 }
 
+.study-card-action-btn-container {
+    display: flex;
+    align-items: center;
+}
+
+button.study-card-action-btn {
+    /* position: relative; */
+    height: 2rem;
+    width: 5rem;
+}
+
 .hidden-btn {
     visibility: hidden;
 }
