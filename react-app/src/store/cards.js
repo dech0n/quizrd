@@ -141,7 +141,6 @@ export default function cardsReducer(state = initialState, { type, cards }) {
             }
 
             return {
-                ...state,
                 ...allCards
             };
 
