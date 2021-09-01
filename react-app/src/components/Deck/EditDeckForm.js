@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateDeck } from '../../store/decks'
 import './Deck.css'
 
-// TODO: Create submit handler for deck update form
+// TODO: Style errors section
 function EditDeckForm({ deck, hideThis }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)

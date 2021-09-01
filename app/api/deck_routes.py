@@ -7,7 +7,6 @@ from flask_login import current_user, login_required
 
 deck_routes = Blueprint('decks', __name__)
 
-# TODO: add PUT method & logic
 # TODO: make sure API is restful
 
 
