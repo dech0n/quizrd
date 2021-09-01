@@ -26,6 +26,22 @@ function CardCreator() {
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
+    const updateFrontText = (e) => {
+        setFrontText(e.target.value)
+    }
+
+    const updateBackText = (e) => {
+        setBackText(e.target.value)
+    }
+
+    const updateFrontImage = (e) => {
+        setFrontImage(e.target.value)
+    }
+
+    const updateBackImage = (e) => {
+        setBackImage(e.target.value)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const cardData = {
@@ -116,18 +132,35 @@ function CardCreator() {
                     <form
                         className='card-form'
                         onSubmit={handleSubmit}
-                        >
-                        <input type='text' />
+                    >
+                        <input
+                            type='text'
+                            value={frontText}
+                            onChange={updateFrontText}
+                        />
                         <label>Front of flashcard</label>
 
-                        <input type='text' />
+                        <input
+                            type='text'
+                            value={frontImage}
+                            onChange={updateFrontImage}
+                        />
                         <label>Front image (optional)</label>
 
-                        <input type='text' />
+                        <input
+                            type='text'
+                            value={backText}
+                            onChange={updateBackText}
+                        />
                         <label>Back of flashcard</label>
 
-                        <input type='text' />
+                        <input
+                            type='text'
+                            value={backImage}
+                            onChange={updateBackImage}
+                        />
                         <label>Back image (optional)</label>
+
                         <button type='submit'>+ Add to Deck</button>
                         <button type='button'>Finish</button>
                     </form>
