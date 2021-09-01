@@ -26,7 +26,8 @@ function CardCreator() {
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault()
         const cardData = {
             deck_id: deckId,
             front_text: frontText,
@@ -112,7 +113,10 @@ function CardCreator() {
                 </div>
                 <div id='card-creator-user-input'>
                     <h2>Form and Buttons</h2>
-                    <form className='card-form'>
+                    <form
+                        className='card-form'
+                        onSubmit={handleSubmit}
+                        >
                         <input type='text' />
                         <label>Front of flashcard</label>
 
