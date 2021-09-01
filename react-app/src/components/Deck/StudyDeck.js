@@ -15,7 +15,7 @@ function StudyDeck() {
     const [cardsIndex, setCardsIndex] = useState(0)
 
     // console.log('*** STUDY DECK ***', deck)
-    console.log('*** STUDY CARDS ***', cards)
+    // console.log('*** STUDY CARDS ***', cards)
 
     const handlePrev = () => {
         setCardsIndex(cardsIndex - 1)
@@ -33,12 +33,14 @@ function StudyDeck() {
     return deck && cards ? (
         <>
             <div id='deck-study-header'>
-                {/* <h1>{deck.title}</h1>
-                <p>{deck.description}</p> */}
-            <div className='deck-study-actions'>
-                {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
-                <button type="button">Preview Deck</button> {/* Brings up modal to preview both sides of every card */}
-            </div>
+                <div id='deck-details'>
+                    <h1>{deck.title}</h1>
+                    <p>{deck.description}</p>
+                </div>
+                <div className='deck-study-actions'>
+                    {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
+                    <button type="button">Preview Deck</button> {/* Bring up modal to preview both sides of every card */}
+                </div>
             </div>
             <div id='deck-study-flashcards'>
                 {cardsIndex > 0 ?
@@ -59,9 +61,9 @@ function StudyDeck() {
                 >
                     Next
                 </button>
-                :
-                // invisible dead button to preserve spacing
-                <button className='hidden-btn'>Next</button>
+                    :
+                    // invisible dead button to preserve spacing
+                    <button className='hidden-btn'>Next</button>
                 }
             </div>
         </>
@@ -69,7 +71,7 @@ function StudyDeck() {
         <>
             <h3>Loading...</h3>
             <p>There may not be any cards in this deck.<br />
-            Try editing it <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</p>
+                Try editing it <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</p>
         </>
     )
 }
