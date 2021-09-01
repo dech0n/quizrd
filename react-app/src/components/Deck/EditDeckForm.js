@@ -36,9 +36,9 @@ function EditDeckForm({ deck, showThis }) {
         const udpatedDeck = await dispatch(updateDeck(deck.id, updatedDeckData))
         if (udpatedDeck.length) { // implies an array instead of an object
             setErrors(udpatedDeck)
+        } else {
+            showThis(false)
         }
-
-        if(!errors) showThis(false)
     }
 
     return deck && deck.owner_id === user.id ? (
