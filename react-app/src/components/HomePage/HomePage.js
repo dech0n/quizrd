@@ -24,9 +24,6 @@ function HomePage() {
     }
 
     useEffect(() => {
-        // (async () => {
-        //     await setDecks(dispatch(getUserDecks(user.id)))
-        // })()
             dispatch(getUserDecks(user.id))
     }, [dispatch, user.id])
 

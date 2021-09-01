@@ -96,7 +96,7 @@ function CardCreator() {
             <div id='card-creator'>
                 <h1>Card Creator</h1>
                 <div id='cards'>
-                    {cards && !cards["empty"] ? (
+                    {cards && !!cards["empty"] ? (
                         <>
                             <h3>The Cards</h3>
                             <ul id='deck-cards-list'>
