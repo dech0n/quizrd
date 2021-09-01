@@ -6,6 +6,7 @@ import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
 
 // TODO: use local storage to save user's place in the deck when they refresh
+// TODO: figure out why state update is delayed. Maybe need to create a new case where existing state and new items are loaded (excl getUserDecks)
 function StudyDeck() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
