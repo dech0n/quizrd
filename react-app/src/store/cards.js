@@ -136,12 +136,12 @@ export default function cardsReducer(state = initialState, { type, cards }) {
             const allDeckCards = {}
             if (cards) {
                 cards.forEach(card => {
-                    allCards[card.id] = card
+                    allDeckCards[card.id] = card
                 })
             }
 
             return {
-                ...allCards
+                ...allDeckCards
             };
 
         case ADD:
