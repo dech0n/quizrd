@@ -2,12 +2,13 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import { getOneDeck, updateDeck } from '../../store/decks'
-import { getDeckCards } from '../../store/cards'
+import { createCard, getDeckCards } from '../../store/cards'
 import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
 
 // TODO: Create submit handler for deck update form
+// TODO: Create updaters for fields
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
@@ -17,11 +18,27 @@ function CardCreator() {
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
+    const [frontText, setFrontText] = useState()
+    const [backText, setBackText] = useState()
+    const [frontImage, setFrontImage] = useState()
+    const [backImage, setBackImage] = useState()
 
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
-    console.log('*** DECK IN CARD CREATOR ***', deck)
+    const handleSubmit = async () => {
+        const cardData = {
+            deck_id: deckId,
+            front_text: frontText,
+            back_text: backText,
+            front_image: frontImage,
+            back_image: backImage
+        }
+
+        await dispatch(createCard(cardData))
+    }
+
+    // console.log('*** DECK IN CARD CREATOR ***', deck)
     // console.log('*** CARDS IN CARD CREATOR ***', cards)
 
     useEffect(() => {
