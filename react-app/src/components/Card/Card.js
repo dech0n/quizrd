@@ -4,13 +4,8 @@ import { getOneCard } from '../../store/cards'
 
 // TODO: Add conditional rendering for images
 function Card({ card }) {
-    // const dispatch = useDispatch()
-    // const card = useSelector(state => state.cards[cardId])
+    const dispatch = useDispatch()
     const [flipCard, setFlipCard] = useState(true)
-
-    // useEffect(() => {
-    //     dispatch(getOneCard(cardId))
-    // }, [dispatch, cardId])
 
     return card ? (
         <>
