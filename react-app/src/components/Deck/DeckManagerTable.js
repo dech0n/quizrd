@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
+// TODO: separate into components
 function DeckManagerTable({ decks, handleDelete }) {
     const history = useHistory()
     const handleClick = (deckId) => history.push(`/decks/${deckId}/cards/add`)
