@@ -142,6 +142,11 @@ function CardCreator() {
                         className='card-form'
                         onSubmit={handleSubmit}
                     >
+                        <div className='card-form-errors form-errors'>
+                            {errors.map(error => (
+                                <div>{error}</div>
+                            ))}
+                        </div>
                         <input
                             type='text'
                             value={frontText}
