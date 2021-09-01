@@ -6,26 +6,22 @@ import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
 
 // TODO: use local storage to save user's place in the deck when they refresh
-// TODO: figure out why state update is delayed. Maybe need to create a new case where existing state and new items are loaded (excl getUserDecks)
 function StudyDeck() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
     const user = useSelector(state => state.session.user)
     const deck = useSelector(state => state.decks[deckId])
-    const cards = Object.values(useSelector(state => state.cards))
-    const [cardId, setCardId] = useState()
+    const cards = useSelector(state => Object.values(state.cards))
     const [cardsIndex, setCardsIndex] = useState(0)
 
     // console.log('*** STUDY DECK ***', deck)
     // console.log('*** STUDY CARDS ***', cards)
 
     const handlePrev = () => {
-        setCardId(cardId - 1)
         setCardsIndex(cardsIndex - 1)
     }
 
     const handleNext = () => {
-        setCardId(cardId + 1)
         setCardsIndex(cardsIndex + 1)
     }
 
@@ -37,8 +33,8 @@ function StudyDeck() {
     return !cards["empty"] ? (
         <>
             <div id='deck-study-header'>
-                <h1>{deck.title}</h1>
-                <p>{deck.description}</p>
+                {/* <h1>{deck.title}</h1>
+                <p>{deck.description}</p> */}
             <div className='deck-study-actions'>
                 {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
                 <button type="button">Preview Deck</button> {/* Brings up modal to preview both sides of every card */}
