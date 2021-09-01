@@ -36,6 +36,9 @@ def cards():
                 front_image=form.data['front_image'],
                 back_image=form.data['back_image']
             )
+
+            db.session.add(card)
+            db.session.commit()
             return card.to_dict()
         return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
