@@ -12,7 +12,7 @@ function StudyDeck() {
     const { deckId } = useParams()
     const user = useSelector(state => state.session.user)
     const deck = useSelector(state => state.decks[deckId])
-    const cards = useSelector(state => Object.values(state.cards))
+    const cards = useSelector(state => state.cards)
     const [cardsIndex, setCardsIndex] = useState(0)
 
     // console.log('*** STUDY DECK ***', deck)
@@ -31,7 +31,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return deck && cards ? (
+    return deck && !("empty" in cards) ? (
         <div id='deck-study-page-container'>
             <div id='deck-study-header'>
                 <div id='spacer-div' />
@@ -62,7 +62,7 @@ function StudyDeck() {
                         >Previous</button>
                     }
                 </div>
-                <Card card={cards[cardsIndex]} deckId={deckId} />
+                <Card card={Object.values(cards)[cardsIndex]} deckId={deckId} />
                 <div className='study-card-action-btn-container'>
                     {cardsIndex < cards.length - 1 ?
                         <button
@@ -84,11 +84,10 @@ function StudyDeck() {
             </div>
         </div>
     ) : (
-        <>
-            <h3>Loading...</h3>
-            <p>There may not be any cards in this deck.<br />
-                Try editing it <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</p>
-        </>
+            <div id='no-cards'>
+                <h2>It looks like the are no cards in this deck!</h2>
+                <h3>Try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
+            </div>
     )
 }
 

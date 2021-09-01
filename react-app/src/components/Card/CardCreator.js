@@ -7,8 +7,6 @@ import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
 
-// TODO: Create submit handler for deck update form
-// TODO: Create updaters for fields
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
@@ -27,6 +25,10 @@ function CardCreator() {
 
     const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
+
+    // TODO: Create handleDelete for card delete buttons
+    // TODO: Create handleEdit for edit buttons (or conditional render, or modal)
+    // TODO: create a click handler for the Finish button (just redirect ?)
 
     const updateFrontText = (e) => {
         setFrontText(e.target.value)
@@ -73,16 +75,17 @@ function CardCreator() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
+    // TODO: Hide front/back image fields in form until AWS is implemented
     return deck && deck.owner_id === user.id && cards ? (
         <div id='card-creator-page-container'>
             <div id='conditional-render-deck-details-and-form'>
                 {showDeckEditForm ? (
-                    <EditDeckForm deck={deck} hideThis={setShowDeckEditForm} />
+                    <EditDeckForm deck={deck} showThis={setShowDeckEditForm} />
                 ) : (
                     <>
                         <div className='card-creator-header deck-details'>
                             <h1 id='deck-title'>{deck.title}</h1>
-                            <h3 id='deck-descripiton'>{deck.description}</h3>
+                            <h4 id='deck-description'>{deck.description}</h4>
                             {/* deck image goes here */}
                             <button
                                 className='edit-deck-btn'
@@ -97,7 +100,7 @@ function CardCreator() {
             <div id='card-creator'>
                 <h1>Card Creator</h1>
                 <div id='cards'>
-                    {cards && !("empty" in cards) ? (
+                    {!("empty" in cards) ? (
                         <>
                             <h3>The Cards</h3>
                             <ul id='deck-cards-list'>
