@@ -4,7 +4,7 @@ import { getOneCard } from '../../store/cards'
 
 // TODO: Add conditional rendering for images
 function Card({ card }) {
-    // const dispatch = useDispatch()
+    const dispatch = useDispatch()
     // const card = useSelector(state => state.cards[cardId])
     const [flipCard, setFlipCard] = useState(true)
 

@@ -5,6 +5,7 @@ import { getDeckCards } from '../../store/cards';
 import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
 
+// TODO: use local storage to save user's place in the deck when they refresh
 function StudyDeck() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
@@ -12,7 +13,7 @@ function StudyDeck() {
     const deck = useSelector(state => state.decks[deckId])
     const cards = Object.values(useSelector(state => state.cards))
     const [cardId, setCardId] = useState()
-    const [cardNum, setCardNum] = useState(1) // number within deck sequence, not card.id
+    const [cardsIndex, setCardsIndex] = useState(0) // number within deck sequence, not card.id -- can be used as an index!!!! (just remember -1)
 
     // console.log('*** STUDY DECK ***', deck)
     console.log('*** STUDY CARDS ***', cards)
@@ -21,12 +22,12 @@ function StudyDeck() {
 
     const handlePrev = () => {
         setCardId(cardId - 1)
-        setCardNum(cardNum - 1)
+        setCardsIndex(cardsIndex - 1)
     }
 
     const handleNext = () => {
         setCardId(cardId + 1)
-        setCardNum(cardNum + 1)
+        setCardsIndex(cardsIndex + 1)
     }
 
     useEffect(() => {
@@ -34,10 +35,10 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return !cards["empty"] ? (
+    return deck && !cards["empty"] ? (
         <>
-            {console.log('*** PRE CARD ID ***', cardId)}
-            {console.log('*** PRE CARD ID ***', cardId)}
+            {console.log('*** CARD ***', cards[cardsIndex - 1])}
+            {console.log('*** CARD INDEX ***', cardsIndex, "-1")}
             <h1>Study Deck Page</h1>
             {/* Add deck tile (and desc?) somewhere */}
             <div className='deck-study-actions'>
@@ -56,7 +57,7 @@ function StudyDeck() {
                 {/* "Previous" button here */}
                 {/* render one card at a time */}
                 {/* "Next" button here */}
-                {cardNum > 1 ?
+                {cardsIndex > 0 ?
                     <button
                         type='button'
                         onClick={handlePrev}
@@ -64,12 +65,12 @@ function StudyDeck() {
                         Previous
                     </button> : null
                 }
-                <Card card={cards[cardId]} />
-                {cardNum < cards.length ? <button
+                <Card card={cards[cardsIndex]} />
+                {cardsIndex < deck.cards?.length ? <button
                     type='button'
                     onClick={handleNext}
                 >
-                    next
+                    Next
                 </button> : null}
             </div>
         </>
