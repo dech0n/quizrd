@@ -30,7 +30,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return !cards["empty"] ? (
+    return deck && !!cards["empty"] ? (
         <>
             <div id='deck-study-header'>
                 {/* <h1>{deck.title}</h1>
@@ -67,8 +67,8 @@ function StudyDeck() {
         </>
     ) : (
         <>
-            <h3>There aren't any cards in this deck!</h3>
-            <p>Try adding a few <Link to={`/decks/${deck.id}/cards/add`}>here</Link>.</p>
+            <h3>Loading...</h3>
+            <p>There may not be any cards in this deck.<br />Try editing it <Link to={`/decks/${deck?.id}/cards/add`}>here</Link>.</p>
         </>
     )
 }
