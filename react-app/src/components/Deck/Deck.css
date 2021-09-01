@@ -107,6 +107,14 @@ li.deck-manager-row:hover {
     margin: 0 0 5rem 0;
 }
 
+#deck-title {
+    color: rgb(149, 85, 245);
+}
+
+#deck-description {
+    font-weight: 100;
+}
+
 #deck-details {
     position: relative;
     text-align: center;

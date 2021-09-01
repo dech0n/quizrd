@@ -5,10 +5,6 @@
     align-items: center;
 }
 
-#deck-description {
-    font-weight: 100;
-}
-
 .edit-deck-btn {
     padding: .5rem 1rem;
     border-radius: 1rem;
@@ -25,7 +21,7 @@
     margin: 0 3rem;
     border-radius: .5rem;
     align-items: center;
-
+    color: rgb(149, 85, 245);
 }
 
 #study-card-front, #study-card-back {

@@ -36,8 +36,8 @@ function StudyDeck() {
             <div id='deck-study-header'>
                 <div id='spacer-div' />
                 <div id='deck-details'>
-                    <h1>{deck.title}</h1>
-                    <p>{deck.description}</p>
+                    <h1 id='deck-title'>{deck.title}</h1>
+                    <p id='deck-description'>{deck.description}</p>
                 </div>
                 <div className='deck-study-actions'>
                     {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
@@ -57,7 +57,9 @@ function StudyDeck() {
                         </button>
                         : // else
                         // invisible dead button to preserve spacing
-                        <button className='hidden-btn'>Previous</button>
+                        <button
+                            className='hidden-btn study-card-action-btn'
+                        >Previous</button>
                     }
                 </div>
                 <Card card={cards[cardsIndex]} deckId={deckId} />
@@ -73,7 +75,10 @@ function StudyDeck() {
                         </button>
                         :
                         // invisible dead button to preserve spacing
-                        <button className='hidden-btn'>Next</button>
+                        <button className='hidden-btn study-card-action-btn'
+                        >
+                            Next
+                        </button>
                     }
                 </div>
             </div>
