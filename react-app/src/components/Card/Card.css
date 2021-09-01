@@ -21,3 +21,11 @@
     border: 1px solid darkgrey;
     justify-content: center;
 }
+
+#no-cards {
+    text-align: center;
+}
+
+#no-cards a:hover {
+    text-decoration: underline;
+}
