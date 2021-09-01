@@ -1,18 +1,29 @@
 // ACTION CONSTANTS
 const LOAD = 'decks/LOAD'
+const USER_LOAD = 'decks/USER_LOAD'
 const ADD = 'decks/ADD'
 const REMOVE = 'decks/REMOVE'
 
 // ACTION CREATORS
+// loads all payload decks into state
 const load = (decks) => ({
     type: LOAD,
     decks
 })
 
+// prevents state accumulation between users
+const userLoad = (decks) => ({
+    type: USER_LOAD,
+    decks
+})
+
+// adds decks to state
 const add = (decks) => ({
     type: ADD,
     decks
 })
+
+// removes decks from state
 const remove = (decks) => ({
     type: REMOVE,
     decks
@@ -41,7 +52,7 @@ export const getUserDecks = (userId) => async (dispatch) => {
 
     if (res.ok) {
         const { decks } = await res.json()
-        dispatch(load(decks))
+        dispatch(userLoad(decks))
     }
 }
 
@@ -138,7 +149,20 @@ export default function decksReducer(state = initialState, { type, decks }) {
                 })
             }
             return {
+                ...state,
                 ...allDecks
+            }
+
+        case USER_LOAD:
+            const allUserDecks = {}
+            if (decks) {
+                decks.forEach(deck => {
+                    // console.log('*** DECK ADDED TO STATE ***', deck)
+                    allUserDecks[deck.id] = deck
+                })
+            }
+            return {
+                ...allUserDecks
             }
 
         case ADD:
