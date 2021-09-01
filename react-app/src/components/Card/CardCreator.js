@@ -14,7 +14,8 @@ function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
     // const [deck] = Object.values(useSelector(state => state.decks))
-    const cards = Object.values(useSelector(state => state.cards))
+    // const cards = Object.values(useSelector(state => state.cards))
+    const cards = useSelector(state => state.cards)
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
@@ -96,12 +97,12 @@ function CardCreator() {
             <div id='card-creator'>
                 <h1>Card Creator</h1>
                 <div id='cards'>
-                    {cards && !!cards["empty"] ? (
+                    {cards && !("empty" in cards) ? (
                         <>
                             <h3>The Cards</h3>
                             <ul id='deck-cards-list'>
                                 {/* Only show the front of cards here -- it's just the list */}
-                                {cards.map(card => (
+                                {Object.values(cards).map(card => ( //!
                                     <li className='card card-creator-card'>
                                         <div className='card-front card-creator-card-front'>
                                             {card.front_image ? <div className={frontImageClasses}>{card.front_image}</div> : null}
