@@ -64,7 +64,7 @@ function StudyDeck() {
                 </div>
                 <Card card={Object.values(cards)[cardsIndex]} deckId={deckId} />
                 <div className='study-card-action-btn-container'>
-                    {cardsIndex < cards.length - 1 ?
+                    {cardsIndex < Object.values(cards).length - 1 ?
                         <button
                             id='study-card-next-btn'
                             className='study-card-action-btn'
