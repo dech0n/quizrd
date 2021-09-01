@@ -35,8 +35,6 @@ function StudyDeck() {
 
     return deck.cards !== [] && !cards["empty"] ? (
         <>
-            {console.log('*** CARD ***', cards[cardsIndex - 1])}
-            {console.log('*** CARD INDEX ***', cardsIndex, "-1")}
             <h1>Study Deck Page</h1>
             {/* Add deck tile (and desc?) somewhere */}
             <div className='deck-study-actions'>
