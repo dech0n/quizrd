@@ -71,7 +71,7 @@ function CardCreator() {
                 }
             </div>
             <div id='card-creator'>
-                <h1>Card Creator</h1>
+                {/* <h1>Card Creator</h1> */}
                 <div id='cards'>
                     {!("empty" in cards) ? (
                         <CardList cards={Object.values(cards)} />
@@ -85,7 +85,6 @@ function CardCreator() {
                     <CardPreview />
                 </div>
                 <div id='card-creator-user-input'>
-                    <h2>Form and Buttons</h2>
                     <CardForm deckId={deckId} />
                 </div>
             </div>

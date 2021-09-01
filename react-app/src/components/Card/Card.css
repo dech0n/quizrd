@@ -3,6 +3,11 @@
     margin: 0 20rem 0;
 }
 
+#card-creator {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card-creator-header {
     display: flex;
     flex-direction: column;

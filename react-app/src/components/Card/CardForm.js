@@ -51,6 +51,8 @@ function CardForm({ deckId }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
+            <h2>Flashcard Form</h2>
+
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
                     <div>{error}</div>
@@ -117,7 +119,7 @@ function CardForm({ deckId }) {
                 Back image (optional)
             </label>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>+ Add to Deck</button>
+                <button type='submit'>Update Deck</button>
                 <button type='button'>Finish</button>
             </div>
         </form>
