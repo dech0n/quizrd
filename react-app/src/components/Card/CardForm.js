@@ -74,7 +74,7 @@ function CardForm({ deckId }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container'
+                className='form-field-container hidden'
             >
                 <input
                     className='form-input'
@@ -82,12 +82,12 @@ function CardForm({ deckId }) {
                     value={frontImage}
                     onChange={updateFrontImage}
                 />
+                <label
+                    className='form-label'
+                >
+                    Front image (optional)
+                </label>
             </div>
-            <label
-                className='form-label'
-            >
-                Front image (optional)
-            </label>
             <div
                 className='form-field-container'
             >
@@ -97,14 +97,14 @@ function CardForm({ deckId }) {
                     value={backText}
                     onChange={updateBackText}
                 />
+                <label
+                    className='form-label'
+                >
+                    Back of flashcard
+                </label>
             </div>
-            <label
-                className='form-label'
-            >
-                Back of flashcard
-            </label>
             <div
-                className='form-field-container'
+                className='form-field-container hidden'
             >
                 <input
                     className='form-input'
@@ -112,12 +112,12 @@ function CardForm({ deckId }) {
                     value={backImage}
                     onChange={updateBackImage}
                 />
+                <label
+                    className='form-label'
+                >
+                    Back image (optional)
+                </label>
             </div>
-            <label
-                className='form-label'
-            >
-                Back image (optional)
-            </label>
             <div className='form-action-btns card-form-action-btns'>
                 <button type='submit'>Update Deck</button>
                 <button type='button'>Finish</button>
