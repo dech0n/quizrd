@@ -7,6 +7,7 @@ import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
 import CardForm from './CardForm'
+import CardList from './CardList'
 
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
@@ -62,23 +63,7 @@ function CardCreator() {
                 <h1>Card Creator</h1>
                 <div id='cards'>
                     {!("empty" in cards) ? (
-                        <>
-                            <h3>The Cards</h3>
-                            <ul id='deck-cards-list'>
-                                {/* Only show the front of cards here -- it's just the list */}
-                                {Object.values(cards).map(card => ( //!
-                                    <li className='card card-creator-card'>
-                                        <div className='card-front card-creator-card-front'>
-                                            {card.front_image ? <div className={frontImageClasses}>{card.front_image}</div> : null}
-                                            {card.front_text}
-                                            <button type='button'>Edit</button>
-                                            <button type='button'>Delete</button>
-                                        </div>
-                                    </li>
-                                ))
-                                }
-                            </ul>
-                        </>
+                        <CardList cards={Object.values(cards)} />
                     ) : (
                         <h3>There are no cards in this deck!</h3>
                     )

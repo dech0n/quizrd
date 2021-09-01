@@ -1,3 +1,8 @@
+/* Card Creator elements & components */
+#card-creator-page-container {
+    margin: 0 20rem 0;
+}
+
 .card-creator-header {
     display: flex;
     flex-direction: column;
