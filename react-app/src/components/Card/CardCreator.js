@@ -18,6 +18,7 @@ function CardCreator() {
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
+    const [errors, setErrors] = useState([])
     const [frontText, setFrontText] = useState()
     const [backText, setBackText] = useState()
     const [frontImage, setFrontImage] = useState()
@@ -52,7 +53,15 @@ function CardCreator() {
             back_image: backImage
         }
 
-        await dispatch(createCard(cardData))
+        const newCard = await dispatch(createCard(cardData))
+        if (newCard.length) {
+            setErrors(newCard)
+        } else {
+            setFrontText()
+            setFrontImage()
+            setBackText()
+            setBackImage()
+        }
     }
 
     // console.log('*** DECK IN CARD CREATOR ***', deck)
