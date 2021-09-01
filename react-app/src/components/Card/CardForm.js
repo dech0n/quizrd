@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { createCard } from '../../store/cards'
 
+//! 'remove' className adds `display: none` for unfinished features
 function CardForm({ deckId }) {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
@@ -74,7 +75,7 @@ function CardForm({ deckId }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container hidden'
+                className='form-field-container remove'
             >
                 <input
                     className='form-input'
@@ -104,7 +105,7 @@ function CardForm({ deckId }) {
                 </label>
             </div>
             <div
-                className='form-field-container hidden'
+                className='form-field-container remove'
             >
                 <input
                     className='form-input'

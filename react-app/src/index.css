@@ -75,6 +75,10 @@ label.form-label, .auth-label {
     padding: 0px 0 10px 0;
 }
 
-.hidden {
+.hide {
     visibility: hidden;
+}
+
+.remove {
+    display: none;
 }
