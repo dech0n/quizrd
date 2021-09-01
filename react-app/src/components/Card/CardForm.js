@@ -48,45 +48,79 @@ function CardForm({ deckId }) {
     }
     return (
         <form
-                        className='card-form'
-                        onSubmit={handleSubmit}
-                    >
-                        <div className='card-form-errors form-errors'>
-                            {errors.map(error => (
-                                <div>{error}</div>
-                            ))}
-                        </div>
-                        <input
-                            type='text'
-                            value={frontText}
-                            onChange={updateFrontText}
-                        />
-                        <label>Front of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={frontImage}
-                            onChange={updateFrontImage}
-                        />
-                        <label>Front image (optional)</label>
-
-                        <input
-                            type='text'
-                            value={backText}
-                            onChange={updateBackText}
-                        />
-                        <label>Back of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={backImage}
-                            onChange={updateBackImage}
-                        />
-                        <label>Back image (optional)</label>
-
-                        <button type='submit'>+ Add to Deck</button>
-                        <button type='button'>Finish</button>
-                    </form>
+            className='card-form'
+            onSubmit={handleSubmit}
+        >
+            <div className='card-form-errors form-errors'>
+                {errors.map(error => (
+                    <div>{error}</div>
+                ))}
+            </div>
+            <div
+                className='form-field-container'
+            >
+                <input
+                    className='form-input'
+                    type='text'
+                    value={frontText}
+                    onChange={updateFrontText}
+                />
+            </div>
+            <label
+                className='form-label'
+            >
+                Front of flashcard
+            </label>
+            <div
+                className='form-field-container'
+            >
+                <input
+                    className='form-input'
+                    type='text'
+                    value={frontImage}
+                    onChange={updateFrontImage}
+                />
+            </div>
+            <label
+                className='form-label'
+            >
+                Front image (optional)
+            </label>
+            <div
+                className='form-field-container'
+            >
+                <input
+                    className='form-input'
+                    type='text'
+                    value={backText}
+                    onChange={updateBackText}
+                />
+            </div>
+            <label
+                className='form-label'
+            >
+                Back of flashcard
+            </label>
+            <div
+                className='form-field-container'
+            >
+                <input
+                    className='form-input'
+                    type='text'
+                    value={backImage}
+                    onChange={updateBackImage}
+                />
+            </div>
+            <label
+                className='form-label'
+            >
+                Back image (optional)
+            </label>
+            <div className='form-action-btns card-form-action-btns'>
+                <button type='submit'>+ Add to Deck</button>
+                <button type='button'>Finish</button>
+            </div>
+        </form>
     )
 }
 export default CardForm
