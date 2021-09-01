@@ -15,7 +15,7 @@ function StudyDeck() {
     const [cardsIndex, setCardsIndex] = useState(0)
 
     // console.log('*** STUDY DECK ***', deck)
-    // console.log('*** STUDY CARDS ***', cards)
+    console.log('*** STUDY CARDS ***', cards)
 
     const handlePrev = () => {
         setCardsIndex(cardsIndex - 1)
@@ -30,7 +30,7 @@ function StudyDeck() {
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
 
-    return deck && !cards["empty"] ? (
+    return deck && cards ? (
         <>
             <div id='deck-study-header'>
                 {/* <h1>{deck.title}</h1>
@@ -52,7 +52,7 @@ function StudyDeck() {
                     // invisible dead button to preserve spacing
                     <button className='hidden-btn'>Previous</button>
                 }
-                <Card card={cards[cardsIndex]} />
+                <Card card={cards[cardsIndex]} deckId={deckId} />
                 {cardsIndex < cards.length - 1 ? <button
                     type='button'
                     onClick={handleNext}

@@ -90,5 +90,6 @@ def get_deck_cards(deck_id):
     if cards:
         return {"cards": [card.to_dict() for card in cards]}
     elif cards == []:
-        return {"cards": [{"id": "empty", "message": "There are no cards in this deck"}]}
+        # return {"cards": [{"id": "empty", "message": "There are no cards in this deck"}]}
+        return {"cards": []}
     # return errors here
