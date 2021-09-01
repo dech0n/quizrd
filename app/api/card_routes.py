@@ -19,16 +19,18 @@ def cards():
     """
     if request.method == 'POST':
         form = CardForm()
+        deck = Deck.query.get(form.data["deck_id"])
         form.data['csrf_token'] = request.cookies['csrf_token']
         if form.validate_on_submit():
             card = Card(
+                deck=deck,
                 front_text=form.data['front_text'],
                 back_text=form.data['back_text'],
                 front_image=form.data['front_image'],
                 back_image=form.data['back_image']
             )
             return card.to_dict()
-        # return errors here
+        return {"errors": validation_errors_to_error_messages(form.errors)}, 400
 
 
 @card_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])

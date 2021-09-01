@@ -65,6 +65,13 @@ export const createCard = (cardData) => async (dispatch) => {
         const card = res.json()
         dispatch(add(card))
         return card
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
