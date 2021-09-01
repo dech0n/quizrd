@@ -91,3 +91,14 @@ li.deck-manager-row:hover {
     /* padding: .5rem .5rem 1.5rem; */
     padding: 0.33rem 1rem 1.33rem;
 }
+
+/* Deck study page */
+
+.hidden-btn {
+    visibility: hidden;
+}
+
+#deck-study-flashcards {
+    display: flex;
+    justify-content: center;
+}

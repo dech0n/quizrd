@@ -14,7 +14,7 @@ function StudyDeck() {
     const deck = useSelector(state => state.decks[deckId])
     const cards = Object.values(useSelector(state => state.cards))
     const [cardId, setCardId] = useState()
-    const [cardsIndex, setCardsIndex] = useState(0) // number within deck sequence, not card.id -- can be used as an index!!!! (just remember -1)
+    const [cardsIndex, setCardsIndex] = useState(0)
 
     // console.log('*** STUDY DECK ***', deck)
     // console.log('*** STUDY CARDS ***', cards)
@@ -36,8 +36,10 @@ function StudyDeck() {
 
     return !cards["empty"] ? (
         <>
-            <h1>Study Deck Page</h1>
-            {/* Add deck tile (and desc?) somewhere */}
+            <div id='deck-study-header'>
+                <h1>{deck.title}</h1>
+                <p>{deck.description}</p>
+            </div>
             <div className='deck-study-actions'>
                 {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
                 <button type="button">Preview Deck</button> {/* Brings up modal to preview both sides of every card */}
@@ -49,7 +51,10 @@ function StudyDeck() {
                         onClick={handlePrev}
                     >
                         Previous
-                    </button> : null
+                    </button>
+                    : // else
+                    // invisible dead button to preserve spacing
+                    <button className='hidden-btn'>Previous</button>
                 }
                 <Card card={cards[cardsIndex]} />
                 {cardsIndex < cards.length - 1 ? <button
@@ -57,7 +62,11 @@ function StudyDeck() {
                     onClick={handleNext}
                 >
                     Next
-                </button> : null}
+                </button>
+                :
+                // invisible dead button to preserve spacing
+                <button className='hidden-btn'>Next</button>
+                }
             </div>
         </>
     ) : (
