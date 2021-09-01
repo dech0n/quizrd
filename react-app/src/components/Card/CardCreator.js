@@ -85,7 +85,7 @@ function CardCreator() {
                     <>
                         <div className='card-creator-header deck-details'>
                             <h1 id='deck-title'>{deck.title}</h1>
-                            <h3 id='deck-descripiton'>{deck.description}</h3>
+                            <h4 id='deck-description'>{deck.description}</h4>
                             {/* deck image goes here */}
                             <button
                                 className='edit-deck-btn'
