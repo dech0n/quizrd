@@ -53,7 +53,7 @@ export const getDeckCards = (deckId) => async (dispatch) => {
 
 // create a card
 export const createCard = (cardData) => async (dispatch) => {
-    const res = await fetch(`/api/cards`, {
+    const res = await fetch(`/api/cards/`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ export const createCard = (cardData) => async (dispatch) => {
     })
 
     if (res.ok) {
-        const card = res.json()
+        const card = await res.json()
         dispatch(add(card))
         return card
     } else if (res.status < 500) {
