@@ -20,17 +20,20 @@
     display: flex;
     border: 1px solid darkgrey;
     justify-content: center;
-    height: 15rem;
-    width: 15rem;
+    height: 17rem;
+    width: 18rem;
     margin: 0 3rem;
-    border-radius: 1rem;
+    border-radius: .5rem;
     align-items: center;
 
 }
 
-/* #study-card-front, #study-card-back {
-
-} */
+#study-card-front, #study-card-back {
+    font-weight: 700;
+    font-size: 1.25rem;
+    overflow-wrap: normal;
+    overflow-y: auto;
+}
 
 #no-cards {
     text-align: center;
