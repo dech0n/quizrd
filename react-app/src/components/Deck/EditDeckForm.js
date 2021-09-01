@@ -4,7 +4,7 @@ import { updateDeck } from '../../store/decks'
 import './Deck.css'
 
 // TODO: Style errors section
-function EditDeckForm({ deck, hideThis }) {
+function EditDeckForm({ deck, showThis }) {
     const dispatch = useDispatch()
     const user = useSelector(state => state.session.user)
     const [errors, setErrors] = useState([])
@@ -38,7 +38,7 @@ function EditDeckForm({ deck, hideThis }) {
             setErrors(udpatedDeck)
         }
 
-        if(!errors) hideThis(false)
+        if(!errors) showThis(false)
     }
 
     return deck && deck.owner_id === user.id ? (
@@ -47,7 +47,7 @@ function EditDeckForm({ deck, hideThis }) {
             onSubmit={handleSubmit}
         >
             <div>
-            {console.log('*** FORM ERRORS ***', errors)}
+            {/* {console.log('*** FORM ERRORS ***', errors)} */}
                 {errors.map(error => (
                     <div>{error}</div>
                 ))}
@@ -97,7 +97,7 @@ function EditDeckForm({ deck, hideThis }) {
             <button
                 type='button'
                 className='cancel-btn deck-cancel-btn deck-form-btn form-btn'
-                onClick={() => hideThis(false)}
+                onClick={() => showThis(false)}
             >Cancel</button>
             </div>
         </form>

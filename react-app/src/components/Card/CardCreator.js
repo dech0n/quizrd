@@ -74,13 +74,13 @@ function CardCreator() {
         dispatch(getOneDeck(deckId)) //! causes slight delay loading additional decks when going back to homepage
         dispatch(getDeckCards(deckId))
     }, [dispatch, deckId])
-    
+
     // TODO: Hide front/back image fields in form until AWS is implemented
     return deck && deck.owner_id === user.id && cards ? (
         <div id='card-creator-page-container'>
             <div id='conditional-render-deck-details-and-form'>
                 {showDeckEditForm ? (
-                    <EditDeckForm deck={deck} hideThis={setShowDeckEditForm} />
+                    <EditDeckForm deck={deck} showThis={setShowDeckEditForm} />
                 ) : (
                     <>
                         <div className='card-creator-header deck-details'>
