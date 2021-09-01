@@ -145,6 +145,11 @@ export default function cardsReducer(state = initialState, { type, cards }) {
             };
 
         case ADD:
+            // ensures conditional rendering in components updates properly
+            if ("empty" in state) {
+                delete state["empty"]
+            }
+
             // for a new card
             if (!state[card.id]) {
                 const newState = {
