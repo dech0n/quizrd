@@ -9,7 +9,7 @@ function DeckManagerTable({ decks, handleDelete }) {
     return decks ? (
         <ul className='deck-manager-list'>
             {decks.map(deck => {
-                const { categories } = deck
+                // const { categories } = deck
                 return (
                     <li key={`${deck.id}-deck-row`}
                         className='deck-manager-row'>
