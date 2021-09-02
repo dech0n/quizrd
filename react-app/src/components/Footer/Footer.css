@@ -1,0 +1,30 @@
+#footer-container {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgba(0, 0, 0, .5);
+    background-color: rgb(169, 169, 169, .5);
+    width: 100%;
+    margin: auto;
+}
+
+#footer-header {
+    padding-top: 20px
+}
+
+#footer-me {
+    margin-bottom: ;
+}
+
+.footer-link {
+    color: rgb(103, 0, 206);
+    margin: 3px 0;
+    font-size: large;
+}
+
+#footer-project {
+    margin-bottom: 30px;
+}
