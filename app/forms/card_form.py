@@ -4,9 +4,7 @@ from wtforms.validators import DataRequired, Length
 
 
 class CardForm(FlaskForm):
-    deck_id = IntegerField('deck_id', validators=[
-        DataRequired(message="Deck ID was not included")
-        ])
+    deck_id = IntegerField('deck_id')
     front_text = StringField('front_text', validators=[
         DataRequired(message="Text on the front is required."),
         Length(
