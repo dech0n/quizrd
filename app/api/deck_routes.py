@@ -75,6 +75,8 @@ def new_deck():
 @deck_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def get_or_delete_deck(id):
     deck = Deck.query.get(id)
+    if deck is None:
+        return {"errors": ["Unable to find the associated deck"]}, 400
 
     if request.method == 'GET':
         pass  # already got deck from db
