@@ -119,7 +119,7 @@ function StudyDeck() {
     ) : (
         <div id='no-cards'>
             <h2>It looks like the are no cards in this deck!</h2>
-            <h3>Try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
+            <h3>If this is your deck,<br />try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
         </div>
     )
 }
