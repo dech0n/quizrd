@@ -9,7 +9,7 @@ class Deck(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     # if error on delete, remove nullable
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    title = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(255))
     image = db.Column(db.String(255))
     cards = db.relationship('Card', backref='deck')

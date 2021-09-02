@@ -8,8 +8,8 @@ class DeckForm(FlaskForm):
         DataRequired(message="Decks need a title."),
         Length(
             min=3,
-            max=50,
-            message="Title must be 3-50 characters."
+            max=20,
+            message="Title must be 3-20 characters."
         )
     ])
     description = StringField('description', validators=[
