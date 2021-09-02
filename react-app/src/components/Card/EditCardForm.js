@@ -57,7 +57,7 @@ function EditCardForm({ card, setShowThis }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
-            <h2>Edit Card</h2>
+            <h2>Edit Flashcard</h2>
 
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
