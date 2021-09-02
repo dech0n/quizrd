@@ -5,7 +5,8 @@
 
 #card-creator {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: space-around;
 }
 
 .card-creator-header {
@@ -13,6 +14,19 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    margin: 0 0 3rem;
+}
+
+.card-creator-subheader {
+    /* color: rgba(149, 85, 245, 1) */
+}
+
+#num-list-cards {
+    color:rgb(149, 85, 245)
+}
+
+.card-creator-form-header {
+    margin: 0 0 1rem;
 }
 
 .edit-deck-btn {
@@ -21,18 +35,90 @@
     margin: .5rem 0 0 0;
 }
 
-/* ul#deck-cards-list {
+ul#deck-cards-list {
+    width: 20rem;
+}
 
-} */
-
-.list-card {
+.list-card-container {
     display: flex;
     border: 1px solid darkgrey;
+    border-radius: 1rem;
+    width: 20rem;
+    height: 4rem;
+    /* justify-content: space-between; */
+    align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 1rem 0;
+}
+
+.list-card-container:hover {
+    color: rgb(149, 85, 245)
+}
+
+li.list-card {
+    width: 100%;
+    justify-content: center;
+    margin: auto 0;
+    padding: 10px .5rem;
+}
+
+.list-card-text {
+    /* display: inline-block; */
+    text-align: center;
+    /* text-overflow: ellipsis;  */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
 }
 
 .list-card-actions {
     display: flex;
     flex-direction: column;
+    /* justify-self: flex-end; */
+}
+
+.list-card-action-btn {
+    height: 2rem;
+    width: 4rem;
+    border-radius: 0;
+}
+
+.list-card-edit-btn {
+    border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
+}
+
+.list-card-delete-btn {
+    border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.list-card-delete-btn:hover {
+    background-color: rgb(149, 85, 245);
+}
+
+.card-back-input {
+    margin: 1.5rem 0 0;
+}
+
+.card-form-action-btns {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-form-submit-btn {
+    width: 8rem;
+    height: 1.5rem;
+}
+
+.card-form-alt-btn {
+    width: 4rem;
+    height: 1.5rem;
+    margin: 0 0 0 .5rem;
+}
+
+#finish-btn {
+    background-color:rgb(149, 85, 245)
 }
 
 /* The flashcard on study page */

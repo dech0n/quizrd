@@ -38,7 +38,7 @@ function Card({ card, deckId }) {
         </>
     ) : (
         <div id='no-cards'>
-            <h2>It looks like the are no cards in this deck!</h2>
+            <h2>It looks like the are no flashcards in this deck!</h2>
             <h3>Try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
         </div>
     )

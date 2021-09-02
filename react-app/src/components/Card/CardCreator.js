@@ -79,7 +79,7 @@ function CardCreator() {
                     {!("empty" in cards) ? (
                         <CardList cards={Object.values(cards)} showEditForm={setShowCardEditForm} setCard={setCard} />
                     ) : (
-                        <h3>There are no cards in this deck!</h3>
+                        <h3>There are no flashcards in this deck!</h3>
                     )
                     }
                 </div>

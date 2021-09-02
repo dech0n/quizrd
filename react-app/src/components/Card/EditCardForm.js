@@ -57,7 +57,7 @@ function EditCardForm({ card, setShowThis }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
-            <h2>Edit Flashcard</h2>
+            <h3 className='card-creator-subheader card-creator-form-header'>Edit Flashcard</h3>
 
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
@@ -67,15 +67,15 @@ function EditCardForm({ card, setShowThis }) {
             <div
                 className='form-field-container'
             >
-                <input
-                    className='form-input'
+                <textarea
+                    className='form-input card-form-input'
                     type='text'
                     value={frontText}
                     onChange={updateFrontText}
                 />
             </div>
             <label
-                className='form-label'
+                className='form-label front-card-label'
             >
                 Front of flashcard
             </label>
@@ -97,8 +97,8 @@ function EditCardForm({ card, setShowThis }) {
             <div
                 className='form-field-container'
             >
-                <input
-                    className='form-input'
+                <textarea
+                    className='form-input card-form-input card-back-input'
                     type='text'
                     value={backText}
                     onChange={updateBackText}
@@ -125,8 +125,11 @@ function EditCardForm({ card, setShowThis }) {
                 </label>
             </div>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>Update Card</button>
                 <button
+                    className='card-form-submit-btn'
+                    type='submit'>Update Card</button>
+                <button
+                className='cancel-btn card-form-cancel-btn card-form-alt-btn'
                     type='button'
                     onClick={handleCancel}
                     >Cancel</button>
