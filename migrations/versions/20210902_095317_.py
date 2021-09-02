@@ -1,7 +1,7 @@
 """empty message
 
 Revision ID: 4ce256a1fa91
-Revises: 
+Revises:
 Create Date: 2021-09-02 09:53:17.819129
 
 """
@@ -36,7 +36,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
     sa.Column('title', sa.String(length=20), nullable=False),
-    sa.Column('description', sa.String(length=55), nullable=True),
+    sa.Column('description', sa.String(length=70), nullable=True),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
