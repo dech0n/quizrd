@@ -37,6 +37,7 @@ function CardList({ cards, setCard, showEditForm }) {
     }
 
     const handleDelete = (cardId) => {
+        showEditForm(false)
         dispatch(deleteCard(cardId))
     }
 
