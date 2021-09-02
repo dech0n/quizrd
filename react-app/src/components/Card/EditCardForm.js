@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { updateCard } from '../../store/cards'
 
 //! 'remove' className adds `display: none` for unfinished features
 // TODO: redirect "Finish" button to deck study page
-function CardForm({ card, setShowThis }) {
+function EditCardForm({ card, setShowThis }) {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
     const [frontText, setFrontText] = useState(card.front_text)
     const [backText, setBackText] = useState(card.back_text)
     const [frontImage, setFrontImage] = useState(card.front_image)
     const [backImage, setBackImage] = useState(card.back_image)
+
+    // useEffect(() => {
+
+    // }, [card])
 
     const updateFrontText = (e) => {
         setFrontText(e.target.value)
@@ -26,6 +30,10 @@ function CardForm({ card, setShowThis }) {
 
     const updateBackImage = (e) => {
         setBackImage(e.target.value)
+    }
+
+    const handleCancel = () => {
+        setShowThis(false)
     }
 
     const handleSubmit = async (e) => {
@@ -49,7 +57,7 @@ function CardForm({ card, setShowThis }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
-            <h2>Flashcard Form</h2>
+            <h2>Edit Card</h2>
 
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
@@ -117,10 +125,13 @@ function CardForm({ card, setShowThis }) {
                 </label>
             </div>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>Update Deck</button>
-                <button type='button'>Finish</button>
+                <button type='submit'>Update Card</button>
+                <button
+                    type='button'
+                    onClick={handleCancel}
+                    >Cancel</button>
             </div>
         </form>
     )
 }
-export default CardForm
+export default EditCardForm
