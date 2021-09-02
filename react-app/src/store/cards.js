@@ -60,6 +60,13 @@ export const getDeckCards = (deckId) => async (dispatch) => {
         // console.log('*** DECK CARDS - THUNK ***', cards)
         dispatch(deckLoad(cards))
         return cards
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
