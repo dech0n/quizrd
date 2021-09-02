@@ -12,6 +12,7 @@ import CardCreator from './components/Card/CardCreator';
 import StudyDeck from './components/Deck/StudyDeck';
 import Footer from './components/Footer/Footer'
 import { authenticate } from './store/session';
+import SplashPage from './components/SplashPage/SplashPage';
 
 // TODO: Add Page Not Found Component
 function App() {
@@ -50,6 +51,9 @@ function App() {
         </ProtectedRoute>
         <Route path='/decks/:deckId/study' exact={true}>
           <StudyDeck />
+        </Route>
+        <Route path='/welcome'>
+          <SplashPage />
         </Route>
         <ProtectedRoute path='/' exact={true} >
           <HomePage />

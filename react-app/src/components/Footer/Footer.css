@@ -1,12 +1,15 @@
 #footer-container {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     display: flex;
     flex-direction: column;
     align-items: center;
-    color: rgba(0, 0, 0, .5);
-    background-color: rgb(169, 169, 169, .5);
+    /* color: var(--rgb-green); */
+    /* color: rgb(149, 85, 245); */
+    color: rgb(133, 133, 133);
+    background-color: rgb(169, 169, 169, .2);
+    border-top: 1px solid rgb(169, 169, 169, .3);
     width: 100%;
     margin: auto;
 }
@@ -16,11 +19,12 @@
 }
 
 #footer-me {
-    margin-bottom: ;
+    color: rgb(194, 194, 194);
 }
 
 .footer-link {
-    color: rgb(103, 0, 206);
+    /* color: rgb(103, 0, 206); */
+    color: rgb(149, 85, 245);
     margin: 3px 0;
     font-size: large;
 }
