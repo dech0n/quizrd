@@ -3,7 +3,7 @@ from flask import Blueprint, jsonify, session, request
 from app.models import db, Deck, Card
 from app.forms import CardForm
 from flask_login import current_user, login_required
-import pdb
+# import pdb  #! debugger
 
 
 card_routes = Blueprint('cards', __name__)
@@ -24,6 +24,8 @@ def cards():
         form['csrf_token'].data = request.cookies['csrf_token']
         # pdb.set_trace() #! debug
         deck = Deck.query.get(form.data["deck_id"])
+        if deck is None:
+            return {"errors": ["Couldn't find the deck to add this card."]}, 400
         if form.validate_on_submit():
             if 'front_image' not in form.data:
                 form.data.setdefault('front_image')
@@ -61,7 +63,7 @@ def get_one_card(id):
             pass  # already queried card from db
         elif request.method == 'PUT':
             form = CardForm()
-            form.data['csrf_token'] = request.cookies['csrf_token']
+            form['csrf_token'].data = request.cookies['csrf_token']
             if form.validate_on_submit():
                 if "front_image" not in form.data:
                     form.data.setdefault("front_image")
@@ -74,12 +76,17 @@ def get_one_card(id):
                 card.back_image = form.data['back_image']
 
                 db.session.commit()
+
+                return card.to_dict()
+            # if form validation fails
+            return {"errors": validation_errors_to_error_messages(form.errors)}, 400
+
         else:
             db.session.delete(card)
             db.session.commit()
 
         return card.to_dict()
-    # return errors here
+    return {"errors": ["Card not found, did nothing."]}, 400
 
 
 @card_routes.route('/decks/<int:deck_id>')
@@ -94,5 +101,5 @@ def get_deck_cards(deck_id):
         return {"cards": [card.to_dict() for card in cards]}
     elif cards == []:
         return {"cards": [{"id": "empty", "message": "There are no cards in this deck"}]}
-        return {"cards": []}
-    # return errors here
+    else:
+        return {"errors": ["Couldn't find the decks you were looking for."]}, 400

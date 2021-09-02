@@ -1,15 +1,20 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { createCard } from '../../store/cards'
+import { updateCard } from '../../store/cards'
 
 //! 'remove' className adds `display: none` for unfinished features
-function CardForm({ deckId }) {
+// TODO: redirect "Finish" button to deck study page
+function EditCardForm({ card, setShowThis }) {
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
-    const [frontText, setFrontText] = useState("")
-    const [backText, setBackText] = useState("")
-    const [frontImage, setFrontImage] = useState("")
-    const [backImage, setBackImage] = useState("")
+    const [frontText, setFrontText] = useState(card.front_text)
+    const [backText, setBackText] = useState(card.back_text)
+    const [frontImage, setFrontImage] = useState(card.front_image)
+    const [backImage, setBackImage] = useState(card.back_image)
+
+    // useEffect(() => {
+
+    // }, [card])
 
     const updateFrontText = (e) => {
         setFrontText(e.target.value)
@@ -27,24 +32,24 @@ function CardForm({ deckId }) {
         setBackImage(e.target.value)
     }
 
+    const handleCancel = () => {
+        setShowThis(false)
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         const cardData = {
-            deck_id: deckId,
             front_text: frontText,
             back_text: backText,
             front_image: frontImage,
             back_image: backImage
         }
 
-        const newCard = await dispatch(createCard(cardData))
-        if (newCard.length) {
+        const newCard = await dispatch(updateCard(card.id, cardData))
+        if (newCard.length) { // implies error array vs card object
             setErrors(newCard)
         } else {
-            setFrontText("")
-            setFrontImage("")
-            setBackText("")
-            setBackImage("")
+            setShowThis(false)
         }
     }
     return (
@@ -52,7 +57,7 @@ function CardForm({ deckId }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
-            <h2>New Flashcard</h2>
+            <h2>Edit Flashcard</h2>
 
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
@@ -120,10 +125,13 @@ function CardForm({ deckId }) {
                 </label>
             </div>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>+ Add to Deck</button>
-                <button type='button'>Finish</button>
+                <button type='submit'>Update Card</button>
+                <button
+                    type='button'
+                    onClick={handleCancel}
+                    >Cancel</button>
             </div>
         </form>
     )
 }
-export default CardForm
+export default EditCardForm

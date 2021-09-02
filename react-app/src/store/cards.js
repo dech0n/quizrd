@@ -40,6 +40,13 @@ export const getOneCard = (cardId) => async (dispatch) => {
         const card = await res.json()
         dispatch(load([card])) // must be an array for LOAD case in reducer
         return card
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
@@ -53,6 +60,13 @@ export const getDeckCards = (deckId) => async (dispatch) => {
         // console.log('*** DECK CARDS - THUNK ***', cards)
         dispatch(deckLoad(cards))
         return cards
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
@@ -94,7 +108,14 @@ export const updateCard = (cardId, cardData) => async (dispatch) => {
     if (res.ok) {
         const updatedCard = await res.json()
         dispatch(add(updatedCard))
-        return updateCard
+        return updatedCard
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
@@ -108,6 +129,13 @@ export const deleteCard = (cardId) => async (dispatch) => {
         const card = await res.json()
         dispatch(remove(card))
         return card
+    } else if (res.status < 500) {
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
