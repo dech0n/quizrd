@@ -13,23 +13,27 @@ function SplashPage() {
     }, [dispatch])
     return decks ? (
         <div id='splash-container'>
-            {/* Logo Image */}
-            <h1 id='splash-header'>With Quizrd you can...</h1>
-            <div id='splash-feature-list'>
-                <div id='splash-feature-create' className='splash-feature'>
-                    <h3>Create great flashcards</h3>
-                    <p>Create custom decks with exactly what you want to learn.</p>
+            <div id='splash-page-header'>
+                <div id='splash-feature-list'>
+                <h1 id='splash-header'>With Quizrd you can...</h1>
+                    <div id='splash-feature-create' className='splash-feature'>
+                        <h3>Create great flashcards</h3>
+                        <p>Create custom decks with exactly what you want to learn.</p>
+                    </div>
+                    <div id='splash-feature-find' className='splash-feature'>
+                        <h3>Find great flashcards</h3>
+                        <p>Browse decks created by other avid learners like you.</p>
+                    </div>
+                    <div id='splash-feature-find' className='splash-feature'>
+                        <h3>Share your flashcards</h3>
+                        <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
+                    </div>
                 </div>
-                <div id='splash-feature-find' className='splash-feature'>
-                    <h3>Find great flashcards</h3>
-                    <p>Browse decks created by other avid learners like you.</p>
+                <div id='splash-logo-container'>
+                    <h1>[* Logo Image *]</h1>
                 </div>
-                <div id='splash-feature-find' className='splash-feature'>
-                    <h3>Share your flashcards</h3>
-                    <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
-                </div>
-
             </div>
+
             <h2 id='splash-decks-list-header'>Check it out...</h2>
             <div id='splash-decks-container'>
                 <div id='splash-spacer' />

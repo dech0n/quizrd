@@ -2,6 +2,11 @@
     margin: 0 8rem;
 }
 
+#splash-page-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 #splash-feature-list {
     margin: 0 0 3rem;
 }
