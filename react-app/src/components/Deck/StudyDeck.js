@@ -44,7 +44,7 @@ function StudyDeck() {
                 <div id='deck-details'>
                     <h1 id='deck-title'>{deck.title}</h1>
                     <p id='deck-description'>{deck.description}</p>
-                    {user.id === deck.owner_id ?
+                    {user && user.id === deck.owner_id ?
                         // remove this whole block when Preview Deck feature is ready
                         // and unhide the buttons in div.deck-study actions
                         <button
@@ -58,7 +58,7 @@ function StudyDeck() {
                     }
                 </div>
                 <div className='deck-study-actions'>
-                    {user.id === deck.owner_id ?
+                    {user && user.id === deck.owner_id ?
                         <button
                             className='edit-btn hide'
                             type="button"
