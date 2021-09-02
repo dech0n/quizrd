@@ -44,7 +44,7 @@ function StudyDeck() {
                 <div id='deck-details'>
                     <h1 id='deck-title'>{deck.title}</h1>
                     <p id='deck-description'>{deck.description}</p>
-                    {user ?
+                    {user.id === deck.owner_id ?
                         // remove this whole block when Preview Deck feature is ready
                         // and unhide the buttons in div.deck-study actions
                         <button
@@ -55,10 +55,10 @@ function StudyDeck() {
                         </button> :
                         // hidden dead button to maintain spacing
                         <button className='hide'>Edit</button>
-                        }
+                    }
                 </div>
                 <div className='deck-study-actions'>
-                    {user ?
+                    {user.id === deck.owner_id ?
                         <button
                             className='edit-btn hide'
                             type="button"
@@ -67,11 +67,16 @@ function StudyDeck() {
                         </button> :
                         // hidden dead button to maintain spacing
                         <button className='hide'>Edit</button>
-                        }
+                    }
                     {/* Bring up modal to preview both sides of every card */}
                     <button className='hide' type="button">Preview Deck</button>
                 </div>
             </div>
+                <p
+                    id='card-progress-counter'
+                >
+                    {cardsIndex + 1} of {Object.values(cards).length}
+                </p>
             <div id='deck-study-flashcard'>
                 <div className='study-card-action-btn-container'>
                     {cardsIndex > 0 ?
@@ -86,7 +91,7 @@ function StudyDeck() {
                         : // else
                         // invisible dead button to preserve spacing
                         <button
-                            className='hidden-btn study-card-action-btn'
+                            className='hide study-card-action-btn'
                         >Previous</button>
                     }
                 </div>
@@ -103,7 +108,7 @@ function StudyDeck() {
                         </button>
                         :
                         // invisible dead button to preserve spacing
-                        <button className='hidden-btn study-card-action-btn'
+                        <button className='hide study-card-action-btn'
                         >
                             Next
                         </button>

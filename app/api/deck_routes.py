@@ -75,6 +75,8 @@ def new_deck():
 @deck_routes.route('/<int:id>', methods=['GET', 'PUT', 'DELETE'])
 def get_or_delete_deck(id):
     deck = Deck.query.get(id)
+    if deck is None:
+        return {"errors": ["Unable to find the associated deck"]}, 400
 
     if request.method == 'GET':
         pass  # already got deck from db
@@ -109,15 +111,8 @@ def get_or_delete_deck(id):
 @ deck_routes.route('/users/<int:user_id>')
 @login_required
 def get_user_decks(user_id):
-    if user_id is None:
-        # saves a query ?
-        decks = current_user.decks
-    else:
-        decks = Deck.query.filter_by(owner_id=user_id).all()
-
-    # print('*** USER DECKS ***', decks)
-
-    # make sure to flatten this in the thunk
-    return {'decks': [deck.to_dict() for deck in decks]}
-
-# @deck_routes.route
+    decks = Deck.query.filter_by(owner_id=user_id).all()
+    if decks is not None:
+        # make sure to flatten this in the thunk
+        return {'decks': [deck.to_dict() for deck in decks]}
+    return {"errors": ["Something went wrong. Unable to find decks for this user."]}
