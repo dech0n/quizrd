@@ -8,6 +8,7 @@ import './Deck.css'
 
 //! Check for elements with 'hide' class -- might save you some work when refactoring/adding features
 // TODO: use local storage to save user's place in the deck when they refresh
+// TODO: develop "PREVIEW DECK" feature and bring back original action buttons (edit & preview deck)
 function StudyDeck() {
     const dispatch = useDispatch()
     const history = useHistory()
