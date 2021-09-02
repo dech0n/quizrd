@@ -73,7 +73,6 @@ function DeckForm({ setShowModal }) {
                 >Title</label>
             </div>
             <div className='deck-field-container deck-description-container form-field-container'>
-                {/* Style textarea with border-left & border-bottom only */}
                 <textarea
                     className='deck-form-input deck-description-input form-input'
                     type='text'
