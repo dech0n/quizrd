@@ -44,7 +44,12 @@ function StudyDeck() {
                     <p id='deck-description'>{deck.description}</p>
                 </div>
                 <div className='deck-study-actions'>
-                    {user ? <button type="button">Edit</button> : null} {/* replace with Edit Deck Form Modal */}
+                    {user ?
+                        <button
+                            type="button"
+                            onClick={handleEditClick}
+                        >Edit
+                        </button> : null}
                     <button type="button">Preview Deck</button> {/* Bring up modal to preview both sides of every card */}
                 </div>
             </div>
@@ -88,10 +93,10 @@ function StudyDeck() {
             </div>
         </div>
     ) : (
-            <div id='no-cards'>
-                <h2>It looks like the are no cards in this deck!</h2>
-                <h3>Try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
-            </div>
+        <div id='no-cards'>
+            <h2>It looks like the are no cards in this deck!</h2>
+            <h3>Try adding some <Link to={`/decks/${deckId}/cards/add`}>here</Link>.</h3>
+        </div>
     )
 }
 
