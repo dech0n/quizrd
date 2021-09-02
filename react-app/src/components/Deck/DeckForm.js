@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 
 import { createDeck } from "../../store/decks";
 
+//! 'remove' class is hiding some elements until the feature is developed. Look for this!
 // TODO: find a default image for new decks
 function DeckForm({ setShowModal }) {
     const dispatch = useDispatch()
@@ -84,7 +85,7 @@ function DeckForm({ setShowModal }) {
                     className='deck-form-label deck-description-label form-label'
                     htmlFor='description'>Description (optional)</label>
             </div>
-            <div className='deck-field-container deck-image-container form-field-container'>
+            <div className='deck-field-container deck-image-container form-field-container remove'>
                 <input
                     className='deck-form-input deck-image-input form-input'
                     type='text' /* might have to change this ? */
