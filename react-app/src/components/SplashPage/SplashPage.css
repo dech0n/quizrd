@@ -2,10 +2,26 @@
     margin: 0 8rem;
 }
 
+#splash-feature-list {
+    margin: 0 0 3rem;
+}
+
+#splash-header {
+    margin: 0 0 1rem;
+}
+
+.splash-feature {
+    margin: 0 0 .5rem;
+}
+
 #splash-decks-list {
     display: flex;
     overflow: auto;
     flex-wrap: wrap;
+}
+
+#splash-decks-list-header {
+
 }
 
 .splash-deck-tile {

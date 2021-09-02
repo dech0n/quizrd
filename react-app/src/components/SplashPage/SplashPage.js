@@ -14,26 +14,34 @@ function SplashPage() {
     return decks ? (
         <div id='splash-container'>
             {/* Logo Image */}
-            <h1>Features</h1>
-            {/* Quick blurb about website */}
+            <h1 id='splash-header'>With Quizrd you can...</h1>
+            <div id='splash-feature-list'>
+                <div id='splash-feature-create' className='splash-feature'>
+                    <h3>Create great flashcards</h3>
+                    <p>Create custom decks with exactly what you want to learn.</p>
+                </div>
+                <div id='splash-feature-find' className='splash-feature'>
+                    <h3>Find great flashcards</h3>
+                    <p>Browse decks created by other avid learners like you.</p>
+                </div>
+                <div id='splash-feature-find' className='splash-feature'>
+                    <h3>Share your flashcards</h3>
+                    <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
+                </div>
 
-            <h3>Create great flashcards</h3>
-            <p>Create custom decks with exactly what you want to learn.</p>
-            <h3>Find great flashcards</h3>
-            <p>Browse decks created by other avid learners like you.</p>
-            <h3>Share your flashcards</h3>
-            <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
+            </div>
             <div id='splash-decks-container'>
-            <ul id='splash-decks-list'>
-                {decks && decks.map(deck => (
-                    <Link to={`/decks/${deck.id}/study`}>
-                        <li className='splash-deck-tile'>
-                            <h4>{deck.title}</h4>
-                            <p>{deck.description}</p>
-                        </li>
-                    </Link>
-                ))}
-            </ul>
+                <h2 id='splash-decks-list-header'>Check it out...</h2>
+                <ul id='splash-decks-list'>
+                    {decks && decks.map(deck => (
+                        <Link to={`/decks/${deck.id}/study`}>
+                            <li className='splash-deck-tile'>
+                                <h4>{deck.title}</h4>
+                                <p>{deck.description}</p>
+                            </li>
+                        </Link>
+                    ))}
+                </ul>
             </div>
         </div>
     ) : (
