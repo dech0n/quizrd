@@ -13,8 +13,8 @@ french_animals = Deck(
     owner=marnie,
     # owner_id=2,
     title='French Animals',
-    description="""Learn animals in French.\n
-                    (m) = masculine noun, (f) = feminine noun""",
+    description="""Learn animals in French.
+    (m) = masculine noun, (f) = feminine noun""",
     image=None
 )
 
