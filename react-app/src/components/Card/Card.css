@@ -5,7 +5,8 @@
 
 #card-creator {
     display: flex;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: space-around;
 }
 
 .card-creator-header {
@@ -13,6 +14,7 @@
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+    margin: 0 0 3rem;
 }
 
 .edit-deck-btn {
@@ -33,22 +35,34 @@ ul#deck-cards-list {
     height: 4rem;
     /* justify-content: space-between; */
     align-items: center;
+    overflow: hidden;
+    box-sizing: border-box;
+    margin: 1rem 0;
+}
+
+.list-card-container:hover {
+    color: rgb(149, 85, 245)
 }
 
 li.list-card {
     width: 100%;
     justify-content: center;
+    margin: auto 0;
+    padding: 10px .5rem;
 }
 
 .list-card-text {
+    /* display: inline-block; */
     text-align: center;
-
+    /* text-overflow: ellipsis;  */
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
 }
 
 .list-card-actions {
     display: flex;
     flex-direction: column;
-    justify-self: flex-end;
+    /* justify-self: flex-end; */
 }
 
 .list-card-action-btn {
@@ -59,10 +73,16 @@ li.list-card {
 
 .list-card-edit-btn {
     border-top-right-radius: 1rem;
+    border-top-left-radius: 1rem;
 }
 
 .list-card-delete-btn {
     border-bottom-right-radius: 1rem;
+    border-bottom-left-radius: 1rem;
+}
+
+.list-card-delete-btn:hover {
+    background-color: rgb(149, 85, 245);
 }
 
 /* The flashcard on study page */
