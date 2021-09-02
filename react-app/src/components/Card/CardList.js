@@ -1,5 +1,6 @@
 import React from 'react'
 import { useDispatch } from 'react-redux'
+import { Link } from 'react-router-dom'
 import { deleteCard } from '../../store/cards'
 
 /*
@@ -39,7 +40,7 @@ function CardList({ cards, setCard, showEditForm }) {
         dispatch(deleteCard(cardId))
     }
 
-    return (
+    return cards && !("empty" in cards) ? (
         <>
             <h3>The Cards</h3>
             <ul id='deck-cards-list'>
@@ -64,6 +65,11 @@ function CardList({ cards, setCard, showEditForm }) {
                 ))
                 }
             </ul>
+        </>
+    ) : (
+        <>
+            <h1>Loading...</h1>
+            <p>If the page doesn't load,<br />click <Link to='/'>here</Link> and try again</p>
         </>
     )
 }
