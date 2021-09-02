@@ -1,13 +1,31 @@
+#splash-container {
+    margin: 0 8rem;
+}
+
 #splash-decks-list {
     display: flex;
     overflow: auto;
-    margin: 0 8rem;
     flex-wrap: wrap;
 }
 
 .splash-deck-tile {
-    border: 1px solid darkgrey;
-    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid darkgrey;
+    width: 15rem;
     height: 15rem;
     margin: 1rem 1rem;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    /* color: darkgrey; */
+    border-radius: 10rem;
+}
+
+.splash-deck-tile:hover {
+    /* background-color: rgba(106, 72, 200, .7); */
+    color: rgba(169, 169, 169, 1);
+    /* color: rgb(0, 0, 0); */
+    background-color: rgba(103, 0, 206, .8);
+    border: 2px solid rgb(0, 0, 0);
 }
