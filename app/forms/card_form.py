@@ -9,16 +9,16 @@ class CardForm(FlaskForm):
         DataRequired(message="Text on the front is required."),
         Length(
             min=1,
-            max=255,
-            message="Card text must be 1-255 characters."
+            max=150,
+            message="Card text must be 1-150 characters."
         )
     ])
     back_text = StringField('back_text', validators=[
         DataRequired(message="Text on the back is required."),
         Length(
             min=1,
-            max=255,
-            message="Card text must be 1-255 characters.")
+            max=150,
+            message="Card text must be 1-150 characters.")
     ])
     front_image = StringField('front_image', validators=[
         Length(
