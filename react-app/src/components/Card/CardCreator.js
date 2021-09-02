@@ -21,7 +21,7 @@ the values from whatever card has been clicked in CardList.
 useState will help with this.
 */
 
-
+//! Remove 'remove' class from div#card-creator-card-preview when CardPreview is developed
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
@@ -80,7 +80,7 @@ function CardCreator() {
                     )
                     }
                 </div>
-                <div id='card-creator-card-preview'>
+                <div id='card-creator-card-preview' className='remove'>
                     <h2>Card Preview</h2>
                     <CardPreview />
                 </div>
