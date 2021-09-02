@@ -21,7 +21,7 @@ function SplashPage() {
             <p>Create custom decks with exactly what you want to learn.</p>
             <h3>Find great flashcards</h3>
             <p>Browse decks created by other avid learners like you.</p>
-            <h3>Share your decks</h3>
+            <h3>Share your flashcards</h3>
             <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
             <div id='splash-decks-container'>
             <ul id='splash-decks-list'>
