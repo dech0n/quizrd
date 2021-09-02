@@ -1,3 +1,13 @@
+/* Card Creator elements & components */
+#card-creator-page-container {
+    margin: 0 20rem 0;
+}
+
+#card-creator {
+    display: flex;
+    justify-content: space-between;
+}
+
 .card-creator-header {
     display: flex;
     flex-direction: column;
@@ -9,6 +19,20 @@
     padding: .5rem 1rem;
     border-radius: 1rem;
     margin: .5rem 0 0 0;
+}
+
+/* ul#deck-cards-list {
+
+} */
+
+.list-card {
+    display: flex;
+    border: 1px solid darkgrey;
+}
+
+.list-card-actions {
+    display: flex;
+    flex-direction: column;
 }
 
 /* The flashcard on study page */

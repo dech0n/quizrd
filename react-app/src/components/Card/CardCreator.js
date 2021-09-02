@@ -6,66 +6,39 @@ import { createCard, getDeckCards } from '../../store/cards'
 import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
 import './Card.css'
+import CardForm from './CardForm'
+import CardList from './CardList'
+import CardPreview from './CardPreview'
+
+
+/*
+CARD PREVIEW logic... hopefully
+
+CardPreview is populated by what is in the card form, so...
+CardForm will either take what the user types, or...
+the values from whatever card has been clicked in CardList.
+
+useState will help with this.
+*/
+
 
 // TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
-    // const [deck] = Object.values(useSelector(state => state.decks))
-    // const cards = Object.values(useSelector(state => state.cards))
     const cards = useSelector(state => state.cards)
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
-    const [errors, setErrors] = useState([])
-    const [frontText, setFrontText] = useState("")
-    const [backText, setBackText] = useState("")
-    const [frontImage, setFrontImage] = useState("")
-    const [backImage, setBackImage] = useState("")
+    const [cardId, setCardId] = useState()
 
-    const frontImageClasses = 'card-image card-creator-card-image card-creater-card-image-front'
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
     // TODO: Create handleDelete for card delete buttons
     // TODO: Create handleEdit for edit buttons (or conditional render, or modal)
     // TODO: create a click handler for the Finish button (just redirect ?)
 
-    const updateFrontText = (e) => {
-        setFrontText(e.target.value)
-    }
 
-    const updateBackText = (e) => {
-        setBackText(e.target.value)
-    }
-
-    const updateFrontImage = (e) => {
-        setFrontImage(e.target.value)
-    }
-
-    const updateBackImage = (e) => {
-        setBackImage(e.target.value)
-    }
-
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        const cardData = {
-            deck_id: deckId,
-            front_text: frontText,
-            back_text: backText,
-            front_image: frontImage,
-            back_image: backImage
-        }
-
-        const newCard = await dispatch(createCard(cardData))
-        if (newCard.length) {
-            setErrors(newCard)
-        } else {
-            setFrontText("")
-            setFrontImage("")
-            setBackText("")
-            setBackImage("")
-        }
-    }
 
     // console.log('*** DECK IN CARD CREATOR ***', deck)
     // console.log('*** CARDS IN CARD CREATOR ***', cards)
@@ -98,90 +71,21 @@ function CardCreator() {
                 }
             </div>
             <div id='card-creator'>
-                <h1>Card Creator</h1>
-                <div id='cards'>
+                {/* <h1>Card Creator</h1> */}
+                <div id='card-creator-cards-list'>
                     {!("empty" in cards) ? (
-                        <>
-                            <h3>The Cards</h3>
-                            <ul id='deck-cards-list'>
-                                {/* Only show the front of cards here -- it's just the list */}
-                                {Object.values(cards).map(card => ( //!
-                                    <li className='card card-creator-card'>
-                                        <div className='card-front card-creator-card-front'>
-                                            {card.front_image ? <div className={frontImageClasses}>{card.front_image}</div> : null}
-                                            {card.front_text}
-                                            <button type='button'>Edit</button>
-                                            <button type='button'>Delete</button>
-                                        </div>
-                                    </li>
-                                ))
-                                }
-                            </ul>
-                        </>
+                        <CardList cards={Object.values(cards)} />
                     ) : (
                         <h3>There are no cards in this deck!</h3>
                     )
                     }
                 </div>
-                <div id='card-preview'>
+                <div id='card-creator-card-preview'>
                     <h2>Card Preview</h2>
-                    <h3>FRONT</h3>
-                    <div className='card-preview-front'>
-                        <div className='card-front card-creator-card-front'>
-                            {/* {card.front_image ? <div className={frontImageClasses}>{card.front_image}</div> : null} */}
-                            {/* {card.front_text} */}
-                        </div>
-                    </div>
-                    <h3>BACK</h3>
-                    <div className='card-preview-back'>
-                        <div className='card-back card-creator-card-back'>
-                            {/* {card.back_image ? <div className={backImageClasses}>{card.back_image}</div> : null} */}
-                            {/* {card.back_text} */}
-                        </div>
-                    </div>
+                    <CardPreview />
                 </div>
                 <div id='card-creator-user-input'>
-                    <h2>Form and Buttons</h2>
-                    <form
-                        className='card-form'
-                        onSubmit={handleSubmit}
-                    >
-                        <div className='card-form-errors form-errors'>
-                            {errors.map(error => (
-                                <div>{error}</div>
-                            ))}
-                        </div>
-                        <input
-                            type='text'
-                            value={frontText}
-                            onChange={updateFrontText}
-                        />
-                        <label>Front of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={frontImage}
-                            onChange={updateFrontImage}
-                        />
-                        <label>Front image (optional)</label>
-
-                        <input
-                            type='text'
-                            value={backText}
-                            onChange={updateBackText}
-                        />
-                        <label>Back of flashcard</label>
-
-                        <input
-                            type='text'
-                            value={backImage}
-                            onChange={updateBackImage}
-                        />
-                        <label>Back image (optional)</label>
-
-                        <button type='submit'>+ Add to Deck</button>
-                        <button type='button'>Finish</button>
-                    </form>
+                    <CardForm deckId={deckId} />
                 </div>
             </div>
         </div>
