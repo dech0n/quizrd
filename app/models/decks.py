@@ -10,7 +10,7 @@ class Deck(db.Model):
     # if error on delete, remove nullable
     owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     title = db.Column(db.String(20), nullable=False)
-    description = db.Column(db.String(55))
+    description = db.Column(db.String(70))
     image = db.Column(db.String(255))
     cards = db.relationship('Card', backref='deck')
     # might need to adjust lazy='subquery' if not getting all categories
