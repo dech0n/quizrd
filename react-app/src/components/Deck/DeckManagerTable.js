@@ -2,6 +2,7 @@ import React from 'react'
 import { Link, useHistory } from 'react-router-dom'
 
 // TODO: separate into components
+// TODO: Add categories back when ready
 function DeckManagerTable({ decks, handleDelete }) {
     const history = useHistory()
     const handleClick = (deckId) => history.push(`/decks/${deckId}/cards/add`)
@@ -21,14 +22,13 @@ function DeckManagerTable({ decks, handleDelete }) {
                                         className='deck-title'>{deck.title}</h4>
                                     <p key={`${deck.id}-deck-desc`}
                                         className='deck-description'>{deck.description}</p>
-                                    <p key={`${deck.id}-deck-cats`}>
+                                    {/* <p key={`${deck.id}-deck-cats`}>
                                         Categories: {categories.map(category => (
                                             <span key={`${category.id}-catgry-name`}
                                                 className='category-name'>
-                                                {/* TODO: Format this better */}
                                                 • {category.name} </span>
                                         ))}
-                                    </p>
+                                    </p> */}
                                 </li>
                             </ul>
                         </Link>
