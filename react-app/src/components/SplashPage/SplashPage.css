@@ -14,14 +14,23 @@
     margin: 0 0 .5rem;
 }
 
-#splash-decks-list {
-    display: flex;
-    overflow: auto;
-    flex-wrap: wrap;
-}
-
 #splash-decks-list-header {
 
+}
+
+#splash-decks-container {
+    display: flex;
+    justify-content: center;
+}
+
+#splash-decks-list {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* justify-content: flex-end; */
+    overflow: auto;
+    /* margin: 0 3rem; */
 }
 
 .splash-deck-tile {
@@ -44,4 +53,8 @@
     /* color: rgb(0, 0, 0); */
     background-color: rgba(103, 0, 206, .8);
     border: 2px solid rgb(0, 0, 0);
+}
+
+#splash-spacer {
+    width: 10rem;
 }

@@ -30,8 +30,9 @@ function SplashPage() {
                 </div>
 
             </div>
+            <h2 id='splash-decks-list-header'>Check it out...</h2>
             <div id='splash-decks-container'>
-                <h2 id='splash-decks-list-header'>Check it out...</h2>
+                <div id='splash-spacer' />
                 <ul id='splash-decks-list'>
                     {decks && decks.map(deck => (
                         <Link to={`/decks/${deck.id}/study`}>
