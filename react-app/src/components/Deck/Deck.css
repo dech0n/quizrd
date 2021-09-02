@@ -121,6 +121,11 @@ li.deck-manager-row:hover {
     justify-content: center;
 }
 
+#card-progress-counter {
+    text-align: center;
+    margin: 0 0 .5rem;
+}
+
 .deck-study-actions {
     align-self: flex-end;
     /* align-self: center; */
