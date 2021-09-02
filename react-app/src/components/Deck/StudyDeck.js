@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useHistory } from 'react-router-dom'
 import { getDeckCards } from '../../store/cards';
 import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
@@ -9,6 +9,7 @@ import './Deck.css'
 // TODO: use local storage to save user's place in the deck when they refresh
 function StudyDeck() {
     const dispatch = useDispatch()
+    const history = useHistory()
     const { deckId } = useParams()
     const user = useSelector(state => state.session.user)
     const deck = useSelector(state => state.decks[deckId])
@@ -17,6 +18,9 @@ function StudyDeck() {
 
     // console.log('*** STUDY DECK ***', deck)
     // console.log('*** STUDY CARDS ***', cards)
+    const handleEditClick = () => {
+        history.push(`/decks/${deckId}/cards/add`)
+    }
 
     const handlePrev = () => {
         setCardsIndex(cardsIndex - 1)
