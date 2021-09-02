@@ -1,0 +1,13 @@
+#splash-decks-list {
+    display: flex;
+    overflow: auto;
+    margin: 0 8rem;
+    flex-wrap: wrap;
+}
+
+.splash-deck-tile {
+    border: 1px solid darkgrey;
+    width: 20rem;
+    height: 15rem;
+    margin: 1rem 1rem;
+}

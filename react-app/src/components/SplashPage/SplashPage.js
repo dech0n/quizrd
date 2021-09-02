@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllDecks } from '../../store/decks'
+import './SplashPage.css'
 
 function SplashPage() {
     const dispatch = useDispatch()
@@ -15,7 +16,8 @@ function SplashPage() {
             <h1>Splash Page</h1>
             {/* Logo Image */}
             {/* Quick blurb about website */}
-            <ul>
+            <div id='splash-decks-container'>
+            <ul id='splash-decks-list'>
                 {decks.map(deck => (
                     <Link to={`/decks/${deck.id}/study`}>
                         <li className='splash-deck-tile'>
@@ -25,6 +27,7 @@ function SplashPage() {
                     </Link>
                 ))}
             </ul>
+            </div>
         </>
     ) : (
         <h1>Loading...</h1>
