@@ -42,7 +42,7 @@ function CardList({ cards, setCard, showEditForm }) {
 
     return cards && !("empty" in cards) ? (
         <>
-            <h3 className='card-creator-subheader'>Flashcards ({cards.length})</h3>
+            <h3 className='card-creator-subheader'>Flashcards (<span id='num-list-cards'>{cards.length}</span>)</h3>
             <ul id='deck-cards-list'>
                 {cards.map(card => (
                     <div className='list-card-container'>

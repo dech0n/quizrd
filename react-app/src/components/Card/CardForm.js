@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
+import { useHistory } from 'react-router-dom'
 import { createCard } from '../../store/cards'
 
 //! 'remove' className adds `display: none` for unfinished features
 function CardForm({ deckId }) {
+    const history = useHistory()
     const dispatch = useDispatch()
     const [errors, setErrors] = useState([])
     const [frontText, setFrontText] = useState("")
@@ -27,6 +29,9 @@ function CardForm({ deckId }) {
         setBackImage(e.target.value)
     }
 
+    const handleFinish = () => {
+        history.push(`/decks/${deckId}/study`)
+    }
     const handleSubmit = async (e) => {
         e.preventDefault()
         const cardData = {
@@ -63,14 +68,14 @@ function CardForm({ deckId }) {
                 className='form-field-container'
             >
                 <textarea
-                    className='form-input'
+                    className='form-input card-form-input'
                     type='text'
                     value={frontText}
                     onChange={updateFrontText}
                 />
             </div>
             <label
-                className='form-label'
+                className='form-label front-card-label'
             >
                 Front of flashcard
             </label>
@@ -93,7 +98,7 @@ function CardForm({ deckId }) {
                 className='form-field-container'
             >
                 <textarea
-                    className='form-input'
+                    className='form-input card-form-input card-back-input'
                     type='text'
                     value={backText}
                     onChange={updateBackText}
@@ -120,8 +125,16 @@ function CardForm({ deckId }) {
                 </label>
             </div>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>+ Add to Deck</button>
-                <button type='button'>Finish</button>
+                <button
+                    className='sumbit-btn card-form-submit-btn'
+                    type='submit'
+                >+ Add to Deck</button>
+                <button
+                    id='finish-btn'
+                    className='card-form-alt-btn'
+                    type='button'
+                    onClick={handleFinish}
+                >Finish</button>
             </div>
         </form>
     )

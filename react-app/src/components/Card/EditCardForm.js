@@ -68,14 +68,14 @@ function EditCardForm({ card, setShowThis }) {
                 className='form-field-container'
             >
                 <textarea
-                    className='form-input'
+                    className='form-input card-form-input'
                     type='text'
                     value={frontText}
                     onChange={updateFrontText}
                 />
             </div>
             <label
-                className='form-label'
+                className='form-label front-card-label'
             >
                 Front of flashcard
             </label>
@@ -98,7 +98,7 @@ function EditCardForm({ card, setShowThis }) {
                 className='form-field-container'
             >
                 <textarea
-                    className='form-input'
+                    className='form-input card-form-input card-back-input'
                     type='text'
                     value={backText}
                     onChange={updateBackText}
@@ -125,8 +125,11 @@ function EditCardForm({ card, setShowThis }) {
                 </label>
             </div>
             <div className='form-action-btns card-form-action-btns'>
-                <button type='submit'>Update Card</button>
                 <button
+                    className='card-form-submit-btn'
+                    type='submit'>Update Card</button>
+                <button
+                className='cancel-btn card-form-cancel-btn card-form-alt-btn'
                     type='button'
                     onClick={handleCancel}
                     >Cancel</button>
