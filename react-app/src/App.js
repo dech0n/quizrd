@@ -9,8 +9,9 @@ import UsersList from './components/UsersList';
 import User from './components/User';
 import HomePage from './components/HomePage/HomePage.js'
 import CardCreator from './components/Card/CardCreator';
-import { authenticate } from './store/session';
 import StudyDeck from './components/Deck/StudyDeck';
+import Footer from './components/Footer/Footer'
+import { authenticate } from './store/session';
 
 // TODO: Add Page Not Found Component
 function App() {
@@ -18,7 +19,7 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    (async() => {
+    (async () => {
       await dispatch(authenticate());
       setLoaded(true);
     })();
@@ -39,7 +40,7 @@ function App() {
           <SignUpForm />
         </Route>
         <ProtectedRoute path='/users' exact={true} >
-          <UsersList/>
+          <UsersList />
         </ProtectedRoute>
         <ProtectedRoute path='/users/:userId' exact={true} >
           <User />
@@ -54,6 +55,7 @@ function App() {
           <HomePage />
         </ProtectedRoute>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

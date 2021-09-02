@@ -1,134 +1,41 @@
-# Flask React Project
+# Quizrd
 
-This is the starter for the Flask React project.
+## Quizrd at a Glance
+Quizrd is a fullstack app that allows users to study flashcards in collections of decks. Logged in users can create decks and fill those decks with custom flashcards they make themselves. Unregistered users can study any deck they have a link to view.
 
-## Getting started
+## Application Architecture
+Quizard is built using React on the frontend with Flask on the backend and PostgreSQL as a database.
 
-1. Clone this repository (only this branch)
+## Frontend Overview
+Quizrd currently handles all display and interaction logic on the frontend with only a couple technologies.
 
-   ```bash
-   git clone https://github.com/appacademy-starters/python-project-starter.git
-   ```
+### Frontind Technologies Used
+**React**
 
-2. Install dependencies
+Quizrd uses React exclusively to handle the display logic.
 
-      ```bash
-      pipenv install --dev -r dev-requirements.txt && pipenv install -r requirements.txt
-      ```
+**Redux**
 
-3. Create a **.env** file based on the example with proper settings for your
-   development environment
-4. Setup your PostgreSQL user, password and database and make sure it matches your **.env** file
+All state is managed using Redux. Thunks make API calls to the backend server to retrieve app data.
 
-5. Get into your pipenv, migrate your database, seed your database, and run your flask app
+## Backend Overview
 
-   ```bash
-   pipenv shell
-   ```
+Quizrd uses a Flask server with a PostgreSQL database.
 
-   ```bash
-   flask db upgrade
-   ```
+**PostgreSQL**
 
-   ```bash
-   flask seed all
-   ```
+PostgreSQL was chosen as the database for its ease of use and simplicity.
 
-   ```bash
-   flask run
-   ```
+**Flask SQLAlchemy**
 
-6. To run the React App in development, checkout the [README](./react-app/README.md) inside the `react-app` directory.
+Fask SQLAlchemy was chosen for the ORM because it simplifies the integration of Flask with PostgreSQL. This helped ensure simple, easy table management and seeding.
 
-***
-*IMPORTANT!*
-   If you add any python dependencies to your pipfiles, you'll need to regenerate your requirements.txt before deployment.
-   You can do this by running:
+## Conclusion and Next Steps
 
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
+I am happy with Quizrd's base functionality but it is lacking features from its original design, namely the ability to upload audio and images related to a user's custom flashcards (who knows how to pronounce "écureuil"?) to create a more robust studying experience. To achieve this, I plan to implement AWS S3 which will accommadate uploading both images and audio files.
 
-*ALSO IMPORTANT!*
-   psycopg2-binary MUST remain a dev dependency because you can't install it on apline-linux.
-   There is a layer in the Dockerfile that will install psycopg2 (not binary) for us.
-***
+In addition to the creation of decks and flashcards, users need to be able to search for them. Currently the only way to find a deck is for it to be part of the user's list of created decks or to be provided the direct URL to someone else's deck. This will be accomplished with a search bar located in the navbar at the top of every page in the app.
 
-## Deploy to Heroku
+To enrich the search feature, I will be adding a category feature that will be associated with decks on the backend. When creating or editing a deck, users will have the option to choose from a static set of categories that they can associate with their deck. This will allow users to include decks in their search without having to know the title or description.
 
-1. Before you deploy, don't forget to run the following command in order to
-ensure that your production environment has all of your up-to-date
-dependencies. You only have to run this command when you have installed new
-Python packages since your last deployment, but if you aren't sure, it won't
-hurt to run it again.
-
-   ```bash
-   pipenv lock -r > requirements.txt
-   ```
-
-2. Create a new project on Heroku
-3. Under Resources click "Find more add-ons" and add the add on called "Heroku Postgres"
-4. Install the [Heroku CLI](https://devcenter.heroku.com/articles/heroku-command-line)
-5. Run
-
-   ```bash
-   heroku login
-   ```
-
-6. Login to the heroku container registry
-
-   ```bash
-   heroku container:login
-   ```
-
-7. Update the `REACT_APP_BASE_URL` variable in the Dockerfile.
-   This should be the full URL of your Heroku app: i.e. "https://flask-react-aa.herokuapp.com"
-8. Push your docker container to heroku from the root directory of your project.
-   (If you are using an M1 mac, follow [these steps below](#for-m1-mac-users) instead, then continue on to step 9.)
-   This will build the Dockerfile and push the image to your heroku container registry.
-
-   ```bash
-   heroku container:push web -a {NAME_OF_HEROKU_APP}
-   ```
-
-9. Release your docker container to heroku
-
-      ```bash
-      heroku container:release web -a {NAME_OF_HEROKU_APP}
-      ```
-
-10. set up your database
-
-      ```bash
-      heroku run -a {NAME_OF_HEROKU_APP} flask db upgrade
-      heroku run -a {NAME_OF_HEROKU_APP} flask seed all
-      ```
-
-11. Under Settings find "Config Vars" and add any additional/secret .env
-variables.
-
-12. profit
-
-### For M1 Mac users
-
-(Replaces **Step 8**)
-
-1. Build image with linux platform for heroku servers. Replace
-{NAME_OF_HEROKU_APP} with your own tag:
-
-   ```bash=
-   docker buildx build --platform linux/amd64 -t {NAME_OF_HEROKU_APP} .
-   ```
-
-2. Tag your app with the url for your apps registry. Make sure to use the name
-of your Heroku app in the url and tag name:
-
-   ```bash=2
-   docker tag {NAME_OF_HEROKU_APP} registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
-
-3. Use docker to push the image to the Heroku container registry:
-
-   ```bash=3
-   docker push registry.heroku.com/{NAME_OF_HEROKU_APP}/web
-   ```
+While I enjoy the simplicity of Quizrd's UI and overall layout, I believe it could be improved appear more interesting and streamlined. Function is currently prioritized over aesthetic. I aspire to gain more insight in the realm of design to elevate the overall look of my apps.
