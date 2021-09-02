@@ -72,7 +72,7 @@ function EditDeckForm({ deck, showThis }) {
                 />
                 <label className='form-label'>Deck Description</label>
             </div>
-            <div className='form-field-container'>
+            <div className='form-field-container remove'>
                 <input
                     className='form-input'
                     type='text'
