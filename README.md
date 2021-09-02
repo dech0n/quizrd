@@ -1,4 +1,5 @@
-# Quizrd
+# [Quizrd](https://quizrd.herokuapp.com/)
+https://quizrd.herokuapp.com/
 
 ## Quizrd at a Glance
 Quizrd is a fullstack app that allows users to study flashcards in collections of decks. Logged in users can create decks and fill those decks with custom flashcards they make themselves. Unregistered users can study any deck they have a link to view.
@@ -9,7 +10,7 @@ Quizard is built using React on the frontend with Flask on the backend and Postg
 ## Frontend Overview
 Quizrd currently handles all display and interaction logic on the frontend with only a couple technologies.
 
-### Frontind Technologies Used
+### Frontend Technologies Used
 **React**
 
 Quizrd uses React exclusively to handle the display logic.
