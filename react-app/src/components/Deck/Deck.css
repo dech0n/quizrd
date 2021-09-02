@@ -126,6 +126,12 @@ li.deck-manager-row:hover {
     /* align-self: center; */
 }
 
+.deck-study-edit-btn {
+    height: 1.7rem;
+    width: 6rem;
+    margin-top: .5rem
+}
+
 .study-card-action-btn-container {
     display: flex;
     align-items: center;
@@ -135,10 +141,6 @@ button.study-card-action-btn {
     /* position: relative; */
     height: 2rem;
     width: 5rem;
-}
-
-.hidden-btn {
-    visibility: hidden;
 }
 
 #deck-study-flashcard {
