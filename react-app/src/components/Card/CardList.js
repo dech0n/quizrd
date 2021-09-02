@@ -19,9 +19,19 @@ WHEN IMAGES IMPLEMENTED:
 
 
 // TODO: Create click handler for li.card-creator-card that sets the cardId to be used in card preview.
-function CardList({ cards }) {
+function CardList({ cards, setCard, showEditForm }) {
     // for when images are implemented
     // const frontImageClasses = 'list-card-image card-creator-card-image card-creater-card-image-front'
+
+    const handleEditClick = (card) => {
+        // must use setTimeout or edit form doesn't
+        // rerender with new card info
+        // without clicking cancel
+        setTimeout(() => showEditForm(false), 1)
+        setTimeout(() => showEditForm(true), 2)
+        setCard(card)
+    }
+
     return (
         <>
             <h3>The Cards</h3>
@@ -32,7 +42,10 @@ function CardList({ cards }) {
                             {card.front_text}
                         </div>
                         <div className='list-card-actions'>
-                            <button type='button'>Edit</button>
+                            <button
+                                type='button'
+                                onClick={() => handleEditClick(card)}
+                            >Edit</button>
                             <button type='button'>Delete</button>
                         </div>
                     </li>
