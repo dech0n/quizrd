@@ -45,23 +45,27 @@ function CardList({ cards, setCard, showEditForm }) {
             <h3>The Cards</h3>
             <ul id='deck-cards-list'>
                 {cards.map(card => (
-                    <li className='card card-creator-card list-card'>
-                        <div className='list-card-text'>
-                            {card.front_text}
-                        </div>
+                    <div className='list-card-container'>
+                        <li className='card card-creator-card list-card'>
+                            <div className='list-card-text'>
+                                {card.front_text}
+                            </div>
+                        </li>
                         <div className='list-card-actions'>
                             <button
+                                className='list-card-action-btn list-card-edit-btn edit-btn action-btn'
                                 type='button'
                                 onClick={() => handleEditClick(card)}
                             >Edit
                             </button>
                             <button
+                                className='list-card-action-btn list-card-delete-btn delete-btn action-btn'
                                 type='button'
                                 onClick={() => handleDelete(card.id)}
                             >Delete
                             </button>
                         </div>
-                    </li>
+                    </div>
                 ))
                 }
             </ul>
