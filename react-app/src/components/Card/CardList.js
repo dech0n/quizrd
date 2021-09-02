@@ -31,7 +31,7 @@ function CardList({ cards }) {
                         <div className='list-card-text'>
                             {card.front_text}
                         </div>
-                        <div className='card-front card-creator-card-front list-card'>
+                        <div className='list-card-actions'>
                             <button type='button'>Edit</button>
                             <button type='button'>Delete</button>
                         </div>

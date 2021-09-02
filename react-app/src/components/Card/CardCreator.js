@@ -72,7 +72,7 @@ function CardCreator() {
             </div>
             <div id='card-creator'>
                 {/* <h1>Card Creator</h1> */}
-                <div id='cards'>
+                <div id='card-creator-cards-list'>
                     {!("empty" in cards) ? (
                         <CardList cards={Object.values(cards)} />
                     ) : (
@@ -80,7 +80,7 @@ function CardCreator() {
                     )
                     }
                 </div>
-                <div id='card-preview'>
+                <div id='card-creator-card-preview'>
                     <h2>Card Preview</h2>
                     <CardPreview />
                 </div>

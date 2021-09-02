@@ -21,6 +21,20 @@
     margin: .5rem 0 0 0;
 }
 
+/* ul#deck-cards-list {
+
+} */
+
+.list-card {
+    display: flex;
+    border: 1px solid darkgrey;
+}
+
+.list-card-actions {
+    display: flex;
+    flex-direction: column;
+}
+
 /* The flashcard on study page */
 #study-card {
     display: flex;
