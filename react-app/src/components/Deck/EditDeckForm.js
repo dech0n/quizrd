@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { updateDeck } from '../../store/decks'
 import './Deck.css'
 
+//! 'remove' class is hiding some elements until the feature is developed. Look for this!
 // TODO: Style errors section
 function EditDeckForm({ deck, showThis }) {
     const dispatch = useDispatch()
