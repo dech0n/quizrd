@@ -1,8 +1,8 @@
-"""Create tables: cards, categories, decks, deck_categories, deck_learners.
+"""empty message
 
-Revision ID: 00f00bb8223e
-Revises: ffdc0a98111c
-Create Date: 2021-08-25 11:02:40.718153
+Revision ID: 4ce256a1fa91
+Revises:
+Create Date: 2021-09-02 09:53:17.819129
 
 """
 from alembic import op
@@ -10,8 +10,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '00f00bb8223e'
-down_revision = 'ffdc0a98111c'
+revision = '4ce256a1fa91'
+down_revision = None
 branch_labels = None
 depends_on = None
 
@@ -23,11 +23,20 @@ def upgrade():
     sa.Column('name', sa.String(length=100), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
+    op.create_table('users',
+    sa.Column('id', sa.Integer(), nullable=False),
+    sa.Column('username', sa.String(length=40), nullable=False),
+    sa.Column('email', sa.String(length=255), nullable=False),
+    sa.Column('hashed_password', sa.String(length=255), nullable=False),
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('email'),
+    sa.UniqueConstraint('username')
+    )
     op.create_table('decks',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('owner_id', sa.Integer(), nullable=False),
-    sa.Column('title', sa.String(length=100), nullable=False),
-    sa.Column('description', sa.String(length=255), nullable=True),
+    sa.Column('title', sa.String(length=20), nullable=False),
+    sa.Column('description', sa.String(length=70), nullable=True),
     sa.Column('image', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['owner_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -35,26 +44,24 @@ def upgrade():
     op.create_table('cards',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('deck_id', sa.Integer(), nullable=False),
-    sa.Column('front_text', sa.String(length=300), nullable=False),
-    sa.Column('back_text', sa.String(length=300), nullable=False),
+    sa.Column('front_text', sa.String(length=150), nullable=False),
+    sa.Column('back_text', sa.String(length=150), nullable=False),
     sa.Column('front_image', sa.String(length=255), nullable=True),
     sa.Column('back_image', sa.String(length=255), nullable=True),
     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('deck_categories',
-    sa.Column('deck_id', sa.Integer(), nullable=False),
-    sa.Column('category_id', sa.Integer(), nullable=False),
-    sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
-    sa.ForeignKeyConstraint(['category_id'], ['categories.id'], )
-    # sa.PrimaryKeyConstraint('category_id', 'deck_id')
+    sa.Column('deck_id', sa.Integer(), nullable=True),
+    sa.Column('category_id', sa.Integer(), nullable=True),
+    sa.ForeignKeyConstraint(['category_id'], ['categories.id'], ),
+    sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], )
     )
     op.create_table('deck_learners',
-    sa.Column('deck_id', sa.Integer(), nullable=False),
-    sa.Column('learner_id', sa.Integer(), nullable=False),
+    sa.Column('deck_id', sa.Integer(), nullable=True),
+    sa.Column('learner_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['deck_id'], ['decks.id'], ),
-    sa.ForeignKeyConstraint(['learner_id'], ['users.id'], ),
-    # sa.PrimaryKeyConstraint('learner_id', 'deck_id')
+    sa.ForeignKeyConstraint(['learner_id'], ['users.id'], )
     )
     # ### end Alembic commands ###
 
@@ -65,5 +72,6 @@ def downgrade():
     op.drop_table('deck_categories')
     op.drop_table('cards')
     op.drop_table('decks')
+    op.drop_table('users')
     op.drop_table('categories')
     # ### end Alembic commands ###
