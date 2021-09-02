@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
-import { getOneDeck, updateDeck } from '../../store/decks'
-import { createCard, getDeckCards } from '../../store/cards'
+import { getOneDeck } from '../../store/decks'
+import { getDeckCards } from '../../store/cards'
 import EditDeckForm from '../Deck/EditDeckForm'
 import EditDeckFormModal from '../Deck/EditDeckFormModal'
-import './Card.css'
 import CardForm from './CardForm'
+import EditCardForm from './EditCardForm'
 import CardList from './CardList'
 import CardPreview from './CardPreview'
+import './Card.css'
 
 
 /*
@@ -22,7 +23,6 @@ useState will help with this.
 */
 
 //! Remove 'remove' class from div#card-creator-card-preview when CardPreview is developed
-// TODO: Create separate components for different parts of card creator
 function CardCreator() {
     const dispatch = useDispatch()
     const { deckId } = useParams()
@@ -30,7 +30,10 @@ function CardCreator() {
     const deck = useSelector(state => state.decks[deckId])
     const user = useSelector(state => state.session.user)
     const [showDeckEditForm, setShowDeckEditForm] = useState(false)
-    const [cardId, setCardId] = useState()
+    const [showCardEditForm, setShowCardEditForm] = useState(false)
+    const [card, setCard] = useState()
+
+    // const [cardId, setCardId] = useState()
 
     const backImageClasses = 'card-image card-creator-card-image card-creater-card-image-back'
 
@@ -74,7 +77,7 @@ function CardCreator() {
                 {/* <h1>Card Creator</h1> */}
                 <div id='card-creator-cards-list'>
                     {!("empty" in cards) ? (
-                        <CardList cards={Object.values(cards)} />
+                        <CardList cards={Object.values(cards)} showEditForm={setShowCardEditForm} setCard={setCard} />
                     ) : (
                         <h3>There are no cards in this deck!</h3>
                     )
@@ -85,7 +88,12 @@ function CardCreator() {
                     <CardPreview />
                 </div>
                 <div id='card-creator-user-input'>
+                    {showCardEditForm ?
+                    // null
+                    <EditCardForm card={card} setShowThis={setShowCardEditForm}/>
+                    :
                     <CardForm deckId={deckId} />
+                }
                 </div>
             </div>
         </div>
