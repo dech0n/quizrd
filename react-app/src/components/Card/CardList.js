@@ -1,4 +1,6 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { deleteCard } from '../../store/cards'
 
 /*
 ADD THIS CODE TO THE TOP OF THE <li.list-card> (inside)
@@ -20,6 +22,7 @@ WHEN IMAGES IMPLEMENTED:
 
 // TODO: Create click handler for li.card-creator-card that sets the cardId to be used in card preview.
 function CardList({ cards, setCard, showEditForm }) {
+    const dispatch = useDispatch()
     // for when images are implemented
     // const frontImageClasses = 'list-card-image card-creator-card-image card-creater-card-image-front'
 
@@ -30,6 +33,10 @@ function CardList({ cards, setCard, showEditForm }) {
         setTimeout(() => showEditForm(false), 1)
         setTimeout(() => showEditForm(true), 2)
         setCard(card)
+    }
+
+    const handleDelete = (cardId) => {
+        dispatch(deleteCard(cardId))
     }
 
     return (
@@ -45,8 +52,13 @@ function CardList({ cards, setCard, showEditForm }) {
                             <button
                                 type='button'
                                 onClick={() => handleEditClick(card)}
-                            >Edit</button>
-                            <button type='button'>Delete</button>
+                            >Edit
+                            </button>
+                            <button
+                                type='button'
+                                onClick={() => handleDelete(card.id)}
+                            >Delete
+                            </button>
                         </div>
                     </li>
                 ))
