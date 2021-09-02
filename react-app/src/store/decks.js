@@ -42,6 +42,13 @@ export const getOneDeck = (deckId) => async (dispatch) => {
         const deck = await res.json() // parses into object
         // console.log('** GET ONE THUNK **', deck)
         dispatch(load([deck])) // must be array for the reducer
+    } else if (res.status < 500) { // error but not server error
+        const data = await res.json()
+        if (data.errors) {
+            return data.errors
+        }
+    } else {
+        return ["An error occurred. Please try again."]
     }
 }
 
