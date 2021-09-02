@@ -6,6 +6,7 @@ import { getOneDeck } from '../../store/decks';
 import Card from '../Card/Card.js';
 import './Deck.css'
 
+//! Check for elements with 'hide' class -- might save you some work when refactoring/adding features
 // TODO: use local storage to save user's place in the deck when they refresh
 function StudyDeck() {
     const dispatch = useDispatch()
@@ -42,15 +43,32 @@ function StudyDeck() {
                 <div id='deck-details'>
                     <h1 id='deck-title'>{deck.title}</h1>
                     <p id='deck-description'>{deck.description}</p>
+                    {user ?
+                        // remove this whole block when Preview Deck feature is ready
+                        // and unhide the buttons in div.deck-study actions
+                        <button
+                            className='edit-btn deck-study-edit-btn'
+                            type="button"
+                            onClick={handleEditClick}
+                        >Edit Deck
+                        </button> :
+                        // hidden dead button to maintain spacing
+                        <button className='hide'>Edit</button>
+                        }
                 </div>
                 <div className='deck-study-actions'>
                     {user ?
                         <button
+                            className='edit-btn hide'
                             type="button"
                             onClick={handleEditClick}
                         >Edit
-                        </button> : null}
-                    <button type="button">Preview Deck</button> {/* Bring up modal to preview both sides of every card */}
+                        </button> :
+                        // hidden dead button to maintain spacing
+                        <button className='hide'>Edit</button>
+                        }
+                    {/* Bring up modal to preview both sides of every card */}
+                    <button className='hide' type="button">Preview Deck</button>
                 </div>
             </div>
             <div id='deck-study-flashcard'>
