@@ -29,7 +29,7 @@ function CardList({ cards, setCard, showEditForm }) {
 
     const handleEditClick = (card) => {
         // must use setTimeout or edit form doesn't
-        // rerender with new card info
+        // rerender with next card's info in fields
         // without clicking cancel
         setTimeout(() => showEditForm(false), 1)
         setTimeout(() => showEditForm(true), 2)
