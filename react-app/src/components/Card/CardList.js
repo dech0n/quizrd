@@ -29,7 +29,7 @@ function CardList({ cards, setCard, showEditForm }) {
 
     const handleEditClick = (card) => {
         // must use setTimeout or edit form doesn't
-        // rerender with new card info
+        // rerender with next card's info in fields
         // without clicking cancel
         setTimeout(() => showEditForm(false), 1)
         setTimeout(() => showEditForm(true), 2)
@@ -42,26 +42,30 @@ function CardList({ cards, setCard, showEditForm }) {
 
     return cards && !("empty" in cards) ? (
         <>
-            <h3>The Cards</h3>
+            <h3 className='card-creator-subheader'>Flashcards (<span id='num-list-cards'>{cards.length}</span>)</h3>
             <ul id='deck-cards-list'>
                 {cards.map(card => (
-                    <li className='card card-creator-card list-card'>
-                        <div className='list-card-text'>
-                            {card.front_text}
-                        </div>
+                    <div className='list-card-container'>
+                        <li className='card card-creator-card list-card'>
+                            <div className='list-card-text'>
+                                {card.front_text}
+                            </div>
+                        </li>
                         <div className='list-card-actions'>
                             <button
+                                className='list-card-action-btn list-card-edit-btn edit-btn action-btn'
                                 type='button'
                                 onClick={() => handleEditClick(card)}
                             >Edit
                             </button>
                             <button
+                                className='list-card-action-btn list-card-delete-btn delete-btn action-btn'
                                 type='button'
                                 onClick={() => handleDelete(card.id)}
                             >Delete
                             </button>
                         </div>
-                    </li>
+                    </div>
                 ))
                 }
             </ul>
@@ -69,7 +73,8 @@ function CardList({ cards, setCard, showEditForm }) {
     ) : (
         <>
             <h1>Loading...</h1>
-            <p>If the page doesn't load,<br />click <Link to='/'>here</Link> and try again</p>
+            <p>If the page doesn't load,<br />
+            click <Link to='/'>here</Link> and try again</p>
         </>
     )
 }
