@@ -42,7 +42,7 @@ function CardList({ cards, setCard, showEditForm }) {
 
     return cards && !("empty" in cards) ? (
         <>
-            <h3>The Cards</h3>
+            <h3 className='card-creator-subheader'>Flashcards ({cards.length})</h3>
             <ul id='deck-cards-list'>
                 {cards.map(card => (
                     <div className='list-card-container'>
@@ -73,7 +73,8 @@ function CardList({ cards, setCard, showEditForm }) {
     ) : (
         <>
             <h1>Loading...</h1>
-            <p>If the page doesn't load,<br />click <Link to='/'>here</Link> and try again</p>
+            <p>If the page doesn't load,<br />
+            click <Link to='/'>here</Link> and try again</p>
         </>
     )
 }

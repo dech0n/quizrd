@@ -17,6 +17,14 @@
     margin: 0 0 3rem;
 }
 
+.card-creator-subheader {
+    /* color: rgba(149, 85, 245, 1) */
+}
+
+.card-creator-form-header {
+    margin: 0 0 1rem;
+}
+
 .edit-deck-btn {
     padding: .5rem 1rem;
     border-radius: 1rem;

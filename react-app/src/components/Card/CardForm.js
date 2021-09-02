@@ -52,7 +52,7 @@ function CardForm({ deckId }) {
             className='card-form'
             onSubmit={handleSubmit}
         >
-            <h2>New Flashcard</h2>
+            <h3 className='card-creator-subheader card-creator-form-header'>New Flashcard</h3>
 
             <div className='card-form-errors form-errors'>
                 {errors.map(error => (
