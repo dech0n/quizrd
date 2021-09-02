@@ -62,7 +62,7 @@ function CardForm({ deckId }) {
             <div
                 className='form-field-container'
             >
-                <input
+                <textarea
                     className='form-input'
                     type='text'
                     value={frontText}
@@ -92,7 +92,7 @@ function CardForm({ deckId }) {
             <div
                 className='form-field-container'
             >
-                <input
+                <textarea
                     className='form-input'
                     type='text'
                     value={backText}

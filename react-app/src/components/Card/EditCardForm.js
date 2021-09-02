@@ -67,7 +67,7 @@ function EditCardForm({ card, setShowThis }) {
             <div
                 className='form-field-container'
             >
-                <input
+                <textarea
                     className='form-input'
                     type='text'
                     value={frontText}
@@ -97,7 +97,7 @@ function EditCardForm({ card, setShowThis }) {
             <div
                 className='form-field-container'
             >
-                <input
+                <textarea
                     className='form-input'
                     type='text'
                     value={backText}
