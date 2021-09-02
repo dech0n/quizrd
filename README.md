@@ -40,4 +40,4 @@ To enrich the search feature, I will be adding a category feature that will be a
 
 As a follow-up to the search feature, I will be implementing a subscribe or "Learn" feature. This will allow users to create a list of decks they do not own but wish to have available for study. This will reduce the need to search for the same deck repeatedly, save a cumbersome URL or create many bookmarks for the same website.
 
-While I enjoy the simplicity of Quizrd's UI and overall layout, I believe it could be improved appear more interesting and streamlined. Function is currently prioritized over aesthetic. I aspire to gain more insight in the realm of design to elevate the overall look of my apps.
+While I enjoy the simplicity of Quizrd's UI and overall layout, I believe it could be improved to appear more interesting and streamlined. Function is currently prioritized over aesthetic. I aspire to gain more insight in the realm of design to elevate the overall look of my apps.
