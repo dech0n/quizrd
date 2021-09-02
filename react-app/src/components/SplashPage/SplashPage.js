@@ -10,7 +10,7 @@ function SplashPage() {
 
     useEffect(() => {
         dispatch(getAllDecks())
-    })
+    }, [dispatch])
     return decks ? (
         <div id='splash-container'>
             {/* Logo Image */}
