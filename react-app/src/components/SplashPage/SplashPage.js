@@ -24,12 +24,12 @@ function SplashPage() {
                         <p>Create custom decks with exactly what you want to learn.</p>
                     </div>
                     <div id='splash-feature-find' className='splash-feature'>
-                        <h3>Find great flashcards</h3>
-                        <p>Browse decks created by other avid learners like you.</p>
-                    </div>
-                    <div id='splash-feature-find' className='splash-feature'>
                         <h3>Share your flashcards</h3>
                         <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
+                    </div>
+                    <div id='splash-feature-find' className='splash-feature'>
+                        <h3>Coming soon: Find great flashcards</h3>
+                        <p>Browse decks created by other avid learners like you.</p>
                     </div>
                 </div>
                 <div id='splash-logo-container'>
