@@ -23,6 +23,10 @@
     margin: 0 0 .5rem;
 }
 
+.splash-feature h3 {
+    color:rgb(149, 85, 245)
+}
+
 #splash-logo-container {
     /* justify-self: flex-start; */
     margin-right: 6.5rem;
