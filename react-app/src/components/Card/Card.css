@@ -52,12 +52,12 @@ div.card-creator-list-row {
     margin: 1rem 0;
 }
 
-div.list-card-container {
-    width: auto;
+div.card-creator-list-row:hover {
+    color: rgb(149, 85, 245)
 }
 
-div.list-card-container:hover {
-    color: rgb(149, 85, 245)
+div.list-card-container {
+    width: auto;
 }
 
 li.list-card-content {
@@ -68,12 +68,13 @@ li.list-card-content {
 }
 
 .list-card-text {
+    /* might need to adjust width
+    when img added to content */
     text-align: center;
     white-space: nowrap;
     overflow: hidden;
     width: 240px;
-    text-overflow: ellipsis; 
-    /* display: inline-block; */
+    text-overflow: ellipsis;
 }
 
 .list-card-actions {
