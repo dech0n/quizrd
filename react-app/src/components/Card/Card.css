@@ -1,16 +1,11 @@
 /* Card Creator elements & components */
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 1450px) {
     #card-creator-page-container {
         margin: 0 20rem 0;
     }
 }
 
-@media screen and (max-width: 769px) {
-    #card-creator-page-container {
-        margin: 0;
-    }
-}
 #card-creator {
     display: flex;
     /* justify-content: space-between; */
