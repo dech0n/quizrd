@@ -39,7 +39,7 @@ ul#deck-cards-list {
     width: 20rem;
 }
 
-.list-card-container {
+div.card-creator-list-row {
     display: flex;
     border: 1px solid darkgrey;
     border-radius: 1rem;
@@ -52,11 +52,15 @@ ul#deck-cards-list {
     margin: 1rem 0;
 }
 
-.list-card-container:hover {
+div.card-creator-list-row:hover {
     color: rgb(149, 85, 245)
 }
 
-li.list-card {
+div.list-card-container {
+    width: auto;
+}
+
+li.list-card-content {
     width: 100%;
     justify-content: center;
     margin: auto 0;
@@ -64,11 +68,13 @@ li.list-card {
 }
 
 .list-card-text {
-    /* display: inline-block; */
+    /* might need to adjust width
+    when img added to content */
     text-align: center;
-    /* text-overflow: ellipsis;  */
-    /* white-space: nowrap; */
-    /* overflow: hidden; */
+    white-space: nowrap;
+    overflow: hidden;
+    width: 240px;
+    text-overflow: ellipsis;
 }
 
 .list-card-actions {
@@ -132,6 +138,16 @@ li.list-card {
     border-radius: .5rem;
     align-items: center;
     color: rgb(149, 85, 245);
+}
+
+/* .study-card-content {
+    text-align: center;
+    padding: 20px;
+} */
+
+.study-card-text {
+    text-align: center;
+    padding: 0 20px;
 }
 
 #study-card-front, #study-card-back {

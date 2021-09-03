@@ -46,12 +46,15 @@ function CardList({ cards, setCard, showEditForm }) {
             <h3 className='card-creator-subheader'>Flashcards (<span id='num-list-cards'>{cards.length}</span>)</h3>
             <ul id='deck-cards-list'>
                 {cards.map(card => (
-                    <div className='list-card-container'>
-                        <li className='card card-creator-card list-card'>
-                            <div className='list-card-text'>
-                                {card.front_text}
-                            </div>
-                        </li>
+                    <div className='card-creator-list-row'>
+                        <div className='list-card-container'>
+                            <li className='list-card-content'>
+                                {/* <img src={card.front_image} /> */}
+                                <p className='list-card-text'>
+                                    {card.front_text}
+                                </p>
+                            </li>
+                        </div>
                         <div className='list-card-actions'>
                             <button
                                 className='list-card-action-btn list-card-edit-btn edit-btn action-btn'
@@ -75,7 +78,7 @@ function CardList({ cards, setCard, showEditForm }) {
         <>
             <h1>Loading...</h1>
             <p>If the page doesn't load,<br />
-            click <Link to='/'>here</Link> and try again</p>
+                click <Link to='/'>here</Link> and try again</p>
         </>
     )
 }
