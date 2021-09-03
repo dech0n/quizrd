@@ -30,10 +30,9 @@ function SplashPage() {
                     </div>
                 </div>
                 <div id='splash-logo-container'>
-                    <h1>[* Logo Image *]</h1>
+                    <img src='/images/logo-transparent.png' alt='big-logo' id='splash-logo'/>
                 </div>
             </div>
-
             <h2 id='splash-decks-list-header'>Check it out...</h2>
             <div id='splash-decks-container'>
                 <div id='splash-spacer' />

@@ -1,26 +1,40 @@
 #splash-container {
-    margin: 0 8rem;
+    margin: 0 10rem;
 }
 
 #splash-page-header {
     display: flex;
     justify-content: space-between;
+    /* justify-content: space-around; */
 }
 
 #splash-feature-list {
-    margin: 0 0 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 0 10rem;
 }
 
 #splash-header {
-    margin: 0 0 1rem;
+    margin: 0 0 3rem;
 }
 
 .splash-feature {
     margin: 0 0 .5rem;
 }
 
-#splash-decks-list-header {
+#splash-logo-container {
+    /* justify-self: flex-start; */
+    margin-right: 6.5rem;
+}
 
+#splash-logo {
+    /* justify-self: flex-start; */
+    margin: 0 0 0 7rem;
+}
+
+#splash-decks-list-header {
+    margin: 1rem 0 0 10rem;
 }
 
 #splash-decks-container {
