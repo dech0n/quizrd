@@ -3,15 +3,15 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import logo from '../../assets/images/logo-resized.png'
 import './Navbar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  //! remove 'hide' class from img#logo when you figure out how to get it to render on Heroku
   return (
     <nav className='navbar navbar-container'>
       <NavLink to='/' className='logo-navlink'>
-        <img id='logo' className='hide' src='/images/logo-resized.png' alt='logo' />
+        <img id='logo' src={logo} alt='logo'/>
         <span id='logo-title'>QUIZRD</span>
       </NavLink>
       <ul className='all-navlinks-container'>
@@ -22,11 +22,11 @@ const NavBar = () => {
                 Login
               </NavLink>
             </li>
-            <li className='navlink-container'>
+            {/* <li className='navlink-container'> */}
               <NavLink to='/sign-up' exact={true} activeClassName='active' className='navbar navlink' id='signup'>
                 Sign Up
               </NavLink>
-            </li>
+            {/* </li> */}
           </>
         ) : (
           <>

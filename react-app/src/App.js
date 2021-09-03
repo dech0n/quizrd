@@ -13,6 +13,7 @@ import StudyDeck from './components/Deck/StudyDeck';
 import Footer from './components/Footer/Footer'
 import { authenticate } from './store/session';
 import SplashPage from './components/SplashPage/SplashPage';
+import ContentWrap from './components/ContentWrap/ContentWrap';
 
 // TODO: Add Page Not Found Component
 function App() {
@@ -32,34 +33,36 @@ function App() {
 
   return (
     <BrowserRouter>
-      <NavBar />
-      <Switch>
-        <Route path='/login' exact={true}>
-          <LoginForm />
-        </Route>
-        <Route path='/sign-up' exact={true}>
-          <SignUpForm />
-        </Route>
-        <ProtectedRoute path='/users' exact={true} >
-          <UsersList />
-        </ProtectedRoute>
-        <ProtectedRoute path='/users/:userId' exact={true} >
-          <User />
-        </ProtectedRoute>
-        <ProtectedRoute path='/decks/:deckId/cards/add' exact={true} >
-          <CardCreator />
-        </ProtectedRoute>
-        <Route path='/decks/:deckId/study' exact={true}>
-          <StudyDeck />
-        </Route>
-        <Route path='/welcome'>
-          <SplashPage />
-        </Route>
-        <ProtectedRoute path='/' exact={true} >
-          <HomePage />
-        </ProtectedRoute>
-      </Switch>
-      <Footer />
+      <ContentWrap>
+        <NavBar />
+        <Switch>
+          <Route path='/login' exact={true}>
+            <LoginForm />
+          </Route>
+          <Route path='/sign-up' exact={true}>
+            <SignUpForm />
+          </Route>
+          <ProtectedRoute path='/users' exact={true} >
+            <UsersList />
+          </ProtectedRoute>
+          <ProtectedRoute path='/users/:userId' exact={true} >
+            <User />
+          </ProtectedRoute>
+          <ProtectedRoute path='/decks/:deckId/cards/add' exact={true} >
+            <CardCreator />
+          </ProtectedRoute>
+          <Route path='/decks/:deckId/study' exact={true}>
+            <StudyDeck />
+          </Route>
+          <Route path='/welcome'>
+            <SplashPage />
+          </Route>
+          <ProtectedRoute path='/' exact={true} >
+            <HomePage />
+          </ProtectedRoute>
+        </Switch>
+      </ContentWrap>
+        <Footer />
     </BrowserRouter>
   );
 }
