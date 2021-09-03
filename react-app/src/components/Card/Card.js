@@ -19,18 +19,16 @@ function Card({ card, deckId }) {
                 onClick={() => setFlipCard(!flipCard)}
             >
                 {flipCard ?
-                    <div
-                        id='study-card-front'
-                    // onClick={() => setFlipCard(!flipCard)}
-                    >
-                        {card.front_text}
+                    <div id='study-card-front' className='study-card-content'>
+                        <p className='study-card-text'>
+                            {card.front_text}
+                        </p>
                     </div>
                     : // else
-                    <div
-                        id='study-card-back'
-                    // onClick={() => setFlipCard(!flipCard)}
-                    >
-                        {card.back_text}
+                    <div id='study-card-back' className='study-card-content'>
+                        <p className='study-card-text'>
+                            {card.back_text}
+                        </p>
                     </div>
                 }
 
