@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { getAllDecks } from '../../store/decks'
+import splashLogo from '../../assets/images/logo-transparent.png'
 import './SplashPage.css'
 
 function SplashPage() {
@@ -30,7 +31,7 @@ function SplashPage() {
                     </div>
                 </div>
                 <div id='splash-logo-container'>
-                    <img src='/images/splash-logo.png' alt='big-logo' id='splash-logo'/>
+                    <img src={splashLogo} alt='big-logo' id='splash-logo'/>
                 </div>
             </div>
             <h2 id='splash-decks-list-header'>Check it out...</h2>
