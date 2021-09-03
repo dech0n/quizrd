@@ -35,6 +35,8 @@
     margin: .5rem 0 0 0;
 }
 
+
+/* The list of the deck's cards */
 ul#deck-cards-list {
     width: 20rem;
 }
@@ -103,6 +105,8 @@ li.list-card-content {
     background-color: rgb(149, 85, 245);
 }
 
+
+/* The flashcard form */
 .card-back-input {
     margin: 1.5rem 0 0;
 }
@@ -148,13 +152,14 @@ li.list-card-content {
 .study-card-text {
     text-align: center;
     padding: 0 20px;
+    /* word-wrap: break-word; */
 }
 
 #study-card-front, #study-card-back {
     font-weight: 700;
     font-size: 1.25rem;
-    overflow-wrap: normal;
-    overflow-y: auto;
+    overflow-wrap: break-word;
+    overflow-y: hidden;
 }
 
 #no-cards {
