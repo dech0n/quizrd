@@ -8,7 +8,6 @@ import './Navbar.css'
 
 const NavBar = () => {
   const user = useSelector(state => state.session.user)
-  //! remove 'hide' class from img#logo when you figure out how to get it to render on Heroku
   return (
     <nav className='navbar navbar-container'>
       <NavLink to='/' className='logo-navlink'>
