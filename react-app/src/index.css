@@ -23,6 +23,11 @@ TODO: Add global form styling (incl form buttons?)
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+#root {
+	position: relative;
+	min-height: 100vh;
+}
+
 body {
     background-color: rgba(0, 0, 0, .95);
     color: darkgrey;
