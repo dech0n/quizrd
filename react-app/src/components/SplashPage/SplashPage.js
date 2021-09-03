@@ -5,6 +5,7 @@ import { getAllDecks } from '../../store/decks'
 import splashLogo from '../../assets/images/logo-transparent.png'
 import './SplashPage.css'
 
+//! used 'hide' class on some elements
 function SplashPage() {
     const dispatch = useDispatch()
     const decks = useSelector(state => Object.values(state.decks))
@@ -12,6 +13,7 @@ function SplashPage() {
     useEffect(() => {
         dispatch(getAllDecks())
     }, [dispatch])
+
     return decks ? (
         <div id='splash-container'>
             <div id='splash-page-header'>
@@ -22,20 +24,20 @@ function SplashPage() {
                         <p>Create custom decks with exactly what you want to learn.</p>
                     </div>
                     <div id='splash-feature-find' className='splash-feature'>
-                        <h3>Find great flashcards</h3>
-                        <p>Browse decks created by other avid learners like you.</p>
-                    </div>
-                    <div id='splash-feature-find' className='splash-feature'>
                         <h3>Share your flashcards</h3>
                         <p>Post a link to your class discussion, or tweet it to the rest of the world!</p>
+                    </div>
+                    <div id='splash-feature-find' className='splash-feature'>
+                        <h3>Coming soon: Find great flashcards</h3>
+                        <p>Browse decks created by other avid learners like you.</p>
                     </div>
                 </div>
                 <div id='splash-logo-container'>
                     <img src={splashLogo} alt='big-logo' id='splash-logo'/>
                 </div>
             </div>
-            <h2 id='splash-decks-list-header'>Check it out...</h2>
-            <div id='splash-decks-container'>
+            <h2 id='splash-decks-list-header' className='hide'>Check it out...</h2>
+            <div id='splash-decks-container' className='hide'>
                 <div id='splash-spacer' />
                 <ul id='splash-decks-list'>
                     {decks && decks.map(deck => (
