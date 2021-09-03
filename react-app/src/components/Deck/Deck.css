@@ -27,6 +27,8 @@ button.deck-cancel-btn {
     margin-left: 5px;
 }
 
+/* Homepage Deck List */
+
 .deck-list-container {
     border-radius: .2rem;
     overflow-y: scroll;
@@ -94,8 +96,16 @@ li.deck-manager-row:hover {
 
 /* Deck study page */
 
-#deck-study-page-container {
-    margin: 0 20rem 0;
+@media screen and (min-width: 769px) {
+    #deck-study-page-container {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    #deck-study-page-container {
+        margin: 0 20rem 0;
+    }
 }
 
 #spacer-div {
