@@ -1,11 +1,59 @@
 #splash-container {
-    margin: 0 8rem;
+    margin: 0 10rem;
+}
+
+#splash-page-header {
+    display: flex;
+    justify-content: space-between;
+    /* justify-content: space-around; */
+}
+
+#splash-feature-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 0 0 10rem;
+}
+
+#splash-header {
+    margin: 0 0 3rem;
+}
+
+.splash-feature {
+    margin: 0 0 .5rem;
+}
+
+.splash-feature h3 {
+    color:rgb(149, 85, 245)
+}
+
+#splash-logo-container {
+    /* justify-self: flex-start; */
+    margin-right: 6.5rem;
+}
+
+#splash-logo {
+    /* justify-self: flex-start; */
+    margin: 0 0 0 7rem;
+}
+
+#splash-decks-list-header {
+    margin: 1rem 0 0 10rem;
+}
+
+#splash-decks-container {
+    display: flex;
+    justify-content: center;
 }
 
 #splash-decks-list {
     display: flex;
-    overflow: auto;
     flex-wrap: wrap;
+    /* flex-direction: column; */
+    /* justify-content: center; */
+    /* justify-content: flex-end; */
+    overflow: auto;
+    /* margin: 0 3rem; */
 }
 
 .splash-deck-tile {
@@ -28,4 +76,8 @@
     /* color: rgb(0, 0, 0); */
     background-color: rgba(103, 0, 206, .8);
     border: 2px solid rgb(0, 0, 0);
+}
+
+#splash-spacer {
+    width: 10rem;
 }
