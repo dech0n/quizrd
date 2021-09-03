@@ -22,11 +22,11 @@ const NavBar = () => {
                 Login
               </NavLink>
             </li>
-            <li className='navlink-container'>
+            {/* <li className='navlink-container'> */}
               <NavLink to='/sign-up' exact={true} activeClassName='active' className='navbar navlink' id='signup'>
                 Sign Up
               </NavLink>
-            </li>
+            {/* </li> */}
           </>
         ) : (
           <>
