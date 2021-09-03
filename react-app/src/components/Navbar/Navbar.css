@@ -41,6 +41,7 @@ nav.navbar-container {
     display: flex;
     list-style: none;
     margin: 0 1rem 0 0;
+    align-items: center;
 }
 
 .navlink-container, #logo {
@@ -69,4 +70,16 @@ li#logout-btn-container.navlink-container {
     /* width: 55px; */
     height: 2rem;
     width: 5rem;
+}
+
+#signup.navbar.navlink {
+    display: flex;
+    background-color: var(--rgb-green);
+    color: lightgrey;
+    border-radius: 1rem;
+    font-size: 13.33px;
+    height: 32px;
+    width: 80px;
+    align-items: center;
+justify-content: center;
 }
