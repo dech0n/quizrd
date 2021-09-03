@@ -3,6 +3,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from '../auth/LogoutButton';
+import logo from '../../assets/images/logo-resized.png'
 import './Navbar.css'
 
 const NavBar = () => {
@@ -11,7 +12,7 @@ const NavBar = () => {
   return (
     <nav className='navbar navbar-container'>
       <NavLink to='/' className='logo-navlink'>
-        <img id='logo' className='hide' src='/images/logo-resized.png' alt='logo' />
+        <img id='logo' src={logo} alt='logo'/>
         <span id='logo-title'>QUIZRD</span>
       </NavLink>
       <ul className='all-navlinks-container'>
