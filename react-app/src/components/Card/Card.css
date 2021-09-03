@@ -159,7 +159,10 @@ li.list-card-content {
     font-weight: 700;
     font-size: 1.25rem;
     overflow-wrap: break-word;
-    overflow-y: hidden;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    /* hyphens: auto; */
+    /* hyphens: manual; */
 }
 
 #no-cards {
