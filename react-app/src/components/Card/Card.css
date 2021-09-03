@@ -1,6 +1,9 @@
 /* Card Creator elements & components */
-#card-creator-page-container {
-    margin: 0 20rem 0;
+
+@media screen and (min-width: 1450px) {
+    #card-creator-page-container {
+        margin: 0 20rem 0;
+    }
 }
 
 #card-creator {
