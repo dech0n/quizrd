@@ -1,20 +1,20 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link } from 'react-router-dom'
-import { getAllDecks } from '../../store/decks'
+// import React, { useEffect } from 'react'
+// import { useDispatch, useSelector } from 'react-redux'
+// import { Link } from 'react-router-dom'
+// import { getAllDecks } from '../../store/decks'
 import splashLogo from '../../assets/images/logo-transparent.png'
 import './SplashPage.css'
 
 //! used 'hide'/'remove' class on some elements
 function SplashPage() {
-    const dispatch = useDispatch()
-    const decks = useSelector(state => Object.values(state.decks))
+    // const dispatch = useDispatch()
+    // const decks = useSelector(state => Object.values(state.decks))
 
-    useEffect(() => {
-        dispatch(getAllDecks())
-    }, [dispatch])
+    // useEffect(() => {
+    //     dispatch(getAllDecks())
+    // }, [dispatch])
 
-    return decks ? (
+    return /* decks ? */(
         <div id='splash-container'>
             <div id='splash-page-header'>
                 <div id='splash-feature-list'>
@@ -37,7 +37,7 @@ function SplashPage() {
                 </div>
             </div>
             <h2 id='splash-decks-list-header' className='hide'>Check it out...</h2>
-            <div id='splash-decks-container' className='hide remove'>
+            {/* <div id='splash-decks-container' className='hide remove'>
                 <div id='splash-spacer' />
                 <ul id='splash-decks-list'>
                     {decks && decks.map(deck => (
@@ -49,11 +49,12 @@ function SplashPage() {
                         </Link>
                     ))}
                 </ul>
-            </div>
+            </div> */}
         </div>
-    ) : (
-        <h1>Loading...</h1>
     )
+    // : (
+    //     <h1>Loading...</h1>
+    // )
 }
 
 export default SplashPage
