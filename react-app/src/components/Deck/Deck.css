@@ -97,14 +97,9 @@ li.deck-manager-row:hover {
 /* Deck study page */
 
 @media screen and (min-width: 1450px) {
-    button {
-        background-color: white
-    }
-
     #deck-study-page-container {
         margin: 0 20rem 0;
     }
-
 }
 
 #spacer-div {
