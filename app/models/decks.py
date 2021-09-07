@@ -12,7 +12,7 @@ class Deck(db.Model):
     title = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(70))
     image = db.Column(db.String(255))
-    cards = db.relationship('Card', backref='deck')
+    cards = db.relationship('Card', backref='deck', cascade="all, delete")
     # might need to adjust lazy='subquery' if not getting all categories
     # https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/ <-- docs
     categories = db.relationship('Category',
