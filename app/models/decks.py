@@ -8,7 +8,7 @@ class Deck(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     # if error on delete, remove nullable
-    owner_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
+    owner_id = db.Column(db.Integer, db.ForeignKey('users.id', ondelete="CASCADE"), nullable=False)
     title = db.Column(db.String(20), nullable=False)
     description = db.Column(db.String(70))
     image = db.Column(db.String(255))
