@@ -2,7 +2,7 @@ from .db import db
 from .deck_categories import deck_categories
 from .deck_learners import deck_learners
 
-
+#! Add cascade delete for categories.
 class Deck(db.Model):
     __tablename__ = 'decks'
 
@@ -18,7 +18,7 @@ class Deck(db.Model):
     categories = db.relationship('Category',
                                  secondary=deck_categories,
                                  #  lazy='subquery',
-                                 backref=db.backref('deck', lazy='dynamic')
+                                 backref=db.backref('deck', lazy='dynamic'), cascade="all, delete"
                                  )
     learners = db.relationship('User',
                                secondary=deck_learners,
