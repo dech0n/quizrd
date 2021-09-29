@@ -9,6 +9,10 @@ s3 = boto3.client(
     aws_secret_access_key=os.environ.get("S3_SECRET")
 )
 
+BUCKET_NAME = os.environ.get("S3_BUCKET")
+# the bucket's location within AWS
+S3_LOCATION = f"http://{BUCKET_NAME}.s3.amazonaws.com/"
+
 # TODO: add audio file extensions to this list
 ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "gif"}
 
@@ -33,3 +37,28 @@ def get_unique_filename(filename):
     # uuid4 = generate random uuid (vs one from a hash), hex = make it a string
     unique_filename = uuid.uuid4().hex
     return f"{unique_filename}.{ext}"
+
+
+def upload_file_to_s3(file, acl="public-read"):
+    '''
+    Uploads the file to AWS and, upon success,
+    returns a dictionary with a key of "url" and a value
+    of the image URL.
+
+    Upon failure, returns a dictionary with a key of "error"
+    and a string value of the exception.
+    '''
+    try:
+        s3.upload_fileobj(
+            file,
+            BUCKET_NAME,
+            file.filename,
+            ExtraArgs={
+                "ACL": acl,
+                "ContentType": file.content_type
+            }
+        )
+    except Exception as e:
+        # in case the s3 upload fails
+        return {"errors": str(e)}
+    return {"url": f"{S3_LOCATION}{file.filename}"}
