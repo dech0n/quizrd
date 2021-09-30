@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createCard } from '../../store/cards'
 
-//! 'remove' className adds `display: none` for unfinished features
 function CardForm({ deckId }) {
     const history = useHistory()
     const dispatch = useDispatch()
@@ -47,9 +46,9 @@ function CardForm({ deckId }) {
             setErrors(newCard)
         } else {
             setFrontText("")
-            setFrontImage("")
+            setFrontImage(null)
             setBackText("")
-            setBackImage("")
+            setBackImage(null)
         }
     }
     return (
