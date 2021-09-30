@@ -22,11 +22,11 @@ function CardForm({ deckId }) {
     }
 
     const updateFrontImage = (e) => {
-        setFrontImage(e.target.value) //!
+        setFrontImage(e.target.files[0])
     }
 
     const updateBackImage = (e) => {
-        setBackImage(e.target.value) //!
+        setBackImage(e.target.files[0])
     }
 
     const handleFinish = () => {
