@@ -20,12 +20,14 @@ function Card({ card, deckId }) {
             >
                 {flipCard ?
                     <div id='study-card-front' className='study-card-content'>
+                        {card.front_image ? <img src={card.front_image} alt="front of card"/> : null}
                         <p className='study-card-text'>
                             {card.front_text}
                         </p>
                     </div>
                     : // else
                     <div id='study-card-back' className='study-card-content'>
+                        {card.back_image ? <img src={card.back_image} alt="back of card"/> : null}
                         <p className='study-card-text'>
                             {card.back_text}
                         </p>
