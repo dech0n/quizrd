@@ -85,7 +85,6 @@ function CardForm({ deckId }) {
                     className='form-input image-input'
                     type='file'
                     accept='image/*'
-                    value={frontImage}
                     onChange={updateFrontImage}
                 />
                 <label
@@ -116,7 +115,6 @@ function CardForm({ deckId }) {
                     className='form-input image-input'
                     type='file'
                     accept='image/*'
-                    value={backImage}
                     onChange={updateBackImage}
                 />
                 <label
