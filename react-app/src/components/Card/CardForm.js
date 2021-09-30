@@ -80,11 +80,12 @@ function CardForm({ deckId }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
                     className='form-input'
-                    type='text'
+                    type='file'
+                    accept='image/*'
                     value={frontImage}
                     onChange={updateFrontImage}
                 />
@@ -110,11 +111,12 @@ function CardForm({ deckId }) {
                 </label>
             </div>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
                     className='form-input'
-                    type='text'
+                    type='file'
+                    accept='image/*'
                     value={backImage}
                     onChange={updateBackImage}
                 />
