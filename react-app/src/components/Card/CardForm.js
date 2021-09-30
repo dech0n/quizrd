@@ -83,7 +83,7 @@ function CardForm({ deckId }) {
                 className='form-field-container'
             >
                 <input
-                    className='form-input'
+                    className='form-input image-input'
                     type='file'
                     accept='image/*'
                     value={frontImage}
@@ -114,7 +114,7 @@ function CardForm({ deckId }) {
                 className='form-field-container'
             >
                 <input
-                    className='form-input'
+                    className='form-input image-input'
                     type='file'
                     accept='image/*'
                     value={backImage}
