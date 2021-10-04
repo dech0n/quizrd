@@ -9,8 +9,8 @@ function CardForm({ deckId }) {
     const [errors, setErrors] = useState([])
     const [frontText, setFrontText] = useState("")
     const [backText, setBackText] = useState("")
-    const [frontImage, setFrontImage] = useState(null)
-    const [backImage, setBackImage] = useState(null)
+    const [frontImage, setFrontImage] = useState("")
+    const [backImage, setBackImage] = useState("")
 
     const updateFrontText = (e) => {
         setFrontText(e.target.value)
@@ -45,9 +45,9 @@ function CardForm({ deckId }) {
             setErrors(newCard)
         } else {
             setFrontText("")
-            setFrontImage(null)
+            setFrontImage("")
             setBackText("")
-            setBackImage(null)
+            setBackImage("")
         }
     }
     return (
