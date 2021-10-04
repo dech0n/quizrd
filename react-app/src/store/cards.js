@@ -76,7 +76,7 @@ export const createCard = (cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/`, {
         method: 'POST',
         // omit 'Content-Type' headers to prevent issues with image uploads
-        body: JSON.stringify(cardData)
+        body: cardData
     })
 
     if (res.ok) {
