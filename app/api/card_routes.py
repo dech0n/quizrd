@@ -22,6 +22,7 @@ def cards():
 
     # TODO: refactor front_image and back_image conditionals to be less redundant of each other
     # TODO: add audio upload functionality
+    # TODO: add front/back_image editability on PUT route
     if request.method == 'POST':
         form = CardForm()
         # pdb.set_trace() #! debug
