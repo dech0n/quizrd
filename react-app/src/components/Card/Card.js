@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-// TODO: Add conditional rendering for images
-function Card({ card, deckId }) {
+// TODO: Add styling to handle image sizes
+// TODO: Add audio upload functionality
+    function Card({ card, deckId }) {
     const dispatch = useDispatch()
     const [flipCard, setFlipCard] = useState(true)
 
