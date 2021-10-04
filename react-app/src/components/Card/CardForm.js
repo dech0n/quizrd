@@ -33,13 +33,12 @@ function CardForm({ deckId }) {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const cardData = {
-            deck_id: deckId,
-            front_text: frontText,
-            back_text: backText,
-            front_image: frontImage,
-            back_image: backImage
-        }
+        const cardData = new FormData()
+        cardData.append("deck_id", deckId)
+        cardData.append("front_text", frontText)
+        cardData.append("back_text", backText)
+        cardData.append("front_image", frontImage)
+        cardData.append("back_image", backImage)
 
         const newCard = await dispatch(createCard(cardData))
         if (newCard.length) {
