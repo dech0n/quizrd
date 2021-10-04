@@ -28,16 +28,41 @@ def cards():
         if deck is None:
             return {"errors": ["Couldn't find the deck to add this card."]}, 400
         if form.validate_on_submit():
-            if 'front_image' not in form.data:
-                form.data.setdefault('front_image')
-            if 'back_image' not in form.data:
-                form.data.setdefault('back_image')
+            if request.files:
+                front_image = request.files["front_image"]
+                back_image = request.files["back_image"]
+            # validate the front_image file
+            # print("** FORM DATA **", form.data)
+            if form["front_image"].data != "":
+                # print("** FORM DATA front **", form["front_image"].data)
+                if not allowed_file(front_image.filename):
+                    return {"errors": "file type not permitted for 'Front of flashcard' image"}
+                front_image.filename = get_unique_filename(
+                    front_image.filename)
+                front_image_upload = upload_file_to_s3(front_image)
+                if "url" not in front_image_upload:
+                    return front_image_upload, 400
+                front_image_url = front_image_upload["url"]
+
+            # validate the back_image file
+            if form["back_image"].data != "":
+                if not allowed_file(back_image.filename):
+                    return {"errors": "file type not permitted for 'Back of flashcard' image"}
+                # get unique file names for the image and upload it to S3
+                back_image.filename = get_unique_filename(back_image.filename)
+                back_image_upload = upload_file_to_s3(back_image)
+                if "url" not in back_image_upload:
+                    return back_image_upload, 400
+                back_image_url = back_image_upload["url"]
+
             card = Card(
                 deck=deck,
                 front_text=form.data['front_text'],
                 back_text=form.data['back_text'],
-                front_image=form.data['front_image'],
-                back_image=form.data['back_image']
+                front_image=front_image_url if "front_image" in locals(
+                ) else form.data['front_image'],
+                back_image=back_image_url if "back_image" in locals(
+                ) else form.data['back_image']
             )
 
             db.session.add(card)
