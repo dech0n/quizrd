@@ -76,7 +76,7 @@ export const createCard = (cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/`, {
         method: 'POST',
         // omit 'Content-Type' headers to prevent issues with image uploads
-        body: cardData
+        body: cardData // don't stringify, just send FormData obj
     })
 
     if (res.ok) {
@@ -98,7 +98,7 @@ export const updateCard = (cardId, cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`, {
         method: 'PUT',
         // omit 'Content-Type' headers to prevent issues with image uploads
-        body: JSON.stringify(cardData)
+        body: cardData // don't stringify, just send FormData obj
     })
 
     if (res.ok) {

@@ -38,12 +38,11 @@ function EditCardForm({ card, setShowThis }) {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const cardData = {
-            front_text: frontText,
-            back_text: backText,
-            front_image: frontImage,
-            back_image: backImage
-        }
+        const cardData = new FormData()
+        cardData.append("front_text", frontText)
+        cardData.append("back_text", backText)
+        cardData.append("front_image", frontImage)
+        cardData.append("back_image", backImage)
 
         const newCard = await dispatch(updateCard(card.id, cardData))
         if (newCard.length) { // implies error array vs card object
@@ -129,10 +128,10 @@ function EditCardForm({ card, setShowThis }) {
                     className='card-form-submit-btn'
                     type='submit'>Update Card</button>
                 <button
-                className='cancel-btn card-form-cancel-btn card-form-alt-btn'
+                    className='cancel-btn card-form-cancel-btn card-form-alt-btn'
                     type='button'
                     onClick={handleCancel}
-                    >Cancel</button>
+                >Cancel</button>
             </div>
         </form>
     )
