@@ -75,10 +75,8 @@ export const getDeckCards = (deckId) => async (dispatch) => {
 export const createCard = (cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/`, {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cardData)
+        // omit 'Content-Type' headers to prevent issues with image uploads
+        body: cardData // don't stringify, just send FormData obj
     })
 
     if (res.ok) {
@@ -99,10 +97,8 @@ export const createCard = (cardData) => async (dispatch) => {
 export const updateCard = (cardId, cardData) => async (dispatch) => {
     const res = await fetch(`/api/cards/${cardId}`, {
         method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(cardData)
+        // omit 'Content-Type' headers to prevent issues with image uploads
+        body: cardData // don't stringify, just send FormData obj
     })
 
     if (res.ok) {
