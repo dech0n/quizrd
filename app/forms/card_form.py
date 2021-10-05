@@ -20,15 +20,19 @@ class CardForm(FlaskForm):
             max=150,
             message="Card text must be 1-150 characters.")
     ])
-    front_image = StringField('front_image', validators=[
-        Length(
-            max=255,
-            message="File name must not exceed 255 characters."
-        )
-    ])
-    back_image = StringField('back_image', validators=[
-        Length(
-            max=255,
-            message="File name must not exceed 255 characters."
-        )
-    ])
+    front_image = StringField('front_image'
+    #                           , validators=[
+    #     Length(
+    #         max=255,
+    #         message="File name must not exceed 255 characters."
+    #     )
+    # ]
+                              )
+    back_image = StringField('back_image'
+    #                          , validators=[
+    #     Length(
+    #         max=255,
+    #         message="File name must not exceed 255 characters."
+    #     )
+    # ]
+                             )

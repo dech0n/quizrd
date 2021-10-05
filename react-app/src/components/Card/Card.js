@@ -2,8 +2,9 @@ import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 
-// TODO: Add conditional rendering for images
-function Card({ card, deckId }) {
+// TODO: Add styling to handle image sizes
+// TODO: Add audio upload functionality
+    function Card({ card, deckId }) {
     const dispatch = useDispatch()
     const [flipCard, setFlipCard] = useState(true)
 
@@ -20,12 +21,14 @@ function Card({ card, deckId }) {
             >
                 {flipCard ?
                     <div id='study-card-front' className='study-card-content'>
+                        {card.front_image ? <img src={card.front_image} alt="front of card" className="study-card-img"/> : null}
                         <p className='study-card-text'>
                             {card.front_text}
                         </p>
                     </div>
                     : // else
                     <div id='study-card-back' className='study-card-content'>
+                        {card.back_image ? <img src={card.back_image} alt="back of card" className="study-card-img"/> : null}
                         <p className='study-card-text'>
                             {card.back_text}
                         </p>

@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { createCard } from '../../store/cards'
 
-//! 'remove' className adds `display: none` for unfinished features
 function CardForm({ deckId }) {
     const history = useHistory()
     const dispatch = useDispatch()
@@ -22,11 +21,11 @@ function CardForm({ deckId }) {
     }
 
     const updateFrontImage = (e) => {
-        setFrontImage(e.target.value)
+        setFrontImage(e.target.files[0])
     }
 
     const updateBackImage = (e) => {
-        setBackImage(e.target.value)
+        setBackImage(e.target.files[0])
     }
 
     const handleFinish = () => {
@@ -34,13 +33,12 @@ function CardForm({ deckId }) {
     }
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const cardData = {
-            deck_id: deckId,
-            front_text: frontText,
-            back_text: backText,
-            front_image: frontImage,
-            back_image: backImage
-        }
+        const cardData = new FormData()
+        cardData.append("deck_id", deckId)
+        cardData.append("front_text", frontText)
+        cardData.append("back_text", backText)
+        cardData.append("front_image", frontImage)
+        cardData.append("back_image", backImage)
 
         const newCard = await dispatch(createCard(cardData))
         if (newCard.length) {
@@ -80,12 +78,12 @@ function CardForm({ deckId }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
-                    className='form-input'
-                    type='text'
-                    value={frontImage}
+                    className='form-input image-input'
+                    type='file'
+                    accept='image/*'
                     onChange={updateFrontImage}
                 />
                 <label
@@ -110,12 +108,12 @@ function CardForm({ deckId }) {
                 </label>
             </div>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
-                    className='form-input'
-                    type='text'
-                    value={backImage}
+                    className='form-input image-input'
+                    type='file'
+                    accept='image/*'
                     onChange={updateBackImage}
                 />
                 <label
