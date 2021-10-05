@@ -32,13 +32,11 @@ def cards():
         if deck is None:
             return {"errors": ["Couldn't find the deck to add this card."]}, 400
         if form.validate_on_submit():
-            if request.files:
-                front_image = request.files["front_image"]
-                back_image = request.files["back_image"]
+            # check if there are any files in the request
             # validate the front_image file
-            # print("** FORM DATA **", form.data)
-            if form["front_image"].data != "":
-                # print("** FORM DATA front **", form["front_image"].data)
+            # if form["front_image"].data != "":
+            if "front_image" in request.files:
+                front_image = request.files["front_image"]
                 if not allowed_file(front_image.filename):
                     return {"errors": "file type not permitted for 'Front of flashcard' image"}
                 front_image.filename = get_unique_filename(
@@ -49,7 +47,9 @@ def cards():
                 front_image_url = front_image_upload["url"]
 
             # validate the back_image file
-            if form["back_image"].data != "":
+            # if form["back_image"].data != "":
+            if "back_image" in request.files:
+                back_image = request.files["back_image"]
                 if not allowed_file(back_image.filename):
                     return {"errors": "file type not permitted for 'Back of flashcard' image"}
                 # get unique file names for the image and upload it to S3

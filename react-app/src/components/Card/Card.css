@@ -150,7 +150,8 @@ li.list-card-content {
 .study-card-content {
     text-align: center;
     font-weight: 700;
-    font-size: 1.25rem;
+    /* font-size: 1.25rem; */
+    font-size: 1.1rem;
     overflow-wrap: break-word;
     overflow-x: hidden;
     overflow-y: scroll;
