@@ -79,7 +79,9 @@ function EditCardForm({ card, setShowThis }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container'
+            //! take out `remove` className when ready to debug
+            //! photos submitted on edit form currently not showing up in request.files -- gotta figure it out
+                className='form-field-container remove'
             >
                 <input
                     className='form-input image-input'
@@ -109,7 +111,9 @@ function EditCardForm({ card, setShowThis }) {
                 </label>
             </div>
             <div
-                className='form-field-container'
+            //! take out `remove` className when ready to debug
+            //! photos submitted on edit form currently not showing up in request.files -- gotta figure it out
+                className='form-field-container remove'
             >
                 <input
                     className='form-input image-input'
