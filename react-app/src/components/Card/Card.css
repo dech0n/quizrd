@@ -147,10 +147,22 @@ li.list-card-content {
     color: rgb(149, 85, 245);
 }
 
-/* .study-card-content {
+.study-card-content {
     text-align: center;
-    padding: 20px;
-} */
+    font-weight: 700;
+    font-size: 1.25rem;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    height: auto;
+    /* hyphens: auto; */
+    /* hyphens: manual; */
+}
+
+.study-card-img {
+    max-width: 18rem;
+    height: 9rem;
+}
 
 .study-card-text {
     text-align: center;
@@ -158,15 +170,6 @@ li.list-card-content {
     /* word-wrap: break-word; */
 }
 
-#study-card-front, #study-card-back {
-    font-weight: 700;
-    font-size: 1.25rem;
-    overflow-wrap: break-word;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    /* hyphens: auto; */
-    /* hyphens: manual; */
-}
 
 #no-cards {
     text-align: center;

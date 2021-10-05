@@ -21,14 +21,14 @@ import { Link } from 'react-router-dom'
             >
                 {flipCard ?
                     <div id='study-card-front' className='study-card-content'>
-                        {card.front_image ? <img src={card.front_image} alt="front of card"/> : null}
+                        {card.front_image ? <img src={card.front_image} alt="front of card" className="study-card-img"/> : null}
                         <p className='study-card-text'>
                             {card.front_text}
                         </p>
                     </div>
                     : // else
                     <div id='study-card-back' className='study-card-content'>
-                        {card.back_image ? <img src={card.back_image} alt="back of card"/> : null}
+                        {card.back_image ? <img src={card.back_image} alt="back of card" className="study-card-img"/> : null}
                         <p className='study-card-text'>
                             {card.back_text}
                         </p>
