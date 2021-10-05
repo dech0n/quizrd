@@ -79,12 +79,12 @@ function EditCardForm({ card, setShowThis }) {
                 Front of flashcard
             </label>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
-                    className='form-input'
-                    type='text'
-                    value={frontImage}
+                    className='form-input image-input'
+                    type='file'
+                    accept='image/*'
                     onChange={updateFrontImage}
                 />
                 <label
@@ -109,12 +109,12 @@ function EditCardForm({ card, setShowThis }) {
                 </label>
             </div>
             <div
-                className='form-field-container remove'
+                className='form-field-container'
             >
                 <input
-                    className='form-input'
-                    type='text'
-                    value={backImage}
+                    className='form-input image-input'
+                    type='file'
+                    accept='image/*'
                     onChange={updateBackImage}
                 />
                 <label
